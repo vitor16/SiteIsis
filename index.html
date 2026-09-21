@@ -1,0 +1,2520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isis Avelar Stúdio — Beauty, Nails, Hair & Fashion Concept</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-dark: #08080a;
+      --card-bg: rgba(20, 20, 26, 0.75);
+      --accent-gold: #e5b869;
+      --accent-gold-light: #f8de91;
+      --accent-gold-dark: #b88d3e;
+      --accent-rose: #e28d88;
+      --text-main: #f4f4f7;
+      --text-muted: #a0a0ab;
+      --border-glass: rgba(229, 184, 105, 0.15);
+      --font-title: 'Syne', sans-serif;
+      --font-serif: 'Cinzel', serif;
+      --font-script: 'Alex Brush', cursive;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Ambient Background Glows */
+    .glow-bg {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(150px);
+      z-index: -1;
+      opacity: 0.22;
+      pointer-events: none;
+      animation: floatGlow 12s infinite alternate ease-in-out;
+    }
+    .glow-1 { top: -120px; left: -100px; background: var(--accent-gold); }
+    .glow-2 { bottom: 10%; right: -100px; background: var(--accent-rose); animation-delay: -6s; }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, 40px) scale(1.1); }
+    }
+
+    /* Header & Nav */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 14px 5%;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8, 8, 10, 0.85);
+      border-bottom: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Logo Isis Avelar Stúdio */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(229,184,105,0.12) 0%, transparent 70%);
+      overflow: hidden;
+    }
+
+    .logo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .logo-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+      border-top-color: var(--accent-gold);
+      border-right-color: var(--accent-gold-light);
+      border-bottom-color: rgba(229,184,105,0.2);
+      transform: rotate(-30deg);
+      box-shadow: 0 0 10px rgba(229,184,105,0.3);
+      pointer-events: none;
+    }
+
+    .logo-text-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-script {
+      font-family: var(--font-script);
+      font-size: 1.85rem;
+      background: linear-gradient(135deg, #f8de91 0%, #e5b869 50%, #b88d3e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .logo-sub {
+      font-family: var(--font-serif);
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      color: #e5b869;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: -2px;
+    }
+
+    nav { display: flex; gap: 22px; align-items: center; }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover { color: var(--accent-gold); }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after { width: 100%; }
+
+    .btn-cta {
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 50%, var(--accent-gold-dark) 100%);
+      color: #08080a;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(229, 184, 105, 0.35);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(229, 184, 105, 0.55);
+    }
+
+    /* Floating Music Controller (Jazz House) */
+    .music-widget {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1000;
+      background: rgba(15, 15, 20, 0.85);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(15px);
+      padding: 10px 18px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .music-widget:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+    }
+
+    .music-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+      color: #0a0a0c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .equalizer-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .eq-bar {
+      width: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
+      height: 4px;
+      transition: height 0.2s ease;
+    }
+
+    .music-widget.playing .eq-bar {
+      animation: eqAnimate 0.8s infinite alternate ease-in-out;
+    }
+
+    .music-widget.playing .eq-bar:nth-child(1) { animation-delay: 0.1s; }
+    .music-widget.playing .eq-bar:nth-child(2) { animation-delay: 0.3s; }
+    .music-widget.playing .eq-bar:nth-child(3) { animation-delay: 0.2s; }
+
+    @keyframes eqAnimate {
+      0% { height: 4px; }
+      100% { height: 16px; }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 150px 5% 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      background: rgba(229, 184, 105, 0.08);
+      border: 1px solid rgba(229, 184, 105, 0.3);
+      color: var(--accent-gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      font-family: var(--font-script);
+      font-weight: 400;
+      font-size: 1.2em;
+      background: linear-gradient(135deg, #f8de91 0%, #e5b869 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .photo-container {
+      position: relative;
+      width: 100%;
+      height: 540px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      background: linear-gradient(145deg, #14141d 0%, #08080b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .photo-container .brand-emblem {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 35px rgba(229, 184, 105, 0.25);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .photo-container .brand-emblem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-title);
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* =========================================================
+       HAIR STUDIO SIMULATOR (PERFECT SALON PRECISION ENGINE)
+    ========================================================= */
+    .hair-studio-section {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, #09090c 0%, #151520 100%);
+      border-bottom: 1px solid var(--border-glass);
+      position: relative;
+    }
+
+    .hair-simulator-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 30px;
+      padding: 36px 40px;
+      backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+      gap: 40px;
+      align-items: start;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Top Mode Switcher */
+    .sim-mode-switcher {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 5px;
+      border-radius: 20px;
+      border: 1px solid var(--border-glass);
+      width: 100%;
+    }
+
+    .sim-mode-tab {
+      flex: 1;
+      padding: 9px 14px;
+      border-radius: 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .sim-mode-tab.active {
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+      color: #08080a;
+      box-shadow: 0 4px 15px rgba(229, 184, 105, 0.4);
+    }
+
+    /* Realistic Hair Viewport */
+    .hair-viewport-box {
+      position: relative;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      background: #0d0d12;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hair-canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #111116;
+    }
+
+    .hair-photo-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: filter 0.3s ease;
+    }
+
+    /* Precise Hair Shader Layers with Model Masks (TARGETS ONLY HAIR) */
+    .hair-shader-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+      -webkit-mask-position: center top;
+      mask-position: center top;
+      transition: opacity 0.25s ease;
+    }
+
+    .hair-tint-shader {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: color;
+      opacity: 0.9;
+      transition: background 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hair-highlight-shader {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: soft-light;
+      opacity: 0.75;
+      transition: background 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hair-gloss-sheen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: screen;
+      opacity: 0.45;
+      transition: background 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Client Upload Prompt Box */
+    .client-upload-prompt {
+      display: none;
+      position: absolute;
+      inset: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      background: rgba(10, 10, 14, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .hair-view-controls {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+    }
+
+    .hair-btn-tool {
+      background: rgba(10, 10, 14, 0.85);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .hair-btn-tool:hover {
+      background: var(--accent-gold);
+      color: #08080a;
+      border-color: var(--accent-gold);
+    }
+
+    .hair-status-bar {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(12, 12, 18, 0.95);
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hair-info-tag {
+      font-size: 0.86rem;
+      color: #fff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hair-info-tag span { color: var(--accent-gold); }
+
+    /* Model Cards Selector Grid */
+    .model-selector-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+      width: 100%;
+    }
+
+    .model-card-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 4px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .model-card-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border-glass);
+    }
+
+    .model-card-btn.active, .model-card-btn:hover {
+      border-color: var(--accent-gold);
+      background: rgba(229, 184, 105, 0.15);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .model-card-btn.active .model-card-thumb {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(229, 184, 105, 0.5);
+    }
+
+    /* Hair Controls Sidebar - CLEAN BOX LAYOUT WITHOUT OVERLAP */
+    .hair-controls-col {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hair-controls-col h3 {
+      font-family: var(--font-title);
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .hair-category-nav {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 10px;
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    .hair-cat-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .hair-cat-btn.active {
+      color: var(--accent-gold);
+      background: rgba(229, 184, 105, 0.15);
+    }
+
+    .hair-swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .hair-swatch-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 4px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .hair-swatch-item:hover, .hair-swatch-item.active {
+      border-color: var(--accent-gold);
+      background: rgba(229, 184, 105, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .hair-color-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .hair-swatch-item.active .hair-color-circle {
+      border-color: #fff;
+      box-shadow: 0 0 12px rgba(229, 184, 105, 0.8);
+    }
+
+    .hair-swatch-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #e0e0e6;
+      line-height: 1.2;
+      word-break: break-word;
+      padding: 0 2px;
+    }
+
+    .custom-color-picker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border-glass);
+      width: 100%;
+    }
+
+    .custom-color-picker input[type="color"] {
+      -webkit-appearance: none;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .custom-color-picker input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    .custom-color-picker input[type="color"]::-webkit-color-swatch { border: 2px solid var(--border-glass); border-radius: 50%; }
+
+    /* Hairdo & Technique Grid */
+    .hairdo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .hairdo-btn {
+      padding: 9px 6px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.25s ease;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .hairdo-btn i { color: var(--accent-gold); width: 15px; height: 15px; }
+
+    .hairdo-btn:hover, .hairdo-btn.active {
+      background: rgba(229, 184, 105, 0.15);
+      border-color: var(--accent-gold);
+      color: #fff;
+    }
+
+    /* Sliders Box */
+    .hair-sliders-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-glass);
+      padding: 14px 18px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      width: 100%;
+    }
+
+    .slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .slider-row:last-child { margin-bottom: 0; }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #d1d1d8;
+      font-weight: 600;
+    }
+
+    .slider-header span:last-child { color: var(--accent-gold); }
+
+    .custom-range {
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .custom-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(229, 184, 105, 0.8);
+      cursor: pointer;
+    }
+
+    /* Interactive Scheduler / Agendador Google Calendar Section */
+    .scheduler-section {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, rgba(12,12,16,0.8) 0%, rgba(20,20,28,0.95) 100%);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .scheduler-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 30px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-gold);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 15px rgba(229, 184, 105, 0.2);
+    }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .time-slot {
+      padding: 10px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .time-slot:hover, .time-slot.selected {
+      background: var(--accent-gold);
+      color: #0a0a0c;
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 15px rgba(229, 184, 105, 0.35);
+    }
+
+    .calendar-card {
+      background: rgba(10, 10, 14, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sync-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(66, 133, 244, 0.12);
+      border: 1px solid rgba(66, 133, 244, 0.3);
+      color: #4285f4;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    /* Before / After Split-Screen Component */
+    .transformations-section {
+      padding: 80px 5%;
+      background: rgba(15, 15, 20, 0.6);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .split-slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 480px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      user-select: none;
+      touch-action: pan-y;
+    }
+
+    .split-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .layer-before {
+      background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop');
+    }
+
+    .layer-after {
+      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop');
+      clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+    }
+
+    .split-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split-pos, 50%);
+      width: 4px;
+      background: var(--accent-gold);
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 10;
+      box-shadow: 0 0 15px rgba(229, 184, 105, 0.8);
+    }
+
+    .split-handle-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0a0a0c;
+      border: 2px solid var(--accent-gold);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .badge-label {
+      position: absolute;
+      bottom: 24px;
+      padding: 8px 18px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 12, 0.75);
+      border: 1px solid var(--border-glass);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .badge-before { left: 24px; color: var(--text-muted); }
+    .badge-after { right: 24px; color: var(--accent-gold); }
+
+    /* Interactive Nail & Vibe Day Studio Section */
+    .nail-studio-section {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, #0a0a0c 0%, #12121a 100%);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .studio-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 30px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .svg-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 24px;
+      padding: 30px;
+      border: 1px solid var(--border-glass);
+      transition: all 0.5s ease;
+    }
+
+    .stage-vibe-dia {
+      background: linear-gradient(135deg, #fcefe6 0%, #e2d1c3 100%);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+    }
+
+    .stage-vibe-noite {
+      background: linear-gradient(135deg, #0d0d14 0%, #171724 100%);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .stage-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+    }
+
+    #bottleSVG {
+      width: 80px;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    }
+
+    #bottleSVG .bottle {
+      fill: rgba(255, 255, 255, 0.08);
+      stroke: rgba(255, 255, 255, 0.2);
+    }
+
+    .stage-vibe-dia #bottleSVG .bottle {
+      fill: rgba(0, 0, 0, 0.05);
+      stroke: rgba(0, 0, 0, 0.15);
+    }
+
+    #bottleSVG .lid { fill: var(--accent-gold); }
+
+    #handSVG {
+      width: 100%;
+      max-width: 320px;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+    }
+
+    #backgroundCircle {
+      fill: rgba(229, 184, 105, 0.1);
+      stroke: rgba(229, 184, 105, 0.25);
+      stroke-width: 2;
+    }
+
+    .studio-controls h3 {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .control-group { margin-bottom: 24px; }
+
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    .vibe-mode-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .vibe-mode-btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .vibe-mode-btn.active {
+      background: var(--accent-gold);
+      color: #0a0a0c;
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 15px rgba(229, 184, 105, 0.4);
+    }
+
+    .vibe-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .vibe-pill {
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.03);
+      color: #d1d1d6;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .vibe-pill:hover, .vibe-pill.active {
+      background: rgba(229, 184, 105, 0.2);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .color-swatches {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .swatch {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .swatch:hover, .swatch.active {
+      transform: scale(1.15);
+      border-color: #fff;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Services Grid */
+    .services { padding: 100px 5%; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(229, 184, 105, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: rgba(229, 184, 105, 0.1);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .card-list { list-style: none; }
+
+    .card-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: #d1d1d6;
+      margin-bottom: 8px;
+    }
+
+    .card-list li i { color: var(--accent-gold); width: 16px; }
+
+    /* Packages Section */
+    .packages-section {
+      padding: 100px 5%;
+      background: rgba(15, 15, 20, 0.8);
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 36px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .package-card.featured {
+      border-color: var(--accent-gold);
+      background: linear-gradient(180deg, rgba(229, 184, 105, 0.08) 0%, rgba(22, 22, 28, 0.85) 100%);
+      box-shadow: 0 10px 30px rgba(229, 184, 105, 0.15);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #b88d3e 100%);
+      color: #0a0a0c;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .package-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 16px 0;
+      font-family: var(--font-title);
+    }
+
+    .package-price span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 50px 5% 30px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .studio-container, .scheduler-container, .hair-simulator-container { grid-template-columns: 1fr; padding: 24px; }
+      nav { display: none; }
+      .split-slider-container { height: 350px; }
+      .color-swatches { grid-template-columns: repeat(4, 1fr); }
+      .hair-swatches-grid { grid-template-columns: repeat(4, 1fr); }
+      .hairdo-grid { grid-template-columns: repeat(3, 1fr); }
+      .model-selector-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG Hair Silhouette Masks for Accurate Targetting (ONLY THE HAIR CHANGES COLOR) -->
+  <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Mask Model 1: Waves (Hair boundary without face & dress) -->
+      <mask id="hairMaskWaves" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="black"/>
+        <!-- Hair Area White -->
+        <path fill="white" d="M0.5,0.02 C0.22,0.02 0.08,0.18 0.08,0.38 C0.08,0.58 0.12,0.78 0.22,0.92 C0.35,0.92 0.38,0.75 0.35,0.60 C0.32,0.48 0.34,0.32 0.38,0.22 C0.44,0.14 0.56,0.14 0.62,0.22 C0.66,0.32 0.68,0.48 0.65,0.60 C0.62,0.75 0.65,0.92 0.78,0.92 C0.88,0.78 0.92,0.58 0.92,0.38 C0.92,0.18 0.78,0.02 0.5,0.02 Z" />
+        <!-- Soft Face & Chest Cutout -->
+        <ellipse cx="0.5" cy="0.34" rx="0.15" ry="0.18" fill="black" filter="blur(6px)"/>
+        <ellipse cx="0.5" cy="0.75" rx="0.22" ry="0.22" fill="black" filter="blur(8px)"/>
+      </mask>
+
+      <!-- Mask Model 2: Straight -->
+      <mask id="hairMaskStraight" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="black"/>
+        <path fill="white" d="M0.5,0.03 C0.24,0.03 0.12,0.15 0.08,0.40 C0.05,0.65 0.08,0.85 0.26,0.95 C0.35,0.95 0.36,0.70 0.35,0.55 C0.33,0.40 0.36,0.25 0.40,0.18 C0.45,0.12 0.55,0.12 0.60,0.18 C0.64,0.25 0.67,0.40 0.65,0.55 C0.64,0.70 0.65,0.95 0.74,0.95 C0.92,0.85 0.95,0.65 0.92,0.40 C0.88,0.15 0.76,0.03 0.5,0.03 Z" />
+        <ellipse cx="0.5" cy="0.32" rx="0.15" ry="0.18" fill="black" filter="blur(5px)"/>
+        <ellipse cx="0.5" cy="0.78" rx="0.20" ry="0.22" fill="black" filter="blur(8px)"/>
+      </mask>
+
+      <!-- Mask Model 3: Curls -->
+      <mask id="hairMaskCurls" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="black"/>
+        <path fill="white" d="M0.5,0.01 C0.15,0.01 0.02,0.15 0.02,0.42 C0.02,0.68 0.10,0.82 0.28,0.82 C0.35,0.82 0.36,0.65 0.35,0.52 C0.33,0.38 0.35,0.26 0.38,0.20 C0.44,0.12 0.56,0.12 0.62,0.20 C0.65,0.26 0.67,0.38 0.65,0.52 C0.64,0.65 0.65,0.82 0.72,0.82 C0.90,0.82 0.98,0.68 0.98,0.42 C0.98,0.15 0.85,0.01 0.5,0.01 Z" />
+        <ellipse cx="0.51" cy="0.35" rx="0.16" ry="0.18" fill="black" filter="blur(6px)"/>
+        <ellipse cx="0.5" cy="0.80" rx="0.24" ry="0.20" fill="black" filter="blur(8px)"/>
+      </mask>
+
+      <!-- Mask Model 4: Bob -->
+      <mask id="hairMaskBob" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="black"/>
+        <path fill="white" d="M0.5,0.03 C0.25,0.03 0.12,0.16 0.10,0.35 C0.08,0.55 0.18,0.68 0.30,0.68 C0.35,0.68 0.36,0.52 0.35,0.42 C0.34,0.30 0.36,0.20 0.40,0.16 C0.45,0.10 0.55,0.10 0.60,0.16 C0.64,0.20 0.66,0.30 0.65,0.42 C0.64,0.52 0.65,0.68 0.70,0.68 C0.82,0.68 0.92,0.55 0.90,0.35 C0.88,0.16 0.75,0.03 0.5,0.03 Z" />
+        <ellipse cx="0.5" cy="0.36" rx="0.16" ry="0.18" fill="black" filter="blur(5px)"/>
+        <ellipse cx="0.5" cy="0.75" rx="0.28" ry="0.25" fill="black" filter="blur(8px)"/>
+      </mask>
+
+      <!-- Mask Client Photo (Radial Soft Mask for Custom Uploads) -->
+      <mask id="hairMaskClient" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="white"/>
+        <ellipse cx="0.5" cy="0.45" rx="0.18" ry="0.22" fill="black" filter="blur(10px)"/>
+      </mask>
+    </defs>
+  </svg>
+
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Audio Background Element (Jazz House Vibe) -->
+  <audio id="bgAudio" loop preload="auto">
+    <!-- Royalty-free smooth jazz house/lofi stream -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Audio Controller Widget -->
+  <div class="music-widget" id="musicToggle" onclick="toggleMusic()">
+    <div class="music-icon-btn">
+      <i data-lucide="music" id="musicIcon" style="width: 18px; height: 18px;"></i>
+    </div>
+    <div>
+      <div style="font-size: 0.78rem; font-weight: 700; color: #fff;">Jazz House Vibe</div>
+      <div style="font-size: 0.7rem; color: var(--text-muted);" id="musicStatusText">Clique para Ouvir</div>
+    </div>
+    <div class="equalizer-bars">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo-container">
+      <div class="logo-badge">
+        <img src="logo.jpeg" alt="Isis Avelar Stúdio">
+        <div class="logo-ring"></div>
+      </div>
+      <div class="logo-text-group">
+        <span class="logo-script">Isis Avelar</span>
+        <span class="logo-sub">STÚDIO</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#agendamento">Agendar Horário</a>
+      <a href="#simulador-hair">Simulador Capilar</a>
+      <a href="#simulador-vibe">Simulador Esmaltes</a>
+      <a href="#transformacoes">Transformações</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#pacotes">Pacotes</a>
+    </nav>
+    
+    <a href="#agendamento" class="btn-cta">
+      <i data-lucide="calendar"></i> Agendamento Online
+    </a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <span class="hero-tag">BEAUTY, NAILS, HAIR & BOUTIQUE</span>
+      <h1>Sua beleza e estilo traduzidos por <span>Isis Avelar</span>.</h1>
+      <p>Transformações capilares com visagismo, simulador de cores e modelos em tempo real, extensão de unhas e moda exclusiva para sua melhor versão.</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="#agendamento" class="btn-cta">
+          <i data-lucide="calendar-check"></i> Agendar Agora
+        </a>
+        <a href="#simulador-hair" class="btn-cta" style="background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-glass); box-shadow: none;">
+          <i data-lucide="sparkles"></i> Testar Simulador Capilar
+        </a>
+      </div>
+    </div>
+
+    <div class="photo-container">
+      <div class="brand-emblem">
+        <img src="logo.jpeg" alt="Isis Avelar Stúdio">
+      </div>
+      <strong style="color:#fff; font-family: var(--font-serif); letter-spacing: 2px;">ISIS AVELAR STÚDIO</strong>
+      <span style="color:var(--text-muted); font-size: 0.82rem; margin-top: 6px;">Beauty, Nails, Hair & Fashion Concept</span>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       HAIR COLOR & HAIRDO SIMULATOR (PERFECT SALON ENGINE)
+  ====================================================== -->
+  <section class="hair-studio-section" id="simulador-hair">
+    <div class="section-title">
+      <h2>Simulador Capilar & Hair Studio Tech</h2>
+      <p>Simule tinturas, mechas Morena Iluminada, loiros e cortes em modelos reais de estúdio ou na sua própria foto.</p>
+    </div>
+
+    <div class="hair-simulator-container">
+      <!-- Left Column: Viewport & Model Selector -->
+      <div>
+        <!-- Mode Switcher -->
+        <div class="sim-mode-switcher">
+          <button class="sim-mode-tab active" id="tabModelMode" onclick="setHairSimMode('model')">
+            <i data-lucide="sparkles" style="width: 15px;"></i> Modelos do Stúdio
+          </button>
+          <button class="sim-mode-tab" id="tabUploadMode" onclick="setHairSimMode('upload')">
+            <i data-lucide="camera" style="width: 15px;"></i> Enviar Minha Foto
+          </button>
+        </div>
+
+        <div class="hair-viewport-box">
+          <div class="hair-canvas-wrapper" id="hairViewport">
+            <!-- 1. Real Model Photo Base Layer -->
+            <img id="mainHairPhoto" src="model_waves.jpg" alt="Modelo Capilar" class="hair-photo-layer">
+            
+            <!-- 2. Shader Container with Alpha Mask applied (TARGETS ONLY HAIR) -->
+            <div id="hairShaderBox" class="hair-shader-container" style="-webkit-mask-image: url(#hairMaskWaves); mask-image: url(#hairMaskWaves);">
+              <div id="hairTintShader" class="hair-tint-shader"></div>
+              <div id="hairHighlightShader" class="hair-highlight-shader"></div>
+              <div id="hairGlossSheen" class="hair-gloss-sheen"></div>
+            </div>
+
+            <!-- 3. Client Photo Upload Drop Prompt -->
+            <div id="clientUploadPrompt" class="client-upload-prompt" onclick="document.getElementById('realClientInput').click()">
+              <i data-lucide="camera" style="width: 44px; height: 44px; color: var(--accent-gold); margin-bottom: 12px;"></i>
+              <strong style="color: #fff; font-size: 1.1rem; margin-bottom: 6px;">Carregar Foto do Seu Cabelo</strong>
+              <p style="color: var(--text-muted); font-size: 0.84rem; max-width: 280px; margin-bottom: 16px;">
+                Tire uma selfie ou envie uma foto para simular qualquer tom de tintura diretamente no seu cabelo.
+              </p>
+              <button class="btn-cta" style="padding: 8px 18px; font-size: 0.84rem;">
+                <i data-lucide="upload"></i> Selecionar Imagem
+              </button>
+            </div>
+            <input type="file" id="realClientInput" accept="image/*" style="display:none;" onchange="handleRealPhotoFile(event)">
+
+            <!-- Top Floating Compare Tool -->
+            <div class="hair-view-controls">
+              <button class="hair-btn-tool" id="btnHoldCompare" onmousedown="peekOriginalColor()" onmouseup="restoreSimColor()" ontouchstart="peekOriginalColor()" ontouchend="restoreSimColor()">
+                <i data-lucide="eye" style="width:13px;"></i> Segure p/ Ver Antes
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom Status Bar -->
+          <div class="hair-status-bar">
+            <div class="hair-info-tag">
+              <i data-lucide="sparkles" style="width: 18px; color: var(--accent-gold);"></i>
+              <div>
+                <span id="currentHairToneName">Mel Dourado</span>
+                <div style="font-size: 0.74rem; color: var(--text-muted); font-weight: 400;" id="currentHairStyleName">Técnica: Balayage Mel Dourado • Ondulado Glamour</div>
+              </div>
+            </div>
+            <button class="hair-btn-tool" style="background: rgba(229,184,105,0.15); color: var(--accent-gold); border-color: var(--accent-gold);" onclick="resetHairSimulation()">
+              <i data-lucide="rotate-ccw" style="width: 13px;"></i> Resetar
+            </button>
+          </div>
+        </div>
+
+        <!-- Studio Models Selector Grid -->
+        <div id="modelsPickerBox">
+          <div class="model-selector-row">
+            <button class="model-card-btn active" onclick="switchRealModel('waves', this)">
+              <img src="model_waves.jpg" class="model-card-thumb" alt="Ondulado">
+              <span>Ondulado Longo</span>
+            </button>
+            <button class="model-card-btn" onclick="switchRealModel('straight', this)">
+              <img src="model_straight.jpg" class="model-card-thumb" alt="Liso">
+              <span>Liso Espelhado</span>
+            </button>
+            <button class="model-card-btn" onclick="switchRealModel('curls', this)">
+              <img src="model_curls.jpg" class="model-card-thumb" alt="Cachos">
+              <span>Cachos Volume</span>
+            </button>
+            <button class="model-card-btn" onclick="switchRealModel('bob', this)">
+              <img src="model_bob.jpg" class="model-card-thumb" alt="Bob">
+              <span>Corte Bob Chic</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Palette & Technique Controls (PERFECT CLEAN LAYOUT) -->
+      <div class="hair-controls-col">
+        <h3>Paleta de Tintas & Mechas</h3>
+        <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 14px;">Escolha o tom de tinta desejado e personalize a técnica de aplicação.</p>
+
+        <!-- Category Tabs -->
+        <div class="hair-category-nav">
+          <button class="hair-cat-btn active" onclick="filterHairCategory('morena', this)">✨ Morena Iluminada</button>
+          <button class="hair-cat-btn" onclick="filterHairCategory('loiros', this)">🌟 Loiros & Balayage</button>
+          <button class="hair-cat-btn" onclick="filterHairCategory('ruivos', this)">🔥 Ruivos & Acobreados</button>
+          <button class="hair-cat-btn" onclick="filterHairCategory('escuros', this)">🖤 Castanhos & Pretos</button>
+          <button class="hair-cat-btn" onclick="filterHairCategory('fantasias', this)">🌸 Tons Modernos</button>
+        </div>
+
+        <!-- Hair Swatches Grid -->
+        <div class="hair-swatches-grid" id="hairSwatchesGrid"></div>
+
+        <!-- Custom Color Picker Bar -->
+        <div class="custom-color-picker">
+          <input type="color" id="customHairPicker" value="#c68a4c">
+          <div style="flex:1;">
+            <div style="font-size: 0.82rem; color: #fff; font-weight: 600;">Criar Tom de Tinta Exclusivo</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">Teste qualquer tonalidade personalizada</div>
+          </div>
+        </div>
+
+        <!-- Technique & Hairdo Style -->
+        <label style="display:block; font-size:0.84rem; font-weight:600; color:var(--accent-gold); margin-bottom: 8px;">
+          Técnica & Acabamento do Penteado:
+        </label>
+        <div class="hairdo-grid">
+          <button class="hairdo-btn active" onclick="selectHairdoTechnique('Balayage Mel', 'balayage', this)">
+            <i data-lucide="sun"></i>
+            <span>Balayage Mel</span>
+          </button>
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Mechas Babylights', 'babylights', this)">
+            <i data-lucide="sparkles"></i>
+            <span>Babylights</span>
+          </button>
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Hair Contour', 'contour', this)">
+            <i data-lucide="user-check"></i>
+            <span>Hair Contour</span>
+          </button>
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Cor Global Total', 'global', this)">
+            <i data-lucide="brush"></i>
+            <span>Cor Total</span>
+          </button>
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Liso Espelho', 'gloss', this)">
+            <i data-lucide="wand-2"></i>
+            <span>Liso Espelho</span>
+          </button>
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Ombré Sunset', 'ombre', this)">
+            <i data-lucide="flame"></i>
+            <span>Ombré Hair</span>
+          </button>
+        </div>
+
+        <!-- Fine-tuning Sliders -->
+        <div class="hair-sliders-box">
+          <div class="slider-row">
+            <div class="slider-header">
+              <span>Intensidade da Tinta</span>
+              <span id="labelIntensity">85%</span>
+            </div>
+            <input type="range" class="custom-range" id="sliderIntensity" min="20" max="100" value="85" oninput="updateHairIntensity(this.value)">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-header">
+              <span>Brilho & Reflexo de Luz</span>
+              <span id="labelGloss">70%</span>
+            </div>
+            <input type="range" class="custom-range" id="sliderGloss" min="0" max="100" value="70" oninput="updateHairGloss(this.value)">
+          </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <button class="btn-cta" style="width: 100%; justify-content: center;" onclick="agendarHairStudio()">
+          <i data-lucide="message-square"></i> Agendar Este Visual no WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scheduler Section (Agendamento Automático com Marcação no Google Calendar) -->
+  <section class="scheduler-section" id="agendamento">
+    <div class="section-title">
+      <h2>Agendamento Online Automático</h2>
+      <p>Escolha a data e horário desejados. O agendamento é integrado diretamente ao seu Google Calendar.</p>
+    </div>
+
+    <div class="scheduler-container">
+      <div>
+        <form id="bookingForm" onsubmit="handleBooking(event)">
+          <div class="form-group">
+            <label for="clientName"><i data-lucide="user" style="width:14px; display:inline;"></i> Seu Nome Completo</label>
+            <input type="text" id="clientName" class="form-control" placeholder="Ex: Juliana Silva" required />
+          </div>
+
+          <div class="form-group">
+            <label for="clientPhone"><i data-lucide="phone" style="width:14px; display:inline;"></i> Telefone / WhatsApp</label>
+            <input type="tel" id="clientPhone" class="form-control" placeholder="(00) 90000-0000" required />
+          </div>
+
+          <div class="form-group">
+            <label for="serviceSelect"><i data-lucide="scissors" style="width:14px; display:inline;"></i> Serviço Desejado</label>
+            <select id="serviceSelect" class="form-control" required>
+              <option value="Morena Iluminada & Mechas">Morena Iluminada & Mechas (Hair Studio)</option>
+              <option value="Transformação Capilar / Coloração">Transformação Capilar / Coloração</option>
+              <option value="Unhas em Gel / Fibra">Unhas em Gel / Fibra (Nail Tech)</option>
+              <option value="Combo Express Vibe">Combo Express Vibe</option>
+              <option value="Vibe Day Full Experience">Vibe Day Full Experience</option>
+              <option value="Consultoria Isis Boutique">Consultoria Isis Boutique</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="bookingDate"><i data-lucide="calendar" style="width:14px; display:inline;"></i> Escolha o Dia Disponível</label>
+            <input type="date" id="bookingDate" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label><i data-lucide="clock" style="width:14px; display:inline;"></i> Horário Disponível</label>
+            <div class="time-grid" id="timeGrid">
+              <div class="time-slot" onclick="selectTimeSlot(this)">09:00</div>
+              <div class="time-slot" onclick="selectTimeSlot(this)">11:00</div>
+              <div class="time-slot selected" onclick="selectTimeSlot(this)">14:00</div>
+              <div class="time-slot" onclick="selectTimeSlot(this)">16:00</div>
+              <div class="time-slot" onclick="selectTimeSlot(this)">18:00</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-cta" style="width: 100%; justify-content: center; margin-top: 10px;">
+            <i data-lucide="calendar-plus"></i> Agendar & Salvar no Google Calendar
+          </button>
+        </form>
+      </div>
+
+      <div class="calendar-card">
+        <div>
+          <div class="sync-badge">
+            <i data-lucide="check-circle-2" style="width:16px;"></i> Sincronização Google Calendar
+          </div>
+          <h3 style="font-family: var(--font-title); font-size: 1.4rem; margin-bottom: 12px;">Seu Horário Garantido</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+            Ao confirmar, você adiciona o evento automaticamente no seu calendário do Google com lembrete configurado e notificação para nossa equipe.
+          </p>
+          
+          <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-glass); padding: 18px; border-radius: 16px; margin-bottom: 20px;">
+            <div style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;">Local do Atendimento:</div>
+            <div style="font-size: 0.9rem; color: #fff; margin-top: 4px;">Isis Avelar Stúdio — Beauty Concept</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Atendimento personalizado e exclusivo</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+          Dúvidas no agendamento? <a href="https://wa.me/5500000000000" target="_blank" style="color: var(--accent-gold); text-decoration: underline;">Fale direto no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After Split Slider Section -->
+  <section class="transformations-section" id="transformacoes">
+    <div class="section-title">
+      <h2>O Poder da Transformação</h2>
+      <p>Arraste o divisor central para revelar o resultado de nossas transformações.</p>
+    </div>
+
+    <div class="split-slider-container" id="splitSlider">
+      <div class="split-layer layer-before"></div>
+      <div class="split-layer layer-after"></div>
+      
+      <span class="badge-label badge-before">Antes</span>
+      <span class="badge-label badge-after">Depois Isis</span>
+
+      <div class="split-handle" id="splitHandle">
+        <div class="split-handle-btn">
+          <i data-lucide="chevrons-left-right" style="width:20px; height:20px;"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Nail & Vibe Day Studio Section -->
+  <section class="nail-studio-section" id="simulador-vibe">
+    <div class="section-title">
+      <h2>Simulador Vibe Day & Esmaltes</h2>
+      <p>Simule a iluminação do seu dia, escolha a vibe do momento e teste tons de esmalte e pele em tempo real.</p>
+    </div>
+
+    <div class="studio-container">
+      <!-- SVG Stage -->
+      <div class="svg-stage stage-vibe-noite" id="svgStage">
+        <div class="stage-wrapper">
+          <!-- Bottle SVG -->
+          <svg id="bottleSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 217.37 456.09">
+            <g id="polish">
+              <path class="bottle" d="M1.09,252c12,87,27.46,169.68,43.77,188.41,12,13.85,41.45,15.65,56,15.65,3.9,0,6.72-.13,7.85-.18s4,.18,7.85.18c14.52,0,43.92-1.8,56-15.65C188.82,421.7,204.27,339.07,216.28,252c6-43.77-13.74-64.67-38.72-74.66v3.2a30,30,0,0,1-.32,3.14,29.65,29.65,0,0,1-1.15,5.85,52.38,52.38,0,0,1,18.29,13c9.65,11.07,13.09,27.18,10.23,47.88-20,145-35.33,175.79-41,182.29-6.23,7.16-24.28,11.61-47.09,11.61-3.57,0-6.16-.12-7.2-.17l-.65,0-.65,0c-1,.05-3.63.17-7.2.17C78,444.31,60,439.86,53.75,432.7c-5.65-6.49-21-37.26-41-182.29-2.85-20.71.58-36.81,10.23-47.88A50.19,50.19,0,0,1,38.2,191.08a31,31,0,0,1-1.48-5.83,31.78,31.78,0,0,1-.47-4.69v-1.67C13,189.42-4.65,210.36,1.09,252Z" />
+              <path class="contents" d="M29.71,272.25C38.52,341.38,49.87,407,61.84,421.89c8.85,11,30.43,12.43,41.09,12.43,2.85,0,4.93-.11,5.76-.15s2.91.15,5.76.15c10.66,0,32.25-1.44,41.09-12.43,12-14.88,23.31-80.51,32.13-149.64,4.87-38.16-13.13-54.38-33.92-61.32a31.16,31.16,0,0,1-7.58,1H67.65a31.15,31.15,0,0,1-5.45-.55C42,218.62,25,235,29.71,272.25Z" />
+              <path class="lid" d="M67.65,196.26h78.5a15.65,15.65,0,0,0,15.12-11.71,15.08,15.08,0,0,0,.58-4V15.7A15.69,15.69,0,0,0,146.15,0H67.65a15.7,15.7,0,0,0-15.7,15.7V180.56a16,16,0,0,0,15.7,15.7Z" />
+            </g>
+          </svg>
+
+          <!-- Hand SVG -->
+          <svg id="handSVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496.2 496.2">
+            <path id="backgroundCircle" d="M248.1,0C111.1,0,0,111.1,0,248.1c0,137,111.1,248.1,248.1,248.1c137,0,248.1-111.1,248.1-248.1C496.2,111.1,385.1,0,248.1,0z"/>
+            <g id="hand">
+              <path class="st1" d="M300.2,5.5L283.8,49c-7.6,8.8-45.4,56.5-45.4,56.5l-48.6,121l67.2,29.9l55.8,13.1l30.4,4c0,0,27.3-55,38.5-90.4c11-34.8,12.4-54.8,16.1-88.3l15.1-32C381.5,34.8,342.9,14.6,300.2,5.5z"/>
+              <path class="st1" d="M219.6,203.4c-9.4-4.1-20.7,1-25.3,11.5l-56.9,131.9c-4.2,9.5-0.7,20.3,7.8,24c8.5,3.7,18.8-0.9,23-10.5L229.6,231C234.2,220.5,229,207.5,219.6,203.4z"/>
+              <path class="st1" d="M259.6,220.1c-9.8-4.1-22.2-0.3-26.7,10.3l-63.8,158.5c-4,9.6-0.1,20.4,8.8,24.1c8.9,3.8,19.4-1,23.4-10.5L271,247.2C275.4,236.7,269.4,224.3,259.6,220.1z"/>
+              <path class="st1" d="M299,237.5c-9.5-3.9-21.8,0.9-26.2,11.5l-52,131.2c-4.3,10.6-0.1,22.3,9.4,26.2c9.5,3.9,20.7-1.6,25-12.2l55.6-129.7C315.1,253.9,308.5,241.4,299,237.5z"/>
+              <path class="st1" d="M339.5,250c-9-3.5-21.6,1.4-25.8,12l-25.9,76.8c-3.6,9.3-0.2,19.2,7.5,22.3c7.8,3,17-2,20.6-11.2l26.5-74.9C346.6,264.3,348.4,253.5,339.5,250z"/>
+              <path class="st1" d="M247.7,99.3c0,0-36.2,22.6-54.7,33.2c-9.4,5.5-21.2,26.4-35.6,45c-13.9,17.9-31.3,30.6-29.4,37.7c5,19.6,32.7,6.4,35.9,4.7c26.9-15,52-47.6,52-47.6l45.3-12.4L247.7,99.3z"/>
+            </g>
+            <path class="nail" d="M126.8,218.4c19.1-4.2,21.5-30.2,21.5-30.2C118.9,212.9,126.8,218.4,126.8,218.4z"/>
+            <path class="nail" d="M304.2,336.9c-5.7-2-11.1-1.6-13.6,5.6c-0.1,0.3-0.6,2.5-0.7,2.9c-2.1,7.2,1.2,12.2,6.7,14.2c5.3,1.9,10.8,0.4,13.8-6.3c0.2-0.5,0.8-2.9,1-3.4C313.9,342.6,310,338.9,304.2,336.9z"/>
+            <path class="nail" d="M303.9,337.7c-5.5-2-10.7-1.7-13.2,5.2c-0.1,0.3-1.5,5.2-1.6,5.5c-2.1,6.9-2,14.9,4.8,17.4c6.8,2.5,11.7-3.2,14.7-9.6c0.2-0.5,1.7-5.6,1.9-6.1C313.1,343.3,309.4,339.7,303.9,337.7z"/>
+            <path class="st3" d="M242,377.3c-6.9-2.7-13.5-2.3-16.8,6.4c-0.1,0.4-0.8,3-1,3.4c-2.8,8.7,1,14.9,7.6,17.5c6.4,2.5,13.1,0.9,17-7.2c0.3-0.6,1.1-3.5,1.4-4.1C253.6,384.6,248.9,379.9,242,377.3z"/>
+            <path class="nail" d="M241.5,378.3c-6.6-2.6-12.9-2.4-16.2,5.9c-0.2,0.4-2,6.3-2.2,6.7c-2.8,8.3-3,18.1,5.3,21.4c8.2,3.3,14.4-3.5,18.3-11.2c0.3-0.6,2.3-6.7,2.6-7.3C252.5,385.5,248.1,380.9,241.5,378.3z"/>
+            <path class="st3" d="M190.5,384c-6.7-3.1-13.3-3.2-17.2,5.2c-0.2,0.4-1,3-1.2,3.4c-3.4,8.5,0,15,6.4,17.9c6.2,2.9,13,1.7,17.5-6.1c0.4-0.6,1.4-3.4,1.6-4C201.5,392.1,197.2,387.1,190.5,384z"/>
+            <path class="nail" d="M189.9,385c-6.4-3.1-12.7-3.3-16.6,4.8c-0.2,0.4-2.4,6.1-2.6,6.5c-3.3,8.1-4.1,17.9,3.8,21.7c8,3.8,14.6-2.5,19-9.9c0.3-0.6,2.8-6.6,3-7.1C200.4,392.9,196.4,388.1,189.9,385z"/>
+            <path class="st3" d="M157.8,342.7c-6.7-3.1-13.3-3.2-17.2,5.2c-0.2,0.4-1,3-1.2,3.4c-3.4,8.5,0,15,6.4,17.9c6.2,2.9,13,1.7,17.5-6.1c0.4-0.6,1.4-3.4,1.6-4C168.8,350.7,164.5,345.8,157.8,342.7z"/>
+            <path class="nail" d="M157.3,343.7c-6.4-3.1-12.7-3.3-16.6,4.8c-0.2,0.4-2.4,6.1-2.6,6.5c-3.3,8.1-4.1,17.9,3.8,21.7c8,3.8,14.6-2.5,19-9.9c0.3-0.6,2.8-6.6,3-7.1C167.8,351.6,163.7,346.7,157.3,343.7z"/>
+            <path class="st5" d="M226.9,148.5c0,0-9.4,13.7-14.2,22.3c-4.8,8.5-15,35.8-15,35.8s11.2-24.2,17.5-34.4C221.4,162,229,151,229,151L226.9,148.5z"/>
+          </svg>
+        </div>
+
+        <div class="status-badge">
+          <i data-lucide="sparkles" style="width: 18px; height: 18px; color: var(--accent-gold);"></i>
+          <span id="selectedVibeStatus">Vibe do Dia: Vermelho Sedução (Vibe Noite)</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="studio-controls">
+        <h3>Simulador Vibe Day</h3>
+
+        <!-- Vibe Day Mode -->
+        <div class="control-group">
+          <label><span>1. Iluminação do Momento</span></label>
+          <div class="vibe-mode-toggle">
+            <button class="vibe-mode-btn" id="btnVibeDia" onclick="setLightingMode('dia')">
+              <i data-lucide="sun" style="width: 16px;"></i> Vibe Dia (Luz Natural)
+            </button>
+            <button class="vibe-mode-btn active" id="btnVibeNoite" onclick="setLightingMode('noite')">
+              <i data-lucide="moon" style="width: 16px;"></i> Vibe Noite (Glamour)
+            </button>
+          </div>
+
+          <label style="margin-top: 14px;"><span>2. Escolha sua Vibe do Dia</span></label>
+          <div class="vibe-pills-grid" id="vibePills">
+            <button class="vibe-pill" onclick="selectVibePreset('Executiva', '#7a0c1e', 'dia')">💼 Vibe Executiva</button>
+            <button class="vibe-pill active" onclick="selectVibePreset('Glamour', '#d50000', 'noite')">✨ Vibe Glamour</button>
+            <button class="vibe-pill" onclick="selectVibePreset('Romântica', '#e28d88', 'dia')">🌸 Vibe Romântica</button>
+            <button class="vibe-pill" onclick="selectVibePreset('Minimalista', '#dbb595', 'dia')">🌿 Vibe Minimalista</button>
+            <button class="vibe-pill" onclick="selectVibePreset('Ousada', '#8b68c6', 'noite')">🔥 Vibe Ousada</button>
+          </div>
+        </div>
+
+        <!-- Esmalte Selector -->
+        <div class="control-group">
+          <label>
+            <span>3. Tom de Esmalte</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);" id="polishHexLabel">#D50000</span>
+          </label>
+          <div class="color-swatches" id="polishSwatches"></div>
+          
+          <div class="custom-color-picker">
+            <input type="color" id="customPolishPicker" value="#d50000">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Cor personalizada</span>
+          </div>
+        </div>
+
+        <!-- Tom de Pele Selector -->
+        <div class="control-group">
+          <label>
+            <span>4. Tom de Pele</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);" id="skinNameLabel">Pele Média Clara</span>
+          </label>
+          <div class="color-swatches" id="skinSwatches"></div>
+        </div>
+
+        <button class="btn-cta" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="agendarNailStudio()">
+          <i data-lucide="message-square"></i> Agendar Esta Vibe no WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services" id="servicos">
+    <div class="section-title">
+      <h2>O Universo ISIS AVELAR</h2>
+      <p>Três pilares integrados para uma experiência completa.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon"><i data-lucide="scissors"></i></div>
+        <h3>Hair Studio</h3>
+        <p>Transformações e tratamentos capilares focados na saúde do fio e visagismo.</p>
+        <ul class="card-list">
+          <li><i data-lucide="check"></i> Morena Iluminada & Balayage</li>
+          <li><i data-lucide="check"></i> Tratamentos de Alta Nutrição</li>
+          <li><i data-lucide="check"></i> Cortes Modernos & Visagismo</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i data-lucide="sparkle"></i></div>
+        <h3>Nail Tech</h3>
+        <p>Extensões de alta durabilidade com acabamento natural e elegante.</p>
+        <ul class="card-list">
+          <li><i data-lucide="check"></i> Extensão em Gel & Fibra</li>
+          <li><i data-lucide="check"></i> Cutilagem Russa</li>
+          <li><i data-lucide="check"></i> Nail Art Exclusiva</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon"><i data-lucide="shopping-bag"></i></div>
+        <h3>Isis Boutique</h3>
+        <p>Curadoria de vestuário feminino para compor seu visual completo.</p>
+        <ul class="card-list">
+          <li><i data-lucide="check"></i> Moda Feminina Premium</li>
+          <li><i data-lucide="check"></i> Peças Casual & Night Out</li>
+          <li><i data-lucide="check"></i> Consultoria de Estilo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section class="packages-section" id="pacotes">
+    <div class="section-title">
+      <h2>Pacotes Exclusivos</h2>
+      <p>Combos especiais criados para transformar seu visual com condições imperdíveis.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="package-card">
+        <div>
+          <h3>Combo Express Vibe</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">Ideal para a rotina do dia a dia com máxima elegância.</p>
+          <div class="package-price">R$ 180 <span>/sessão</span></div>
+          <ul class="card-list" style="margin-bottom: 24px;">
+            <li><i data-lucide="check"></i> Manicure & Pedicure Completa</li>
+            <li><i data-lucide="check"></i> Escova Modeladora / Liso Espelhado</li>
+            <li><i data-lucide="check"></i> Design de Sobrancelhas Simples</li>
+          </ul>
+        </div>
+        <a href="#agendamento" class="btn-cta" style="width: 100%; justify-content: center;">
+          <i data-lucide="calendar"></i> Agendar Combo
+        </a>
+      </div>
+
+      <div class="package-card featured">
+        <span class="package-badge">Mais Desejado</span>
+        <div>
+          <h3>Vibe Day Full Experience</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">A transformação completa para o seu evento ou dia especial.</p>
+          <div class="package-price">R$ 420 <span>/sessão</span></div>
+          <ul class="card-list" style="margin-bottom: 24px;">
+            <li><i data-lucide="check"></i> Extensão de Unha em Gel / Fibra</li>
+            <li><i data-lucide="check"></i> Tratamento Capilar de Alta Nutrição</li>
+            <li><i data-lucide="check"></i> Escova & Finalização de Estúdio</li>
+            <li><i data-lucide="check"></i> Consultoria rápida de look Isis Boutique</li>
+          </ul>
+        </div>
+        <a href="#agendamento" class="btn-cta" style="width: 100%; justify-content: center;">
+          <i data-lucide="sparkles"></i> Agendar Vibe Day
+        </a>
+      </div>
+
+      <div class="package-card">
+        <div>
+          <h3>Glow Up VIP Club</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">Pacote mensal recorrente para manter suas unhas e cabelos impecáveis.</p>
+          <div class="package-price">R$ 590 <span>/mês</span></div>
+          <ul class="card-list" style="margin-bottom: 24px;">
+            <li><i data-lucide="check"></i> 2 Manutenções de Unhas em Gel</li>
+            <li><i data-lucide="check"></i> 4 Escovas & Hidratações no Mês</li>
+            <li><i data-lucide="check"></i> 15% OFF em peças na Isis Boutique</li>
+          </ul>
+        </div>
+        <a href="#agendamento" class="btn-cta" style="width: 100%; justify-content: center;">
+          <i data-lucide="crown"></i> Assinar VIP
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong style="color: var(--accent-gold);">ISIS AVELAR STÚDIO</strong> — Hair, Nail Tech & Boutique Concept</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">© 2026 Todos os direitos reservados.</p>
+  </footer>
+
+  <a href="https://wa.me/5500000000000" target="_blank" class="whatsapp-float">
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </a>
+
+  <script>
+    lucide.createIcons();
+
+    // Set Default Booking Date (Amanhã)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('bookingDate').value = tomorrow.toISOString().split('T')[0];
+
+    // Selected Time Slot Handler
+    let selectedTime = "14:00";
+    function selectTimeSlot(el) {
+      document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedTime = el.innerText;
+    }
+
+    // Google Calendar Event Integration & WhatsApp Agendamento
+    function handleBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value;
+      const phone = document.getElementById('clientPhone').value;
+      const service = document.getElementById('serviceSelect').value;
+      const dateVal = document.getElementById('bookingDate').value;
+
+      if (!dateVal || !selectedTime) {
+        alert("Por favor, selecione uma data e horário válidos.");
+        return;
+      }
+
+      // Format ISO dates for Google Calendar API URL
+      const dateParts = dateVal.split('-');
+      const hourParts = selectedTime.split(':');
+      
+      const startDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2], hourParts[0], hourParts[1]);
+      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hr duration
+
+      function formatGCalDate(d) {
+        return d.toISOString().replace(/-|:|\.\d\d\d/g, "");
+      }
+
+      const gcalStart = formatGCalDate(startDate);
+      const gcalEnd = formatGCalDate(endDate);
+
+      const title = encodeURIComponent(`Atendimento Isis Avelar Stúdio: ${service}`);
+      const details = encodeURIComponent(`Agendamento de ${name}\nTelefone: ${phone}\nServiço: ${service}\nLocal: Isis Avelar Stúdio`);
+      const location = encodeURIComponent("Isis Avelar Stúdio — Beauty Concept");
+
+      const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gcalStart}/${gcalEnd}&details=${details}&location=${location}`;
+
+      // Open Google Calendar link in new tab
+      window.open(gcalUrl, '_blank');
+
+      // WhatsApp confirmation link
+      const waMsg = `Olá Isis! Acabei de agendar online pelo site:\n\n*Cliente:* ${name}\n*Serviço:* ${service}\n*Data:* ${dateVal} às ${selectedTime}\n*Telefone:* ${phone}\n\nJá adicionei no meu Google Calendar!`;
+      setTimeout(() => {
+        window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(waMsg)}`, '_blank');
+      }, 800);
+    }
+
+    // Background Audio Controller Toggle
+    const bgAudio = document.getElementById('bgAudio');
+    const musicWidget = document.getElementById('musicToggle');
+    const musicStatusText = document.getElementById('musicStatusText');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgAudio.pause();
+        musicWidget.classList.remove('playing');
+        musicStatusText.innerText = "Clique para Ouvir";
+        isPlaying = false;
+      } else {
+        bgAudio.play().then(() => {
+          musicWidget.classList.add('playing');
+          musicStatusText.innerText = "Tocando Jazz House";
+          isPlaying = true;
+        }).catch(() => {
+          alert("Interaja com a página para reproduzir o áudio.");
+        });
+      }
+    }
+
+    // 1. Split Slider logic
+    const slider = document.getElementById('splitSlider');
+    let isDragging = false;
+
+    function updateSplitPosition(clientX) {
+      const rect = slider.getBoundingClientRect();
+      let x = clientX - rect.left;
+      x = Math.max(0, Math.min(x, rect.width));
+      slider.style.setProperty('--split-pos', `${(x / rect.width) * 100}%`);
+    }
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; updateSplitPosition(e.clientX); });
+    window.addEventListener('mousemove', (e) => { if (isDragging) updateSplitPosition(e.clientX); });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    slider.addEventListener('touchstart', (e) => { isDragging = true; updateSplitPosition(e.touches[0].clientX); });
+    window.addEventListener('touchmove', (e) => { if (isDragging) updateSplitPosition(e.touches[0].clientX); });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // 2. Color Helper Function
+    function lightenDarkenColor(col, amt) {
+      let usePound = false;
+      if (col[0] === "#") {
+        col = col.slice(1);
+        usePound = true;
+      }
+      if (col.length === 3) {
+        col = col[0] + col[0] + col[1] + col[1] + col[2] + col[2];
+      }
+      let num = parseInt(col, 16);
+      let r = (num >> 16) + amt;
+      if (r > 255) r = 255; else if (r < 0) r = 0;
+      let b = ((num >> 8) & 0x00FF) + amt;
+      if (b > 255) b = 255; else if (b < 0) b = 0;
+      let g = (num & 0x0000FF) + amt;
+      if (g > 255) g = 255; else if (g < 0) g = 0;
+      return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16).padStart(6, '0');
+    }
+
+    // =========================================================
+    // PHOTOREALISTIC HAIR SIMULATOR ENGINE (SALON TECH)
+    // =========================================================
+    const realModels = {
+      waves: {
+        file: "model_waves.jpg",
+        name: "Ondulado Longo & Balayage",
+        cutName: "Ondulado Glamour",
+        maskId: "hairMaskWaves"
+      },
+      straight: {
+        file: "model_straight.jpg",
+        name: "Liso Espelhado & Silky",
+        cutName: "Liso Espelhado",
+        maskId: "hairMaskStraight"
+      },
+      curls: {
+        file: "model_curls.jpg",
+        name: "Cachos Volumosos & Definidos",
+        cutName: "Cachos com Volume",
+        maskId: "hairMaskCurls"
+      },
+      bob: {
+        file: "model_bob.jpg",
+        name: "Corte Bob Elegance & French",
+        cutName: "Short Bob Moderno",
+        maskId: "hairMaskBob"
+      }
+    };
+
+    const hairPalette = [
+      // Morena Iluminada
+      { id: "m1", category: "morena", name: "Mel Dourado", hex: "#c68a4c", highlight: "#fad998", shadow: "#2a170d" },
+      { id: "m2", category: "morena", name: "Caramelo Toffee", hex: "#a85c2b", highlight: "#f5a873", shadow: "#241208" },
+      { id: "m3", category: "morena", name: "Doce de Leite", hex: "#b87c4f", highlight: "#fad1ae", shadow: "#2b160e" },
+      { id: "m4", category: "morena", name: "Avelã Iluminada", hex: "#8c5638", highlight: "#deb297", shadow: "#1d1009" },
+
+      // Loiros & Balayage
+      { id: "l1", category: "loiros", name: "Loiro Platinado", hex: "#e5dcce", highlight: "#ffffff", shadow: "#473d32" },
+      { id: "l2", category: "loiros", name: "Loiro Manteiga", hex: "#e5c57b", highlight: "#fff0c2", shadow: "#473419" },
+      { id: "l3", category: "loiros", name: "Champagne Chic", hex: "#d8be9b", highlight: "#faf0e3", shadow: "#3d3227" },
+      { id: "l4", category: "loiros", name: "Babylights Dourado", hex: "#d4a259", highlight: "#ffe8b5", shadow: "#3a2810" },
+
+      // Ruivos & Acobreados
+      { id: "r1", category: "ruivos", name: "Ruivo Acobreado", hex: "#b8471b", highlight: "#fa9369", shadow: "#331008" },
+      { id: "r2", category: "ruivos", name: "Cobre Sunset", hex: "#cf5725", highlight: "#ffa478", shadow: "#3d150a" },
+      { id: "r3", category: "ruivos", name: "Vinho Marsala", hex: "#631828", highlight: "#b8425a", shadow: "#21050c" },
+      { id: "r4", category: "ruivos", name: "Borgonha Glam", hex: "#7a1a36", highlight: "#cf466e", shadow: "#260610" },
+
+      // Castanhos & Escuros
+      { id: "e1", category: "escuros", name: "Chocolate Suíço", hex: "#45281a", highlight: "#915d43", shadow: "#140a05" },
+      { id: "e2", category: "escuros", name: "Castanho Café", hex: "#2e1b12", highlight: "#784d39", shadow: "#0d0603" },
+      { id: "e3", category: "escuros", name: "Preto Azulado", hex: "#181e30", highlight: "#526296", shadow: "#080a12" },
+      { id: "e4", category: "escuros", name: "Castanho Espresso", hex: "#382218", highlight: "#825844", shadow: "#120905" },
+
+      // Tons Fantasia & Modernos
+      { id: "f1", category: "fantasias", name: "Rose Gold Hair", hex: "#c97e85", highlight: "#fad2d6", shadow: "#3d1f23" },
+      { id: "f2", category: "fantasias", name: "Lavanda Pastel", hex: "#9b8ec4", highlight: "#e5e0fa", shadow: "#2d2642" },
+      { id: "f3", category: "fantasias", name: "Lilás Smokey", hex: "#7d6b8d", highlight: "#cfc0de", shadow: "#251c2e" },
+      { id: "f4", category: "fantasias", name: "Pêssego Dourado", hex: "#e0906f", highlight: "#fce2d7", shadow: "#452317" }
+    ];
+
+    let currentModelKey = "waves";
+    let simMode = "model"; // "model" or "upload"
+    let currentHairTone = hairPalette[0];
+    let currentTechnique = "Balayage Mel";
+    let currentTechniqueMode = "balayage";
+    let hairIntensity = 0.85;
+    let hairGloss = 0.70;
+    let activeCategory = "morena";
+    let hasUploadedPhoto = false;
+
+    function setHairSimMode(mode) {
+      simMode = mode;
+      const tabModel = document.getElementById('tabModelMode');
+      const tabUpload = document.getElementById('tabUploadMode');
+      const uploadPrompt = document.getElementById('clientUploadPrompt');
+      const modelsPicker = document.getElementById('modelsPickerBox');
+      const photoImg = document.getElementById('mainHairPhoto');
+      const shaderBox = document.getElementById('hairShaderBox');
+
+      if (mode === 'model') {
+        tabModel.classList.add('active');
+        tabUpload.classList.remove('active');
+        uploadPrompt.style.display = "none";
+        modelsPicker.style.display = "block";
+        photoImg.src = realModels[currentModelKey].file;
+        const maskId = realModels[currentModelKey].maskId;
+        shaderBox.style.webkitMaskImage = `url(#${maskId})`;
+        shaderBox.style.maskImage = `url(#${maskId})`;
+        applyHairSimulation();
+      } else {
+        tabUpload.classList.add('active');
+        tabModel.classList.remove('active');
+        modelsPicker.style.display = "none";
+
+        if (!hasUploadedPhoto) {
+          uploadPrompt.style.display = "flex";
+        } else {
+          uploadPrompt.style.display = "none";
+          shaderBox.style.webkitMaskImage = "url(#hairMaskClient)";
+          shaderBox.style.maskImage = "url(#hairMaskClient)";
+          applyHairSimulation();
+        }
+      }
+    }
+
+    function switchRealModel(modelKey, btn) {
+      currentModelKey = modelKey;
+      document.querySelectorAll('.model-card-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const photoImg = document.getElementById('mainHairPhoto');
+      photoImg.src = realModels[modelKey].file;
+
+      const shaderBox = document.getElementById('hairShaderBox');
+      const maskId = realModels[modelKey].maskId;
+      shaderBox.style.webkitMaskImage = `url(#${maskId})`;
+      shaderBox.style.maskImage = `url(#${maskId})`;
+
+      applyHairSimulation();
+    }
+
+    function renderHairSwatches(category = "morena") {
+      const container = document.getElementById('hairSwatchesGrid');
+      container.innerHTML = "";
+      const filtered = hairPalette.filter(p => p.category === category);
+      
+      filtered.forEach(p => {
+        const item = document.createElement('div');
+        item.className = `hair-swatch-item ${p.id === currentHairTone.id ? 'active' : ''}`;
+        item.onclick = () => selectHairTone(p);
+        
+        item.innerHTML = `
+          <div class="hair-color-circle" style="background: linear-gradient(135deg, ${p.shadow} 0%, ${p.hex} 55%, ${p.highlight} 100%);"></div>
+          <div class="hair-swatch-name">${p.name}</div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function filterHairCategory(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('.hair-cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderHairSwatches(cat);
+    }
+
+    function selectHairTone(tone) {
+      currentHairTone = tone;
+      document.querySelectorAll('.hair-swatch-item').forEach(el => el.classList.remove('active'));
+      renderHairSwatches(activeCategory);
+      applyHairSimulation();
+    }
+
+    function selectHairdoTechnique(name, mode, btn) {
+      currentTechnique = name;
+      currentTechniqueMode = mode;
+      document.querySelectorAll('.hairdo-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyHairSimulation();
+    }
+
+    function applyHairSimulation() {
+      const tintShader = document.getElementById('hairTintShader');
+      const highlightShader = document.getElementById('hairHighlightShader');
+      const glossSheen = document.getElementById('hairGlossSheen');
+      const photoImg = document.getElementById('mainHairPhoto');
+
+      let shadowCol = currentHairTone.shadow || lightenDarkenColor(currentHairTone.hex, -45);
+      let midCol = currentHairTone.hex;
+      let highCol = currentHairTone.highlight || lightenDarkenColor(currentHairTone.hex, 35);
+
+      // Targeted Salon Shader Gradients
+      let tintBg = "";
+      let highlightBg = "";
+      let blendMode = "color";
+      let imgFilter = "contrast(105%)";
+
+      if (currentTechniqueMode === 'balayage') {
+        tintBg = `linear-gradient(180deg, ${shadowCol} 0%, ${midCol} 45%, ${highCol} 95%)`;
+        highlightBg = `radial-gradient(ellipse at 50% 65%, ${highCol} 0%, transparent 75%)`;
+        blendMode = "color";
+      } else if (currentTechniqueMode === 'babylights') {
+        tintBg = `linear-gradient(135deg, ${shadowCol} 0%, ${midCol} 35%, ${highCol} 65%, ${midCol} 100%)`;
+        highlightBg = `radial-gradient(circle at 50% 45%, ${highCol} 0%, transparent 80%)`;
+        blendMode = "color";
+        imgFilter = "contrast(108%) brightness(102%)";
+      } else if (currentTechniqueMode === 'contour') {
+        tintBg = `radial-gradient(ellipse at 50% 45%, transparent 20%, ${highCol} 55%, ${shadowCol} 90%)`;
+        highlightBg = `radial-gradient(circle at 50% 40%, ${highCol} 0%, transparent 70%)`;
+        blendMode = "color";
+      } else if (currentTechniqueMode === 'ombre') {
+        tintBg = `linear-gradient(180deg, transparent 0%, ${shadowCol} 25%, ${midCol} 55%, ${highCol} 95%)`;
+        highlightBg = `linear-gradient(180deg, transparent 30%, ${highCol} 85%, transparent 100%)`;
+        blendMode = "color";
+      } else if (currentTechniqueMode === 'gloss') {
+        tintBg = `linear-gradient(135deg, ${shadowCol} 0%, ${midCol} 50%, ${highCol} 100%)`;
+        highlightBg = `linear-gradient(115deg, transparent 15%, ${highCol} 50%, transparent 85%)`;
+        blendMode = "soft-light";
+        imgFilter = "contrast(112%) brightness(105%)";
+      } else { // global
+        tintBg = `linear-gradient(180deg, ${shadowCol} 0%, ${midCol} 40%, ${midCol} 80%, ${shadowCol} 100%)`;
+        highlightBg = `radial-gradient(ellipse at 50% 50%, ${highCol} 0%, transparent 85%)`;
+        blendMode = "color";
+      }
+
+      tintShader.style.background = tintBg;
+      tintShader.style.mixBlendMode = blendMode;
+      tintShader.style.opacity = hairIntensity;
+
+      highlightShader.style.background = highlightBg;
+      highlightShader.style.opacity = (hairIntensity * 0.85);
+
+      glossSheen.style.background = `radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.85) 0%, transparent 65%)`;
+      glossSheen.style.opacity = (hairGloss * 0.55);
+
+      photoImg.style.filter = imgFilter;
+
+      // Update Info Labels
+      const activeModelName = simMode === 'model' ? realModels[currentModelKey].cutName : "Sua Foto";
+      document.getElementById('currentHairToneName').innerText = currentHairTone.name;
+      document.getElementById('currentHairStyleName').innerText = `Técnica: ${currentTechnique} • ${activeModelName}`;
+      document.getElementById('customHairPicker').value = currentHairTone.hex;
+    }
+
+    function updateHairIntensity(val) {
+      hairIntensity = val / 100;
+      document.getElementById('labelIntensity').innerText = `${val}%`;
+      applyHairSimulation();
+    }
+
+    function updateHairGloss(val) {
+      hairGloss = val / 100;
+      document.getElementById('labelGloss').innerText = `${val}%`;
+      applyHairSimulation();
+    }
+
+    function handleRealPhotoFile(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          document.getElementById('mainHairPhoto').src = event.target.result;
+          hasUploadedPhoto = true;
+          setHairSimMode('upload');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function peekOriginalColor() {
+      document.getElementById('hairShaderBox').style.opacity = "0";
+      document.getElementById('mainHairPhoto').style.filter = "none";
+    }
+
+    function restoreSimColor() {
+      document.getElementById('hairShaderBox').style.opacity = "1";
+      applyHairSimulation();
+    }
+
+    function resetHairSimulation() {
+      currentHairTone = hairPalette[0];
+      currentTechnique = "Balayage Mel";
+      currentTechniqueMode = "balayage";
+      currentModelKey = "waves";
+      hairIntensity = 0.85;
+      hairGloss = 0.70;
+      document.getElementById('sliderIntensity').value = "85";
+      document.getElementById('sliderGloss').value = "70";
+      document.getElementById('labelIntensity').innerText = "85%";
+      document.getElementById('labelGloss').innerText = "70%";
+      switchRealModel('waves', document.querySelector('.model-card-btn'));
+      renderHairSwatches('morena');
+      setHairSimMode('model');
+    }
+
+    document.getElementById('customHairPicker').addEventListener('input', (e) => {
+      const hex = e.target.value;
+      currentHairTone = {
+        id: "custom",
+        category: "custom",
+        name: "Personalizada (" + hex.toUpperCase() + ")",
+        hex: hex,
+        highlight: lightenDarkenColor(hex, 35),
+        shadow: lightenDarkenColor(hex, -45)
+      };
+      applyHairSimulation();
+    });
+
+    function agendarHairStudio() {
+      const activeModelName = simMode === 'model' ? realModels[currentModelKey].name : "Foto Própria";
+      const msg = `Olá Isis! Testei o tom de cabelo "${currentHairTone.name}" (${currentHairTone.hex}) com a técnica "${currentTechnique}" (${activeModelName}) no Simulador Hair Studio e gostaria de agendar uma avaliação / transformação capilar!`;
+      window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Initialize Hair Simulator
+    renderHairSwatches('morena');
+    applyHairSimulation();
+
+    // =========================================================
+    // NAIL & VIBE DAY SIMULATOR TECH
+    // =========================================================
+    const polishPalette = [
+      { name: "Vermelho Sedução", hex: "#d50000" },
+      { name: "Vinho Marsala", hex: "#7a0c1e" },
+      { name: "Rosa Quartz", hex: "#e28d88" },
+      { name: "Nude Clássico", hex: "#dbb595" },
+      { name: "Ouro Imperial", hex: "#e5b869" },
+      { name: "Preto Vinil", hex: "#111111" },
+      { name: "Branco Renda", hex: "#f7f3f0" },
+      { name: "Lavanda Chic", hex: "#8b68c6" },
+      { name: "Azul Royal", hex: "#2979ff" },
+      { name: "Verde Esmeralda", hex: "#00c853" },
+      { name: "Terracota Sun", hex: "#ff6d00" },
+      { name: "Rosa Bebê", hex: "#ffb7c5" }
+    ];
+
+    const skinPalette = [
+      { name: "Pele Clara", hex: "#f5d6be" },
+      { name: "Pele Média Clara", hex: "#dbb595" },
+      { name: "Pele Dourada", hex: "#b29379" },
+      { name: "Pele Morena", hex: "#8d5b3c" },
+      { name: "Pele Retinta", hex: "#4a3020" }
+    ];
+
+    let currentLighting = 'noite';
+    let currentVibeName = 'Glamour';
+    let activePolish = polishPalette[0];
+    let activeSkin = skinPalette[1];
+
+    function setLightingMode(mode) {
+      currentLighting = mode;
+      const stage = document.getElementById('svgStage');
+      const btnDia = document.getElementById('btnVibeDia');
+      const btnNoite = document.getElementById('btnVibeNoite');
+
+      if (mode === 'dia') {
+        stage.className = 'svg-stage stage-vibe-dia';
+        btnDia.classList.add('active');
+        btnNoite.classList.remove('active');
+      } else {
+        stage.className = 'svg-stage stage-vibe-noite';
+        btnNoite.classList.add('active');
+        btnDia.classList.remove('active');
+      }
+      updateStatusBadge();
+    }
+
+    function applyPolishColor(hex, name = "Personalizada") {
+      document.querySelectorAll('.nail, .contents').forEach(el => el.style.fill = hex);
+      document.getElementById('polishHexLabel').innerText = hex.toUpperCase();
+      document.getElementById('customPolishPicker').value = hex;
+      activePolish = { name, hex };
+      updateStatusBadge();
+    }
+
+    function applySkinTone(hex, name) {
+      document.querySelectorAll('#handSVG .st1').forEach(el => el.style.fill = hex);
+      document.querySelectorAll('#handSVG .st3').forEach(el => el.style.fill = lightenDarkenColor(hex, 20));
+      document.querySelectorAll('#handSVG .st5').forEach(el => el.style.fill = lightenDarkenColor(hex, -15));
+      document.getElementById('skinNameLabel').innerText = name;
+      activeSkin = { name, hex };
+    }
+
+    function selectVibePreset(vibeName, colorHex, mode) {
+      currentVibeName = vibeName;
+      setLightingMode(mode);
+      
+      const foundColor = polishPalette.find(p => p.hex.toLowerCase() === colorHex.toLowerCase());
+      const cName = foundColor ? foundColor.name : "Vibe " + vibeName;
+      
+      applyPolishColor(colorHex, cName);
+
+      document.querySelectorAll('#polishSwatches .swatch').forEach(s => {
+        s.classList.toggle('active', s.style.backgroundColor.toLowerCase() === colorHex.toLowerCase());
+      });
+
+      document.querySelectorAll('.vibe-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.innerText.includes(vibeName));
+      });
+    }
+
+    function updateStatusBadge() {
+      const modeLabel = currentLighting === 'dia' ? 'Luz Natural / Dia' : 'Luz Glamour / Noite';
+      document.getElementById('selectedVibeStatus').innerText = 
+        `Vibe ${currentVibeName}: Esmalte ${activePolish.name} (${modeLabel})`;
+    }
+
+    // Build Swatches
+    const polishContainer = document.getElementById('polishSwatches');
+    polishPalette.forEach((p, idx) => {
+      const btn = document.createElement('div');
+      btn.className = `swatch ${idx === 0 ? 'active' : ''}`;
+      btn.style.backgroundColor = p.hex;
+      btn.title = p.name;
+      btn.onclick = () => {
+        document.querySelectorAll('#polishSwatches .swatch').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        applyPolishColor(p.hex, p.name);
+      };
+      polishContainer.appendChild(btn);
+    });
+
+    const skinContainer = document.getElementById('skinSwatches');
+    skinPalette.forEach((s, idx) => {
+      const btn = document.createElement('div');
+      btn.className = `swatch ${idx === 1 ? 'active' : ''}`;
+      btn.style.backgroundColor = s.hex;
+      btn.title = s.name;
+      btn.onclick = () => {
+        document.querySelectorAll('#skinSwatches .swatch').forEach(sw => sw.classList.remove('active'));
+        btn.classList.add('active');
+        applySkinTone(s.hex, s.name);
+      };
+      skinContainer.appendChild(btn);
+    });
+
+    document.getElementById('customPolishPicker').addEventListener('input', (e) => {
+      document.querySelectorAll('#polishSwatches .swatch').forEach(s => s.classList.remove('active'));
+      applyPolishColor(e.target.value, "Personalizada");
+    });
+
+    function agendarNailStudio() {
+      const modeText = currentLighting === 'dia' ? 'Vibe Dia (Luz Natural)' : 'Vibe Noite (Glamour)';
+      const msg = `Olá Isis! Testei a "Vibe ${currentVibeName}" no Simulador Vibe Day (${modeText}) com a cor de esmalte "${activePolish.name}" (${activePolish.hex}) e o tom de pele "${activeSkin.name}". Gostaria de agendar meu horário!`;
+      window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Initialize Nail Simulator
+    applyPolishColor(activePolish.hex, activePolish.name);
+    applySkinTone(activeSkin.hex, activeSkin.name);
+  </script>
+</body>
+</html>
