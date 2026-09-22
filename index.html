@@ -454,50 +454,6 @@
       transition: filter 0.3s ease;
     }
 
-    /* Precise Hair Shader Layers with Model Masks (TARGETS ONLY HAIR) */
-    .hair-shader-container {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      -webkit-mask-size: cover;
-      mask-size: cover;
-      -webkit-mask-position: center top;
-      mask-position: center top;
-      transition: opacity 0.25s ease;
-    }
-
-    .hair-tint-shader {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      mix-blend-mode: color;
-      opacity: 0.9;
-      transition: background 0.3s ease, opacity 0.3s ease;
-    }
-
-    .hair-highlight-shader {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      mix-blend-mode: soft-light;
-      opacity: 0.75;
-      transition: background 0.3s ease, opacity 0.3s ease;
-    }
-
-    .hair-gloss-sheen {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      mix-blend-mode: screen;
-      opacity: 0.45;
-      transition: background 0.3s ease, opacity 0.3s ease;
-    }
-
     /* Client Upload Prompt Box */
     .client-upload-prompt {
       display: none;
@@ -1443,53 +1399,12 @@
     }
 
   </style>
+  <link rel="stylesheet" href="studio.css">
 </head>
 <body>
 
   <!-- SVG Hair Silhouette Masks for Accurate Targetting (ONLY THE HAIR CHANGES COLOR) -->
-  <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Mask Model 1: Waves (Hair boundary without face & dress) -->
-      <mask id="hairMaskWaves" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="black"/>
-        <!-- Hair Area White -->
-        <path fill="white" d="M0.5,0.02 C0.22,0.02 0.08,0.18 0.08,0.38 C0.08,0.58 0.12,0.78 0.22,0.92 C0.35,0.92 0.38,0.75 0.35,0.60 C0.32,0.48 0.34,0.32 0.38,0.22 C0.44,0.14 0.56,0.14 0.62,0.22 C0.66,0.32 0.68,0.48 0.65,0.60 C0.62,0.75 0.65,0.92 0.78,0.92 C0.88,0.78 0.92,0.58 0.92,0.38 C0.92,0.18 0.78,0.02 0.5,0.02 Z" />
-        <!-- Soft Face & Chest Cutout -->
-        <ellipse cx="0.5" cy="0.34" rx="0.15" ry="0.18" fill="black" filter="blur(6px)"/>
-        <ellipse cx="0.5" cy="0.75" rx="0.22" ry="0.22" fill="black" filter="blur(8px)"/>
-      </mask>
 
-      <!-- Mask Model 2: Straight -->
-      <mask id="hairMaskStraight" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="black"/>
-        <path fill="white" d="M0.5,0.03 C0.24,0.03 0.12,0.15 0.08,0.40 C0.05,0.65 0.08,0.85 0.26,0.95 C0.35,0.95 0.36,0.70 0.35,0.55 C0.33,0.40 0.36,0.25 0.40,0.18 C0.45,0.12 0.55,0.12 0.60,0.18 C0.64,0.25 0.67,0.40 0.65,0.55 C0.64,0.70 0.65,0.95 0.74,0.95 C0.92,0.85 0.95,0.65 0.92,0.40 C0.88,0.15 0.76,0.03 0.5,0.03 Z" />
-        <ellipse cx="0.5" cy="0.32" rx="0.15" ry="0.18" fill="black" filter="blur(5px)"/>
-        <ellipse cx="0.5" cy="0.78" rx="0.20" ry="0.22" fill="black" filter="blur(8px)"/>
-      </mask>
-
-      <!-- Mask Model 3: Curls -->
-      <mask id="hairMaskCurls" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="black"/>
-        <path fill="white" d="M0.5,0.01 C0.15,0.01 0.02,0.15 0.02,0.42 C0.02,0.68 0.10,0.82 0.28,0.82 C0.35,0.82 0.36,0.65 0.35,0.52 C0.33,0.38 0.35,0.26 0.38,0.20 C0.44,0.12 0.56,0.12 0.62,0.20 C0.65,0.26 0.67,0.38 0.65,0.52 C0.64,0.65 0.65,0.82 0.72,0.82 C0.90,0.82 0.98,0.68 0.98,0.42 C0.98,0.15 0.85,0.01 0.5,0.01 Z" />
-        <ellipse cx="0.51" cy="0.35" rx="0.16" ry="0.18" fill="black" filter="blur(6px)"/>
-        <ellipse cx="0.5" cy="0.80" rx="0.24" ry="0.20" fill="black" filter="blur(8px)"/>
-      </mask>
-
-      <!-- Mask Model 4: Bob -->
-      <mask id="hairMaskBob" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="black"/>
-        <path fill="white" d="M0.5,0.03 C0.25,0.03 0.12,0.16 0.10,0.35 C0.08,0.55 0.18,0.68 0.30,0.68 C0.35,0.68 0.36,0.52 0.35,0.42 C0.34,0.30 0.36,0.20 0.40,0.16 C0.45,0.10 0.55,0.10 0.60,0.16 C0.64,0.20 0.66,0.30 0.65,0.42 C0.64,0.52 0.65,0.68 0.70,0.68 C0.82,0.68 0.92,0.55 0.90,0.35 C0.88,0.16 0.75,0.03 0.5,0.03 Z" />
-        <ellipse cx="0.5" cy="0.36" rx="0.16" ry="0.18" fill="black" filter="blur(5px)"/>
-        <ellipse cx="0.5" cy="0.75" rx="0.28" ry="0.25" fill="black" filter="blur(8px)"/>
-      </mask>
-
-      <!-- Mask Client Photo (Radial Soft Mask for Custom Uploads) -->
-      <mask id="hairMaskClient" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <rect width="1" height="1" fill="white"/>
-        <ellipse cx="0.5" cy="0.45" rx="0.18" ry="0.22" fill="black" filter="blur(10px)"/>
-      </mask>
-    </defs>
-  </svg>
 
   <div class="glow-bg glow-1"></div>
   <div class="glow-bg glow-2"></div>
@@ -1499,22 +1414,6 @@
     <!-- Royalty-free smooth jazz house/lofi stream -->
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
   </audio>
-
-  <!-- Floating Audio Controller Widget -->
-  <div class="music-widget" id="musicToggle" onclick="toggleMusic()">
-    <div class="music-icon-btn">
-      <i data-lucide="music" id="musicIcon" style="width: 18px; height: 18px;"></i>
-    </div>
-    <div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: #fff;">Jazz House Vibe</div>
-      <div style="font-size: 0.7rem; color: var(--text-muted);" id="musicStatusText">Clique para Ouvir</div>
-    </div>
-    <div class="equalizer-bars">
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-    </div>
-  </div>
 
   <!-- Header -->
   <header>
@@ -1529,7 +1428,8 @@
       </div>
     </a>
 
-    <nav>
+    <button type="button" class="menu-toggle" aria-label="Abrir menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    <nav id="mainNav" aria-label="Navegação principal">
       <a href="#agendamento">Agendar Horário</a>
       <a href="#simulador-hair">Simulador Capilar</a>
       <a href="#simulador-vibe">Simulador Esmaltes</a>
@@ -1539,7 +1439,7 @@
     </nav>
     
     <a href="#agendamento" class="btn-cta">
-      <i data-lucide="calendar"></i> Agendamento Online
+      <i data-lucide="calendar"></i> Agendar horário
     </a>
   </header>
 
@@ -1547,8 +1447,8 @@
   <section class="hero">
     <div>
       <span class="hero-tag">BEAUTY, NAILS, HAIR & BOUTIQUE</span>
-      <h1>Sua beleza e estilo traduzidos por <span>Isis Avelar</span>.</h1>
-      <p>Transformações capilares com visagismo, simulador de cores e modelos em tempo real, unhas em gel, alongamento com molde, unhas postiças e moda exclusiva para sua melhor versão.</p>
+      <h1>Sua essência.<br>Um novo <span>brilho.</span></h1>
+      <p>Cabelos, unhas e cuidado em cada detalhe. Descubra seu próximo visual com Isis Avelar — do primeiro desejo ao toque final.</p>
       <div style="display: flex; gap: 14px; flex-wrap: wrap;">
         <a href="#agendamento" class="btn-cta">
           <i data-lucide="calendar-check"></i> Agendar Agora
@@ -1559,27 +1459,25 @@
       </div>
     </div>
 
-    <div class="photo-container">
-      <div class="brand-emblem">
-        <img src="logo.jpeg" alt="Isis Avelar Stúdio">
-      </div>
-      <strong style="color:#fff; font-family: var(--font-serif); letter-spacing: 2px;">ISIS AVELAR STÚDIO</strong>
-      <span style="color:var(--text-muted); font-size: 0.82rem; margin-top: 6px;">Beauty, Nails, Hair & Fashion Concept</span>
+    <div class="hero-portfolio" aria-label="Trabalhos do salão">
+      <img class="hero-main-photo" src="fotos/foto_43.jpeg" alt="Morena iluminada realizada por Isis Avelar" fetchpriority="high">
+      <img class="hero-detail-photo" src="fotos/foto_30.jpeg" alt="Manicure com acabamento delicado">
+      <div class="hero-photo-caption"><span>BELEZA FEITA PARA VOCÊ</span><strong>Seu próximo capítulo.</strong><a href="#transformacoes">Conheça nossas transformações ↗</a></div>
     </div>
   </section>
 
   <!-- ======================================================
-       HAIR COLOR & HAIRDO SIMULATOR (PERFECT SALON ENGINE)
+       HAIR COLOR SIMULATOR
   ====================================================== -->
   <section class="hair-studio-section" id="simulador-hair">
     <div class="section-title">
-      <h2>Simulador Capilar & Hair Studio Tech</h2>
-      <p>Simule tinturas, mechas Morena Iluminada, loiros e cortes em modelos reais de estúdio ou na sua própria foto.</p>
+      <h2>Encontre a sua próxima cor</h2>
+      <p>Experimente novas cores com inteligência artificial. Escolha uma modelo ou veja a transformação na sua própria foto.</p>
     </div>
 
     <div class="hair-simulator-container">
       <!-- Left Column: Viewport & Model Selector -->
-      <div>
+      <div class="hair-preview-col">
         <!-- Mode Switcher -->
         <div class="sim-mode-switcher">
           <button class="sim-mode-tab active" id="tabModelMode" onclick="setHairSimMode('model')">
@@ -1595,30 +1493,25 @@
             <!-- 1. Real Model Photo Base Layer -->
             <img id="mainHairPhoto" src="model_waves.jpg" alt="Modelo Capilar" class="hair-photo-layer">
             
-            <!-- 2. Shader Container with Alpha Mask applied (TARGETS ONLY HAIR) -->
-            <div id="hairShaderBox" class="hair-shader-container" style="-webkit-mask-image: url(#hairMaskWaves); mask-image: url(#hairMaskWaves);">
-              <div id="hairTintShader" class="hair-tint-shader"></div>
-              <div id="hairHighlightShader" class="hair-highlight-shader"></div>
-              <div id="hairGlossSheen" class="hair-gloss-sheen"></div>
-            </div>
-
+            <canvas id="hairResultCanvas" aria-label="Prévia da cor aplicada ao cabelo"></canvas>
+            <div class="hair-processing" id="hairProcessing" hidden><span class="loading-ring"></span><span>Identificando seu cabelo…</span></div>
             <!-- 3. Client Photo Upload Drop Prompt -->
-            <div id="clientUploadPrompt" class="client-upload-prompt" onclick="document.getElementById('realClientInput').click()">
+            <div id="clientUploadPrompt" class="client-upload-prompt">
               <i data-lucide="camera" style="width: 44px; height: 44px; color: var(--accent-gold); margin-bottom: 12px;"></i>
               <strong style="color: #fff; font-size: 1.1rem; margin-bottom: 6px;">Carregar Foto do Seu Cabelo</strong>
               <p style="color: var(--text-muted); font-size: 0.84rem; max-width: 280px; margin-bottom: 16px;">
-                Tire uma selfie ou envie uma foto para simular qualquer tom de tintura diretamente no seu cabelo.
+                Escolha uma foto bem iluminada, com o cabelo visível. JPG, PNG ou WebP, até 20 MB. Sua foto fica no seu dispositivo.
               </p>
-              <button class="btn-cta" style="padding: 8px 18px; font-size: 0.84rem;">
+              <button type="button" class="btn-cta" onclick="document.getElementById('realClientInput').click()" style="padding: 8px 18px; font-size: 0.84rem;">
                 <i data-lucide="upload"></i> Selecionar Imagem
               </button>
             </div>
-            <input type="file" id="realClientInput" accept="image/*" style="display:none;" onchange="handleRealPhotoFile(event)">
+            <input type="file" id="realClientInput" accept="image/jpeg,image/png,image/webp" style="display:none;" onchange="handleRealPhotoFile(event)">
 
             <!-- Top Floating Compare Tool -->
             <div class="hair-view-controls">
-              <button class="hair-btn-tool" id="btnHoldCompare" onmousedown="peekOriginalColor()" onmouseup="restoreSimColor()" ontouchstart="peekOriginalColor()" ontouchend="restoreSimColor()">
-                <i data-lucide="eye" style="width:13px;"></i> Segure p/ Ver Antes
+              <button type="button" class="hair-btn-tool" id="btnHoldCompare" aria-pressed="false" onclick="HairStudio.toggleOriginal()">
+                <i data-lucide="eye" style="width:13px;"></i> Ver original
               </button>
             </div>
           </div>
@@ -1638,6 +1531,13 @@
           </div>
         </div>
 
+        <div class="hair-feedback" role="status" aria-live="polite" id="hairFeedback">Escolha um tom para experimentar.</div>
+        <div class="hair-actions">
+          <button type="button" class="hair-btn-tool" id="replacePhoto" hidden onclick="document.getElementById('realClientInput').click()">Trocar foto</button>
+          <button type="button" class="hair-btn-tool" id="retryHair" hidden onclick="HairStudio.retry()">Tentar novamente</button>
+          <button type="button" class="hair-btn-tool" id="downloadHair" disabled onclick="HairStudio.download()">Salvar prévia ↓</button>
+        </div>
+        <p class="simulation-note">Prévia de cor, não de corte. O resultado no salão depende da base e da saúde dos fios.</p>
         <!-- Studio Models Selector Grid -->
         <div id="modelsPickerBox">
           <div class="model-selector-row">
@@ -1663,7 +1563,7 @@
 
       <!-- Right Column: Palette & Technique Controls (PERFECT CLEAN LAYOUT) -->
       <div class="hair-controls-col">
-        <h3>Paleta de Tintas & Mechas</h3>
+        <h3>Uma cor que é sua</h3>
         <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 14px;">Escolha o tom de tinta desejado e personalize a técnica de aplicação.</p>
 
         <!-- Category Tabs -->
@@ -1689,7 +1589,7 @@
 
         <!-- Technique & Hairdo Style -->
         <label style="display:block; font-size:0.84rem; font-weight:600; color:var(--accent-gold); margin-bottom: 8px;">
-          Técnica & Acabamento do Penteado:
+          Como você quer a cor?
         </label>
         <div class="hairdo-grid">
           <button class="hairdo-btn active" onclick="selectHairdoTechnique('Balayage Mel', 'balayage', this)">
@@ -1708,9 +1608,9 @@
             <i data-lucide="brush"></i>
             <span>Cor Total</span>
           </button>
-          <button class="hairdo-btn" onclick="selectHairdoTechnique('Liso Espelho', 'gloss', this)">
+          <button class="hairdo-btn" onclick="selectHairdoTechnique('Banho de brilho', 'gloss', this)">
             <i data-lucide="wand-2"></i>
-            <span>Liso Espelho</span>
+            <span>Banho de brilho</span>
           </button>
           <button class="hairdo-btn" onclick="selectHairdoTechnique('Ombré Sunset', 'ombre', this)">
             <i data-lucide="flame"></i>
@@ -2089,6 +1989,23 @@
 
   <!-- Footer -->
   <footer>
+  <!-- Floating Audio Controller Widget -->
+  <div class="music-widget" id="musicToggle" onclick="toggleMusic()">
+    <div class="music-icon-btn">
+      <i data-lucide="music" id="musicIcon" style="width: 18px; height: 18px;"></i>
+    </div>
+    <div>
+      <div style="font-size: 0.78rem; font-weight: 700; color: #fff;">Jazz House Vibe</div>
+      <div style="font-size: 0.7rem; color: var(--text-muted);" id="musicStatusText">Clique para Ouvir</div>
+    </div>
+    <div class="equalizer-bars">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </div>
+
+
     <p><strong style="color: var(--accent-gold);">ISIS AVELAR STÚDIO</strong> — Hair, Nail Tech & Boutique Concept</p>
     <p style="margin-top: 10px; font-size: 0.8rem;">© 2026 Todos os direitos reservados.</p>
   </footer>
@@ -2097,6 +2014,7 @@
     <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
   </a>
 
+  <script src="hair-studio.js"></script>
   <script>
     if (window.lucide) lucide.createIcons();
 
@@ -2218,32 +2136,28 @@
     }
 
     // =========================================================
-    // PHOTOREALISTIC HAIR SIMULATOR ENGINE (SALON TECH)
+    // HAIR SIMULATOR CONTROLS
     // =========================================================
     const realModels = {
       waves: {
         file: "model_waves.jpg",
         name: "Ondulado Longo & Balayage",
-        cutName: "Ondulado Glamour",
-        maskId: "hairMaskWaves"
+        cutName: "Ondulado Glamour"
       },
       straight: {
         file: "model_straight.jpg",
         name: "Liso Espelhado & Silky",
-        cutName: "Liso Espelhado",
-        maskId: "hairMaskStraight"
+        cutName: "Liso Espelhado"
       },
       curls: {
         file: "model_curls.jpg",
         name: "Cachos Volumosos & Definidos",
-        cutName: "Cachos com Volume",
-        maskId: "hairMaskCurls"
+        cutName: "Cachos com Volume"
       },
       bob: {
         file: "model_bob.jpg",
         name: "Corte Bob Elegance & French",
-        cutName: "Short Bob Moderno",
-        maskId: "hairMaskBob"
+        cutName: "Short Bob Moderno"
       }
     };
 
@@ -2279,243 +2193,88 @@
       { id: "f4", category: "fantasias", name: "Pêssego Dourado", hex: "#e0906f", highlight: "#fce2d7", shadow: "#452317" }
     ];
 
-    let currentModelKey = "waves";
-    let simMode = "model"; // "model" or "upload"
+    let currentModelKey = 'waves';
+    let simMode = 'model';
     let currentHairTone = hairPalette[0];
-    let currentTechnique = "Balayage Mel";
-    let currentTechniqueMode = "balayage";
-    let hairIntensity = 0.85;
-    let hairGloss = 0.70;
-    let activeCategory = "morena";
-    let hasUploadedPhoto = false;
+    let currentTechnique = 'Balayage Mel';
+    let currentTechniqueMode = 'balayage';
+    let hairIntensity = .85, hairGloss = .70, activeCategory = 'morena';
 
     function setHairSimMode(mode) {
       simMode = mode;
-      const tabModel = document.getElementById('tabModelMode');
-      const tabUpload = document.getElementById('tabUploadMode');
-      const uploadPrompt = document.getElementById('clientUploadPrompt');
-      const modelsPicker = document.getElementById('modelsPickerBox');
-      const photoImg = document.getElementById('mainHairPhoto');
-      const shaderBox = document.getElementById('hairShaderBox');
-
-      if (mode === 'model') {
-        tabModel.classList.add('active');
-        tabUpload.classList.remove('active');
-        uploadPrompt.style.display = "none";
-        modelsPicker.style.display = "block";
-        photoImg.src = realModels[currentModelKey].file;
-        const maskId = realModels[currentModelKey].maskId;
-        shaderBox.style.webkitMaskImage = `url(#${maskId})`;
-        shaderBox.style.maskImage = `url(#${maskId})`;
-        applyHairSimulation();
-      } else {
-        tabUpload.classList.add('active');
-        tabModel.classList.remove('active');
-        modelsPicker.style.display = "none";
-
-        if (!hasUploadedPhoto) {
-          uploadPrompt.style.display = "flex";
-        } else {
-          uploadPrompt.style.display = "none";
-          shaderBox.style.webkitMaskImage = "url(#hairMaskClient)";
-          shaderBox.style.maskImage = "url(#hairMaskClient)";
-          applyHairSimulation();
-        }
+      for (const [id, active] of [['tabModelMode', mode === 'model'], ['tabUploadMode', mode === 'upload']]) {
+        document.getElementById(id).classList.toggle('active', active);
+        document.getElementById(id).setAttribute('aria-pressed', active);
       }
-    }
-
-    function switchRealModel(modelKey, btn) {
-      currentModelKey = modelKey;
-      document.querySelectorAll('.model-card-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      const photoImg = document.getElementById('mainHairPhoto');
-      photoImg.src = realModels[modelKey].file;
-
-      const shaderBox = document.getElementById('hairShaderBox');
-      const maskId = realModels[modelKey].maskId;
-      shaderBox.style.webkitMaskImage = `url(#${maskId})`;
-      shaderBox.style.maskImage = `url(#${maskId})`;
-
+      document.getElementById('modelsPickerBox').hidden = mode !== 'model';
+      HairStudio.setMode(mode, currentModelKey);
       applyHairSimulation();
     }
-
-    function renderHairSwatches(category = "morena") {
-      const container = document.getElementById('hairSwatchesGrid');
-      container.innerHTML = "";
-      const filtered = hairPalette.filter(p => p.category === category);
-      
-      filtered.forEach(p => {
-        const item = document.createElement('div');
-        item.className = `hair-swatch-item ${p.id === currentHairTone.id ? 'active' : ''}`;
-        item.onclick = () => selectHairTone(p);
-        
-        item.innerHTML = `
-          <div class="hair-color-circle" style="background: linear-gradient(135deg, ${p.shadow} 0%, ${p.hex} 55%, ${p.highlight} 100%);"></div>
-          <div class="hair-swatch-name">${p.name}</div>
-        `;
-        container.appendChild(item);
+    function switchRealModel(key, btn) {
+      currentModelKey = key;
+      document.querySelectorAll('.model-card-btn').forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', b === btn); });
+      HairStudio.setMode('model', key);
+      applyHairSimulation();
+    }
+    function renderHairSwatches(category = activeCategory) {
+      const grid = document.getElementById('hairSwatchesGrid');
+      grid.replaceChildren();
+      hairPalette.filter(tone => tone.category === category).forEach(tone => {
+        const btn = document.createElement('button');
+        btn.type = 'button'; btn.className = 'hair-swatch-item';
+        btn.classList.toggle('active', tone.id === currentHairTone.id);
+        btn.setAttribute('aria-pressed', tone.id === currentHairTone.id);
+        btn.innerHTML = `<span class="hair-color-circle" style="background:linear-gradient(135deg,${tone.shadow},${tone.hex},${tone.highlight})"></span><span class="hair-swatch-name">${tone.name}</span>`;
+        btn.onclick = () => {currentHairTone = tone;renderHairSwatches();applyHairSimulation();};
+        grid.appendChild(btn);
       });
     }
-
-    function filterHairCategory(cat, btn) {
-      activeCategory = cat;
-      document.querySelectorAll('.hair-cat-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderHairSwatches(cat);
+    function filterHairCategory(category, btn) {
+      activeCategory = category;
+      document.querySelectorAll('.hair-cat-btn').forEach(b => {b.classList.toggle('active', b === btn);b.setAttribute('aria-pressed', b === btn);});
+      renderHairSwatches();
     }
-
-    function selectHairTone(tone) {
-      currentHairTone = tone;
-      document.querySelectorAll('.hair-swatch-item').forEach(el => el.classList.remove('active'));
-      renderHairSwatches(activeCategory);
-      applyHairSimulation();
-    }
-
     function selectHairdoTechnique(name, mode, btn) {
-      currentTechnique = name;
-      currentTechniqueMode = mode;
-      document.querySelectorAll('.hairdo-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      currentTechnique = name; currentTechniqueMode = mode;
+      document.querySelectorAll('.hairdo-btn').forEach(b => {b.classList.toggle('active', b === btn);b.setAttribute('aria-pressed', b === btn);});
       applyHairSimulation();
     }
-
     function applyHairSimulation() {
-      const tintShader = document.getElementById('hairTintShader');
-      const highlightShader = document.getElementById('hairHighlightShader');
-      const glossSheen = document.getElementById('hairGlossSheen');
-      const photoImg = document.getElementById('mainHairPhoto');
-
-      let shadowCol = currentHairTone.shadow || lightenDarkenColor(currentHairTone.hex, -45);
-      let midCol = currentHairTone.hex;
-      let highCol = currentHairTone.highlight || lightenDarkenColor(currentHairTone.hex, 35);
-
-      // Targeted Salon Shader Gradients
-      let tintBg = "";
-      let highlightBg = "";
-      let blendMode = "color";
-      let imgFilter = "contrast(105%)";
-
-      if (currentTechniqueMode === 'balayage') {
-        tintBg = `linear-gradient(180deg, ${shadowCol} 0%, ${midCol} 45%, ${highCol} 95%)`;
-        highlightBg = `radial-gradient(ellipse at 50% 65%, ${highCol} 0%, transparent 75%)`;
-        blendMode = "color";
-      } else if (currentTechniqueMode === 'babylights') {
-        tintBg = `linear-gradient(135deg, ${shadowCol} 0%, ${midCol} 35%, ${highCol} 65%, ${midCol} 100%)`;
-        highlightBg = `radial-gradient(circle at 50% 45%, ${highCol} 0%, transparent 80%)`;
-        blendMode = "color";
-        imgFilter = "contrast(108%) brightness(102%)";
-      } else if (currentTechniqueMode === 'contour') {
-        tintBg = `radial-gradient(ellipse at 50% 45%, transparent 20%, ${highCol} 55%, ${shadowCol} 90%)`;
-        highlightBg = `radial-gradient(circle at 50% 40%, ${highCol} 0%, transparent 70%)`;
-        blendMode = "color";
-      } else if (currentTechniqueMode === 'ombre') {
-        tintBg = `linear-gradient(180deg, transparent 0%, ${shadowCol} 25%, ${midCol} 55%, ${highCol} 95%)`;
-        highlightBg = `linear-gradient(180deg, transparent 30%, ${highCol} 85%, transparent 100%)`;
-        blendMode = "color";
-      } else if (currentTechniqueMode === 'gloss') {
-        tintBg = `linear-gradient(135deg, ${shadowCol} 0%, ${midCol} 50%, ${highCol} 100%)`;
-        highlightBg = `linear-gradient(115deg, transparent 15%, ${highCol} 50%, transparent 85%)`;
-        blendMode = "soft-light";
-        imgFilter = "contrast(112%) brightness(105%)";
-      } else { // global
-        tintBg = `linear-gradient(180deg, ${shadowCol} 0%, ${midCol} 40%, ${midCol} 80%, ${shadowCol} 100%)`;
-        highlightBg = `radial-gradient(ellipse at 50% 50%, ${highCol} 0%, transparent 85%)`;
-        blendMode = "color";
-      }
-
-      tintShader.style.background = tintBg;
-      tintShader.style.mixBlendMode = blendMode;
-      tintShader.style.opacity = hairIntensity;
-
-      highlightShader.style.background = highlightBg;
-      highlightShader.style.opacity = (hairIntensity * 0.85);
-
-      glossSheen.style.background = `radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.85) 0%, transparent 65%)`;
-      glossSheen.style.opacity = (hairGloss * 0.55);
-
-      photoImg.style.filter = imgFilter;
-
-      // Update Info Labels
-      const activeModelName = simMode === 'model' ? realModels[currentModelKey].cutName : "Sua Foto";
-      document.getElementById('currentHairToneName').innerText = currentHairTone.name;
-      document.getElementById('currentHairStyleName').innerText = `Técnica: ${currentTechnique} • ${activeModelName}`;
+      document.getElementById('currentHairToneName').textContent = currentHairTone.name;
+      document.getElementById('currentHairStyleName').textContent = `${currentTechnique} · ${simMode === 'model' ? realModels[currentModelKey].cutName : 'Sua foto'}`;
       document.getElementById('customHairPicker').value = currentHairTone.hex;
+      HairStudio.render({hex:currentHairTone.hex, intensity:hairIntensity, gloss:hairGloss, technique:currentTechniqueMode});
     }
-
-    function updateHairIntensity(val) {
-      hairIntensity = val / 100;
-      document.getElementById('labelIntensity').innerText = `${val}%`;
-      applyHairSimulation();
-    }
-
-    function updateHairGloss(val) {
-      hairGloss = val / 100;
-      document.getElementById('labelGloss').innerText = `${val}%`;
-      applyHairSimulation();
-    }
-
-    function handleRealPhotoFile(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          document.getElementById('mainHairPhoto').src = event.target.result;
-          hasUploadedPhoto = true;
-          setHairSimMode('upload');
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function peekOriginalColor() {
-      document.getElementById('hairShaderBox').style.opacity = "0";
-      document.getElementById('mainHairPhoto').style.filter = "none";
-    }
-
-    function restoreSimColor() {
-      document.getElementById('hairShaderBox').style.opacity = "1";
-      applyHairSimulation();
-    }
-
+    function updateHairIntensity(value) {hairIntensity = value / 100;document.getElementById('labelIntensity').textContent = value + '%';applyHairSimulation();}
+    function updateHairGloss(value) {hairGloss = value / 100;document.getElementById('labelGloss').textContent = value + '%';applyHairSimulation();}
+    function handleRealPhotoFile(event) { const file = event.target.files[0];event.target.value = '';if (file) HairStudio.upload(file); }
     function resetHairSimulation() {
-      currentHairTone = hairPalette[0];
-      currentTechnique = "Balayage Mel";
-      currentTechniqueMode = "balayage";
-      currentModelKey = "waves";
-      hairIntensity = 0.85;
-      hairGloss = 0.70;
-      document.getElementById('sliderIntensity').value = "85";
-      document.getElementById('sliderGloss').value = "70";
-      document.getElementById('labelIntensity').innerText = "85%";
-      document.getElementById('labelGloss').innerText = "70%";
-      switchRealModel('waves', document.querySelector('.model-card-btn'));
-      renderHairSwatches('morena');
-      setHairSimMode('model');
+      currentHairTone = hairPalette[0];currentTechnique = 'Balayage Mel';currentTechniqueMode = 'balayage';hairIntensity = .85;hairGloss = .70;
+      document.getElementById('sliderIntensity').value = 85;document.getElementById('labelIntensity').textContent = '85%';
+      document.getElementById('sliderGloss').value = 70;document.getElementById('labelGloss').textContent = '70%';
+      filterHairCategory('morena', document.querySelector('.hair-cat-btn'));
+      selectHairdoTechnique(currentTechnique, currentTechniqueMode, document.querySelector('.hairdo-btn'));
+      HairStudio.original(false);
     }
-
-    document.getElementById('customHairPicker').addEventListener('input', (e) => {
-      const hex = e.target.value;
-      currentHairTone = {
-        id: "custom",
-        category: "custom",
-        name: "Personalizada (" + hex.toUpperCase() + ")",
-        hex: hex,
-        highlight: lightenDarkenColor(hex, 35),
-        shadow: lightenDarkenColor(hex, -45)
-      };
-      applyHairSimulation();
+    document.getElementById('customHairPicker').addEventListener('input', event => {
+      currentHairTone = {id:'custom', name:'Tom personalizado',hex:event.target.value};renderHairSwatches();applyHairSimulation();
     });
-
     function agendarHairStudio() {
-      const activeModelName = simMode === 'model' ? realModels[currentModelKey].name : "Foto Própria";
-      const msg = `Olá Isis! Testei o tom de cabelo "${currentHairTone.name}" (${currentHairTone.hex}) com a técnica "${currentTechnique}" (${activeModelName}) no Simulador Hair Studio e gostaria de agendar uma avaliação / transformação capilar!`;
-      window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(msg)}`, '_blank');
+      const msg = `Olá Isis! Experimentei o tom ${currentHairTone.name} (${currentHairTone.hex}), ${currentTechnique}, no simulador. Gostaria de agendar uma avaliação!`;
+      window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     }
-
-    // Initialize Hair Simulator
-    renderHairSwatches('morena');
-    applyHairSimulation();
+    renderHairSwatches();applyHairSimulation();
+    // Load AI only when the simulator approaches the viewport.
+    const hairObserver = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { HairStudio.setMode(simMode, currentModelKey);hairObserver.disconnect(); }
+    }, {rootMargin:'300px'});
+    hairObserver.observe(document.getElementById('simulador-hair'));
+    const menuToggle = document.querySelector('.menu-toggle');
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') !== 'true';
+      menuToggle.setAttribute('aria-expanded', expanded);document.getElementById('mainNav').classList.toggle('is-open', expanded);
+    });
+    document.querySelectorAll('#mainNav a').forEach(a => a.addEventListener('click', () => {menuToggle.setAttribute('aria-expanded','false');document.getElementById('mainNav').classList.remove('is-open');}));
 
     // =========================================================
     // NAIL & VIBE DAY SIMULATOR TECH

@@ -1,0 +1,125 @@
+/* Editorial studio layout — responsive refinements, shared with both simulators. */
+:root { --bg-dark: #10100f; --card-bg: #191917; --accent-gold: #d9b67a; --accent-gold-light: #edd4a8; --accent-gold-dark: #b18b4d; --text-muted: #b5b1a9; --border-glass: rgba(218,191,147,.18); }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 100px; }
+body { background: var(--bg-dark); }
+button, input, select { font: inherit; }
+button, a, input, summary { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
+header { padding: 14px max(4%, calc((100vw - 1440px) / 2)); gap: 22px; background: rgba(16,16,15,.94); }
+header nav { gap: 18px; }
+header nav a { font-size: .76rem; }
+header > .btn-cta { white-space: nowrap; box-shadow: none; padding: 12px 20px; }
+.logo-script { font-size: 1.9rem; }
+.menu-toggle { display: none; background: transparent; border: 1px solid var(--border-glass); color: var(--accent-gold); border-radius: 10px; width: 44px; height: 44px; cursor: pointer; }
+.btn-cta { background: #dfbd82; box-shadow: none; border-radius: 12px; padding: 14px 22px; font-size: .85rem; }
+.btn-cta:hover { background: #edd4a8; box-shadow: 0 8px 22px #0003; }
+.glow-bg { opacity: .08; }
+.hero { max-width: 1440px; margin: auto; min-height: 760px; padding: 150px 5% 90px; gap: 8%; }
+.hero-tag { background: transparent; border: 0; padding: 0; font-size: .7rem; letter-spacing: 3px; }
+.hero h1 { font-family: var(--font-serif); font-size: clamp(2.8rem,4.6vw,4.7rem); font-weight: 400; line-height: 1.16; }
+.hero h1 span { font-size: 1.3em; }
+.hero p { font-size: 1rem; max-width: 440px; line-height: 1.9; }
+.hero-portfolio { height: 550px; position: relative; margin-right: 24px; }
+.hero-main-photo { width: 85%; height: 100%; object-fit: cover; border-radius: 160px 160px 24px 24px; object-position: center 35%; }
+.hero-detail-photo { position: absolute; right: -24px; bottom: 96px; width: 39%; height: 205px; object-fit: cover; border: 7px solid var(--bg-dark); border-radius: 80px 80px 18px 18px; }
+.hero-photo-caption { position: absolute; bottom: 0; left: 0; width: 85%; padding: 65px 25px 25px; background: linear-gradient(transparent,#000d); border-radius: 0 0 24px 24px; display: grid; gap: 8px; }
+.hero-photo-caption span { font-size: .6rem; letter-spacing: 2px; }
+.hero-photo-caption strong { font-family: var(--font-serif); font-weight: 400; font-size: 1.25rem; }
+.hero-photo-caption a { color: var(--accent-gold-light); font-size: .75rem; text-decoration: none; }
+section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
+.section-title { margin: 0 auto 38px; max-width: 700px; }
+.section-title h2 { font-size: clamp(1.75rem,3vw,2.6rem); line-height: 1.2; font-weight: 600; letter-spacing: -.04em; }
+.section-title p { font-size: .95rem; line-height: 1.8; margin-top: 15px; }
+.hair-studio-section { background: #151512; }
+.hair-simulator-container { padding: 26px; gap: 32px; background: #1b1b18; border-radius: 24px; box-shadow: none; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+.hair-preview-col { min-width: 0; position: sticky; top: 106px; }
+.sim-mode-switcher { border-radius: 14px; gap: 4px; background: #11110f; }
+.sim-mode-tab { border-radius: 10px; min-height: 44px; padding: 10px; font-size: .78rem; }
+.sim-mode-tab.active { background: #dfbd82; box-shadow: none; }
+.hair-viewport-box { border-radius: 18px; box-shadow: none; }
+.hair-canvas-wrapper { height: auto; aspect-ratio: 4 / 5; max-height: 640px; background: #10100e; }
+.hair-photo-layer, #hairResultCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+#hairResultCanvas { pointer-events: none; }
+.hair-status-bar { gap: 10px; padding: 14px; background: #11110f; }
+.hair-info-tag { min-width: 0; font-size: .82rem; }
+.hair-status-bar > button { flex-shrink: 0; font-size: .7rem; padding: 8px; }
+.hair-view-controls { top: 12px; right: 12px; z-index: 4; }
+.hair-btn-tool { border-radius: 9px; min-height: 36px; }
+.hair-btn-tool:disabled { opacity: .4; cursor: default; }
+.hair-feedback { min-height: 42px; font-size: .76rem; color: var(--accent-gold-light); margin: 12px 0 8px; line-height: 1.6; }
+.hair-feedback.is-error { color: #ffb5a5; }
+.hair-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.simulation-note { color: var(--text-muted); font-size: .68rem; line-height: 1.6; margin: 12px 0; }
+.hair-processing { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center; background: #1119; color: #fff; backdrop-filter: blur(3px); font-size: .85rem; }
+.loading-ring { width: 28px; height: 28px; border: 2px solid #fff3; border-top-color: var(--accent-gold); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to {transform: rotate(360deg);} }
+.client-upload-prompt { z-index: 5; background: #171713f5; cursor: default; padding: 24px; }
+.model-selector-row { gap: 8px; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.model-card-btn { border-radius: 12px; padding: 10px 3px; font-size: .65rem; }
+.hair-controls-col h3 { font-size: 1.45rem; font-weight: 600; }
+.hair-category-nav { flex-wrap: wrap; border-bottom: none; gap: 6px; overflow: visible; }
+.hair-cat-btn { border: 1px solid var(--border-glass); border-radius: 7px; font-size: .7rem; padding: 8px 10px; }
+.hair-swatch-item { font: inherit; border-radius: 12px; padding: 14px 5px; }
+.hair-color-circle { width: 40px; height: 40px; }
+.hair-swatch-item.active { box-shadow: none; background: #dfbd8212; }
+.hairdo-btn { border-radius: 10px; min-height: 62px; }
+.hair-sliders-box, .custom-color-picker { border-radius: 12px; }
+.custom-range { touch-action: pan-y; }
+.studio-container, .scheduler-container { max-width: 1240px; margin: auto; box-shadow: none; border-radius: 24px; }
+.grid-3 { max-width: 1240px; margin: auto; }
+.music-widget { position: static; width: fit-content; margin: 22px auto; box-shadow: none; }
+.whatsapp-float { width: 48px; height: 48px; right: 20px; bottom: 20px; }
+.card, .package-card, .transformation-card { box-shadow: none; }
+.transformations-gallery { gap: 24px; }
+.transformation-photo img { height: 300px; }
+.transformation-card-caption { padding: 20px; }
+.transformation-details summary { padding: 0 20px 20px; }
+@media (max-width: 1180px) {
+  header nav { display: none; }
+  .menu-toggle { display: block; margin-left: auto; }
+  header nav.is-open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; padding: 20px; background: #151512; border-bottom: 1px solid var(--border-glass); gap: 0; }
+  header nav a { padding: 12px; font-size: .9rem; }
+}
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr 1fr; text-align: left; gap: 30px; min-height: auto; }
+  .hero-portfolio { height: 450px; }
+  .hero h1 { font-size: 2.7rem; }
+  .hair-simulator-container { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; padding: 20px; }
+  .hair-preview-col { top: 104px; }
+  .hair-swatches-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .hairdo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 700px) {
+  header { padding: 12px 16px; gap: 10px; }
+  .logo-badge { width: 38px; height: 38px; }
+  .logo-container { gap: 8px; }
+  .logo-script { font-size: 1.6rem; }
+  .logo-sub { font-size: .5rem; letter-spacing: 4px; }
+  header > .btn-cta { padding: 11px 12px; font-size: .7rem; }
+  header > .btn-cta svg { display: none; }
+  .menu-toggle { width: 36px; height: 36px; flex-shrink: 0; }
+  .hero { grid-template-columns: 1fr; padding: 125px 22px 55px; gap: 38px; }
+  .hero h1 { font-size: clamp(2.65rem,9vw,3.7rem); }
+  .hero p { font-size: .92rem; margin-bottom: 24px; }
+  .hero .btn-cta { padding: 13px 15px; font-size: .75rem; }
+  .hero-portfolio { height: 400px; max-width: 450px; width: calc(100% - 24px); margin: 0 auto; }
+  .hero-detail-photo { height: 150px; bottom: 80px; }
+  section:not(.hero) { padding: 56px 16px; }
+  .section-title { margin-bottom: 28px; }
+  .section-title p { font-size: .86rem; }
+  .hair-simulator-container { grid-template-columns: minmax(0,1fr); padding: 12px; gap: 30px; border-radius: 20px; }
+  .hair-preview-col { position: static; }
+  .hair-canvas-wrapper { aspect-ratio: 4 / 4.8; max-height: 500px; }
+  .hair-swatches-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px; }
+  .hairdo-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .hair-controls-col { padding: 4px; }
+  .hair-swatch-name { font-size: .66rem; }
+  .hair-color-circle { width: 32px; height: 32px; }
+  .studio-container, .scheduler-container { padding: 16px; }
+  .grid-3 { grid-template-columns: minmax(0,1fr); }
+  .transformation-photo img { height: 260px; }
+  .whatsapp-float { right: 12px; bottom: 12px; }
+}
+@media (max-width: 360px) { header > .btn-cta { display: none; } .sim-mode-tab { font-size: .7rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
