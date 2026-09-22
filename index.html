@@ -954,12 +954,12 @@
     }
 
     .layer-before {
-      background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200&auto=format&fit=crop');
+      background-image: linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22)), url('fotos/foto_09.jpeg');
     }
 
     .layer-after {
-      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop');
-      clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+      background-image: linear-gradient(rgba(0,0,0,0.06), rgba(0,0,0,0.06)), url('fotos/foto_12.jpeg');
+      clip-path: polygon(var(--split-pos, 50%) 0, 100% 0, 100% 100%, var(--split-pos, 50%) 100%);
     }
 
     .split-handle {
@@ -1341,6 +1341,107 @@
       .hairdo-grid { grid-template-columns: repeat(3, 1fr); }
       .model-selector-row { grid-template-columns: repeat(2, 1fr); }
     }
+
+
+    /* Portfólio real de Antes & Depois */
+    .transformations-gallery {
+      max-width: 1180px;
+      margin: 34px auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .transformation-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+
+    .transformation-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 250px;
+    }
+
+    .transformation-photo {
+      position: relative;
+      min-width: 0;
+      background: #0c0c10;
+    }
+
+    .transformation-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .transformation-photo span {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(8,8,10,.82);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .transformation-photo.after span { color: var(--accent-gold); }
+    .transformation-card-caption { padding: 15px 17px 17px; }
+    .transformation-card-caption strong { display:block; color:#fff; font-size:.92rem; margin-bottom:4px; }
+    .transformation-card-caption small { color:var(--text-muted); font-size:.78rem; }
+
+    /* Opções de tamanho e formato no simulador de unhas */
+    .nail-option-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 9px;
+    }
+
+    .nail-option-btn {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255,255,255,.04);
+      color: var(--text-muted);
+      font: 600 .82rem var(--font-body);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .nail-option-btn:hover,
+    .nail-option-btn.active {
+      background: rgba(229,184,105,.18);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold-light);
+      transform: translateY(-1px);
+    }
+
+    #handSVG .nail { stroke: rgba(255,255,255,.25); stroke-width: 1; }
+    .transformation-photo a { display: block; height: 100%; }
+    .transformation-photo img { height: 260px; min-height: 0; object-fit: contain; }
+    .transformation-images { min-height: 0; }
+    .transformation-images.result-only { grid-template-columns: 1fr; }
+    .transformation-details summary { cursor: pointer; padding: 0 17px 17px; color: var(--accent-gold); font-size: .8rem; }
+    .transformations-gallery { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+    .split-layer { background-size: contain; background-repeat: no-repeat; background-color: #0c0c10; }
+    .split-slider-container { max-width: 420px; height: 560px; }
+    .nail-option-btn:focus-visible, .transformation-details summary:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+
+    @media (max-width: 600px) {
+      .transformation-images { min-height: 205px; }
+      .transformation-photo img { min-height: 205px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1447,7 +1548,7 @@
     <div>
       <span class="hero-tag">BEAUTY, NAILS, HAIR & BOUTIQUE</span>
       <h1>Sua beleza e estilo traduzidos por <span>Isis Avelar</span>.</h1>
-      <p>Transformações capilares com visagismo, simulador de cores e modelos em tempo real, extensão de unhas e moda exclusiva para sua melhor versão.</p>
+      <p>Transformações capilares com visagismo, simulador de cores e modelos em tempo real, unhas em gel, alongamento com molde, unhas postiças e moda exclusiva para sua melhor versão.</p>
       <div style="display: flex; gap: 14px; flex-wrap: wrap;">
         <a href="#agendamento" class="btn-cta">
           <i data-lucide="calendar-check"></i> Agendar Agora
@@ -1669,7 +1770,7 @@
             <select id="serviceSelect" class="form-control" required>
               <option value="Morena Iluminada & Mechas">Morena Iluminada & Mechas (Hair Studio)</option>
               <option value="Transformação Capilar / Coloração">Transformação Capilar / Coloração</option>
-              <option value="Unhas em Gel / Fibra">Unhas em Gel / Fibra (Nail Tech)</option>
+              <option value="Unhas em Gel / Alongamento com Molde / Postiça">Unhas em Gel / Alongamento com Molde / Postiça (Nail Tech)</option>
               <option value="Combo Express Vibe">Combo Express Vibe</option>
               <option value="Vibe Day Full Experience">Vibe Day Full Experience</option>
               <option value="Consultoria Isis Boutique">Consultoria Isis Boutique</option>
@@ -1742,6 +1843,24 @@
         </div>
       </div>
     </div>
+
+    <div class="transformations-gallery" aria-label="Portfólio real de antes e depois">
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_48.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes e alinhamento de cachos"><img src="fotos/foto_48.jpeg" alt="Antes — Luzes e alinhamento de cachos" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_55.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes e alinhamento de cachos"><img src="fotos/foto_55.jpeg" alt="Depois — Luzes e alinhamento de cachos" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Luzes e alinhamento de cachos</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_56.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes e alinhamento de cachos"><img src="fotos/foto_56.jpeg" alt="Antes — Luzes e alinhamento de cachos" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_54.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes e alinhamento de cachos"><img src="fotos/foto_54.jpeg" alt="Depois — Luzes e alinhamento de cachos" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_49.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Retoque de luzes"><img src="fotos/foto_49.jpeg" alt="Antes — Retoque de luzes" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_51.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de luzes"><img src="fotos/foto_51.jpeg" alt="Depois — Retoque de luzes" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Retoque de luzes</strong><small>Antes e depois · Fotos do salão</small></div></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_57.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Retoque de luzes em cabelo longo"><img src="fotos/foto_57.jpeg" alt="Antes — Retoque de luzes em cabelo longo" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_47.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de luzes em cabelo longo"><img src="fotos/foto_47.jpeg" alt="Depois — Retoque de luzes em cabelo longo" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Retoque de luzes em cabelo longo</strong><small>Antes e depois · Fotos do salão</small></div></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_52.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Retoque de luzes — perfil"><img src="fotos/foto_52.jpeg" alt="Antes — Retoque de luzes — perfil" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_53.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de luzes — perfil"><img src="fotos/foto_53.jpeg" alt="Depois — Retoque de luzes — perfil" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Retoque de luzes — perfil</strong><small>Antes e depois · Fotos do salão</small></div></article>
+<article class="transformation-card"><div class="transformation-images result-only"><div class="transformation-photo after"><a href="fotos/foto_45.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Unhas — resultados"><img src="fotos/foto_45.jpeg" alt="Depois — Unhas — resultados" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Unhas — resultados</strong><small>Resultado do atendimento · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo after"><a href="fotos/foto_44.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Unhas — resultados"><img src="fotos/foto_44.jpeg" alt="Depois — Unhas — resultados" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_30.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Unhas — resultados"><img src="fotos/foto_30.jpeg" alt="Depois — Unhas — resultados" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images result-only"><div class="transformation-photo after"><a href="fotos/foto_41.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de ruivo e tratamento"><img src="fotos/foto_41.jpeg" alt="Depois — Retoque de ruivo e tratamento" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Retoque de ruivo e tratamento</strong><small>Resultado do atendimento · Fotos do salão</small></div></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_38.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Relaxamento, tratamento, ragatanga e corte"><img src="fotos/foto_38.jpeg" alt="Antes — Relaxamento, tratamento, ragatanga e corte" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_36.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Relaxamento, tratamento, ragatanga e corte"><img src="fotos/foto_36.jpeg" alt="Depois — Relaxamento, tratamento, ragatanga e corte" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Relaxamento, tratamento, ragatanga e corte</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_35.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Relaxamento, tratamento, ragatanga e corte"><img src="fotos/foto_35.jpeg" alt="Antes — Relaxamento, tratamento, ragatanga e corte" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_34.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Relaxamento, tratamento, ragatanga e corte"><img src="fotos/foto_34.jpeg" alt="Depois — Relaxamento, tratamento, ragatanga e corte" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_33.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Retoque de morena iluminada"><img src="fotos/foto_33.jpeg" alt="Antes — Retoque de morena iluminada" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_28.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de morena iluminada"><img src="fotos/foto_28.jpeg" alt="Depois — Retoque de morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Retoque de morena iluminada</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_27.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Retoque de morena iluminada"><img src="fotos/foto_27.jpeg" alt="Antes — Retoque de morena iluminada" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_29.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de morena iluminada"><img src="fotos/foto_29.jpeg" alt="Depois — Retoque de morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_25.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Retoque de morena iluminada"><img src="fotos/foto_25.jpeg" alt="Depois — Retoque de morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_50.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Escova e prancha"><img src="fotos/foto_50.jpeg" alt="Antes — Escova e prancha" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_23.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Escova e prancha"><img src="fotos/foto_23.jpeg" alt="Depois — Escova e prancha" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Escova e prancha</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_24.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Escova e prancha"><img src="fotos/foto_24.jpeg" alt="Antes — Escova e prancha" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_26.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Escova e prancha"><img src="fotos/foto_26.jpeg" alt="Depois — Escova e prancha" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_21.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes"><img src="fotos/foto_21.jpeg" alt="Antes — Luzes" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_20.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes"><img src="fotos/foto_20.jpeg" alt="Depois — Luzes" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Luzes</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_46.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes"><img src="fotos/foto_46.jpeg" alt="Antes — Luzes" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_18.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes"><img src="fotos/foto_18.jpeg" alt="Depois — Luzes" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_22.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes"><img src="fotos/foto_22.jpeg" alt="Depois — Luzes" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_42.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Coloração vermelha"><img src="fotos/foto_42.jpeg" alt="Antes — Coloração vermelha" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_40.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Coloração vermelha"><img src="fotos/foto_40.jpeg" alt="Depois — Coloração vermelha" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Coloração vermelha</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_17.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Coloração vermelha"><img src="fotos/foto_17.jpeg" alt="Antes — Coloração vermelha" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_16.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Coloração vermelha"><img src="fotos/foto_16.jpeg" alt="Depois — Coloração vermelha" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_19.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Coloração vermelha"><img src="fotos/foto_19.jpeg" alt="Depois — Coloração vermelha" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_10.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Morena iluminada"><img src="fotos/foto_10.jpeg" alt="Antes — Morena iluminada" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_43.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Morena iluminada"><img src="fotos/foto_43.jpeg" alt="Depois — Morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Morena iluminada</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_13.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Morena iluminada"><img src="fotos/foto_13.jpeg" alt="Antes — Morena iluminada" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo before"><a href="fotos/foto_15.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Morena iluminada"><img src="fotos/foto_15.jpeg" alt="Antes — Morena iluminada" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_14.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Morena iluminada"><img src="fotos/foto_14.jpeg" alt="Depois — Morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_11.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Morena iluminada"><img src="fotos/foto_11.jpeg" alt="Depois — Morena iluminada" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_09.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Selagem e corte"><img src="fotos/foto_09.jpeg" alt="Antes — Selagem e corte" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_12.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Selagem e corte"><img src="fotos/foto_12.jpeg" alt="Depois — Selagem e corte" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Selagem e corte</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_07.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Selagem e corte"><img src="fotos/foto_07.jpeg" alt="Antes — Selagem e corte" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo before"><a href="fotos/foto_05.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Selagem e corte"><img src="fotos/foto_05.jpeg" alt="Antes — Selagem e corte" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_06.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Selagem e corte"><img src="fotos/foto_06.jpeg" alt="Depois — Selagem e corte" loading="lazy" decoding="async"></a><span>Depois</span></div><div class="transformation-photo after"><a href="fotos/foto_08.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Selagem e corte"><img src="fotos/foto_08.jpeg" alt="Depois — Selagem e corte" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_39.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Botox capilar"><img src="fotos/foto_39.jpeg" alt="Antes — Botox capilar" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_03.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Botox capilar"><img src="fotos/foto_03.jpeg" alt="Depois — Botox capilar" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Botox capilar</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_02.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Botox capilar"><img src="fotos/foto_02.jpeg" alt="Antes — Botox capilar" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_01.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Botox capilar"><img src="fotos/foto_01.jpeg" alt="Depois — Botox capilar" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+<article class="transformation-card"><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_37.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes em cachos"><img src="fotos/foto_37.jpeg" alt="Antes — Luzes em cachos" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_32.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes em cachos"><img src="fotos/foto_32.jpeg" alt="Depois — Luzes em cachos" loading="lazy" decoding="async"></a><span>Depois</span></div></div><div class="transformation-card-caption"><strong>Luzes em cachos</strong><small>Antes e depois · Fotos do salão</small></div><details class="transformation-details"><summary>Ver mais fotos deste trabalho</summary><div class="transformation-images"><div class="transformation-photo before"><a href="fotos/foto_31.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Antes — Luzes em cachos"><img src="fotos/foto_31.jpeg" alt="Antes — Luzes em cachos" loading="lazy" decoding="async"></a><span>Antes</span></div><div class="transformation-photo after"><a href="fotos/foto_04.jpeg" target="_blank" rel="noopener" aria-label="Ampliar: Depois — Luzes em cachos"><img src="fotos/foto_04.jpeg" alt="Depois — Luzes em cachos" loading="lazy" decoding="async"></a><span>Depois</span></div></div></details></article>
+    </div>
   </section>
 
   <!-- Interactive Nail & Vibe Day Studio Section -->
@@ -1775,17 +1894,16 @@
               <path class="st1" d="M339.5,250c-9-3.5-21.6,1.4-25.8,12l-25.9,76.8c-3.6,9.3-0.2,19.2,7.5,22.3c7.8,3,17-2,20.6-11.2l26.5-74.9C346.6,264.3,348.4,253.5,339.5,250z"/>
               <path class="st1" d="M247.7,99.3c0,0-36.2,22.6-54.7,33.2c-9.4,5.5-21.2,26.4-35.6,45c-13.9,17.9-31.3,30.6-29.4,37.7c5,19.6,32.7,6.4,35.9,4.7c26.9-15,52-47.6,52-47.6l45.3-12.4L247.7,99.3z"/>
             </g>
-            <path class="nail" d="M126.8,218.4c19.1-4.2,21.5-30.2,21.5-30.2C118.9,212.9,126.8,218.4,126.8,218.4z"/>
-            <path class="nail" d="M304.2,336.9c-5.7-2-11.1-1.6-13.6,5.6c-0.1,0.3-0.6,2.5-0.7,2.9c-2.1,7.2,1.2,12.2,6.7,14.2c5.3,1.9,10.8,0.4,13.8-6.3c0.2-0.5,0.8-2.9,1-3.4C313.9,342.6,310,338.9,304.2,336.9z"/>
-            <path class="nail" d="M303.9,337.7c-5.5-2-10.7-1.7-13.2,5.2c-0.1,0.3-1.5,5.2-1.6,5.5c-2.1,6.9-2,14.9,4.8,17.4c6.8,2.5,11.7-3.2,14.7-9.6c0.2-0.5,1.7-5.6,1.9-6.1C313.1,343.3,309.4,339.7,303.9,337.7z"/>
             <path class="st3" d="M242,377.3c-6.9-2.7-13.5-2.3-16.8,6.4c-0.1,0.4-0.8,3-1,3.4c-2.8,8.7,1,14.9,7.6,17.5c6.4,2.5,13.1,0.9,17-7.2c0.3-0.6,1.1-3.5,1.4-4.1C253.6,384.6,248.9,379.9,242,377.3z"/>
-            <path class="nail" d="M241.5,378.3c-6.6-2.6-12.9-2.4-16.2,5.9c-0.2,0.4-2,6.3-2.2,6.7c-2.8,8.3-3,18.1,5.3,21.4c8.2,3.3,14.4-3.5,18.3-11.2c0.3-0.6,2.3-6.7,2.6-7.3C252.5,385.5,248.1,380.9,241.5,378.3z"/>
             <path class="st3" d="M190.5,384c-6.7-3.1-13.3-3.2-17.2,5.2c-0.2,0.4-1,3-1.2,3.4c-3.4,8.5,0,15,6.4,17.9c6.2,2.9,13,1.7,17.5-6.1c0.4-0.6,1.4-3.4,1.6-4C201.5,392.1,197.2,387.1,190.5,384z"/>
-            <path class="nail" d="M189.9,385c-6.4-3.1-12.7-3.3-16.6,4.8c-0.2,0.4-2.4,6.1-2.6,6.5c-3.3,8.1-4.1,17.9,3.8,21.7c8,3.8,14.6-2.5,19-9.9c0.3-0.6,2.8-6.6,3-7.1C200.4,392.9,196.4,388.1,189.9,385z"/>
             <path class="st3" d="M157.8,342.7c-6.7-3.1-13.3-3.2-17.2,5.2c-0.2,0.4-1,3-1.2,3.4c-3.4,8.5,0,15,6.4,17.9c6.2,2.9,13,1.7,17.5-6.1c0.4-0.6,1.4-3.4,1.6-4C168.8,350.7,164.5,345.8,157.8,342.7z"/>
-            <path class="nail" d="M157.3,343.7c-6.4-3.1-12.7-3.3-16.6,4.8c-0.2,0.4-2.4,6.1-2.6,6.5c-3.3,8.1-4.1,17.9,3.8,21.7c8,3.8,14.6-2.5,19-9.9c0.3-0.6,2.8-6.6,3-7.1C167.8,351.6,163.7,346.7,157.3,343.7z"/>
             <path class="st5" d="M226.9,148.5c0,0-9.4,13.7-14.2,22.3c-4.8,8.5-15,35.8-15,35.8s11.2-24.2,17.5-34.4C221.4,162,229,151,229,151L226.9,148.5z"/>
-          </svg>
+                      <path class="nail" data-width="16" transform="translate(143 199) rotate(40)"/>
+            <path class="nail" data-width="21" transform="translate(303 339) rotate(20)"/>
+            <path class="nail" data-width="26" transform="translate(240 380) rotate(22)"/>
+            <path class="nail" data-width="26" transform="translate(188 387) rotate(24)"/>
+            <path class="nail" data-width="26" transform="translate(155 346) rotate(24)"/>
+</svg>
         </div>
 
         <div class="status-badge">
@@ -1843,6 +1961,22 @@
           <div class="color-swatches" id="skinSwatches"></div>
         </div>
 
+        <div class="control-group">
+          <label><span>5. Comprimento da Unha</span><span id="nailSizeLabel" style="font-size:0.8rem;color:var(--text-muted);">Pequena</span></label>
+          <div class="nail-option-grid">
+            <button type="button" class="nail-option-btn active" data-nail-size="short" onclick="setNailSize('short', this)">Unha Pequena</button>
+            <button type="button" class="nail-option-btn" data-nail-size="long" onclick="setNailSize('long', this)">Unha Grande</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label><span>6. Formato</span><span id="nailShapeLabel" style="font-size:0.8rem;color:var(--text-muted);">Redonda</span></label>
+          <div class="nail-option-grid">
+            <button type="button" class="nail-option-btn" data-nail-shape="square" onclick="setNailShape('square', this)">Quadrada</button>
+            <button type="button" class="nail-option-btn active" data-nail-shape="round" onclick="setNailShape('round', this)">Redonda</button>
+          </div>
+        </div>
+
         <button class="btn-cta" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="agendarNailStudio()">
           <i data-lucide="message-square"></i> Agendar Esta Vibe no WhatsApp
         </button>
@@ -1874,7 +2008,7 @@
         <h3>Nail Tech</h3>
         <p>Extensões de alta durabilidade com acabamento natural e elegante.</p>
         <ul class="card-list">
-          <li><i data-lucide="check"></i> Extensão em Gel & Fibra</li>
+          <li><i data-lucide="check"></i> Gel, Alongamento com Molde & Postiça</li>
           <li><i data-lucide="check"></i> Cutilagem Russa</li>
           <li><i data-lucide="check"></i> Nail Art Exclusiva</li>
         </ul>
@@ -1924,7 +2058,7 @@
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">A transformação completa para o seu evento ou dia especial.</p>
           <div class="package-price">R$ 420 <span>/sessão</span></div>
           <ul class="card-list" style="margin-bottom: 24px;">
-            <li><i data-lucide="check"></i> Extensão de Unha em Gel / Fibra</li>
+            <li><i data-lucide="check"></i> Unhas em Gel / Alongamento com Molde / Postiça</li>
             <li><i data-lucide="check"></i> Tratamento Capilar de Alta Nutrição</li>
             <li><i data-lucide="check"></i> Escova & Finalização de Estúdio</li>
             <li><i data-lucide="check"></i> Consultoria rápida de look Isis Boutique</li>
@@ -1964,7 +2098,7 @@
   </a>
 
   <script>
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 
     // Set Default Booking Date (Amanhã)
     const tomorrow = new Date();
@@ -2413,6 +2547,45 @@
     let currentVibeName = 'Glamour';
     let activePolish = polishPalette[0];
     let activeSkin = skinPalette[1];
+    let currentNailSize = 'short';
+    let currentNailShape = 'round';
+
+
+
+    function renderNailGeometry() {
+      document.querySelectorAll('#handSVG .nail').forEach(nail => {
+        const w = Number(nail.dataset.width), h = w * (currentNailSize === 'long' ? 1.95 : 1.05);
+        const x = w / 2;
+        const tip = currentNailShape === 'square'
+          ? `L ${x} ${h - 2} Q ${x} ${h} ${x - 2} ${h} L ${-x + 2} ${h} Q ${-x} ${h} ${-x} ${h - 2}`
+          : `L ${x} ${h - x} Q ${x} ${h} 0 ${h} Q ${-x} ${h} ${-x} ${h - x}`;
+        nail.setAttribute('d', `M ${-x} 5 Q ${-x} -3 0 -3 Q ${x} -3 ${x} 5 ${tip} Z`);
+      });
+    }
+
+    function setNailSize(size, btn) {
+      currentNailSize = size;
+      const hand = document.getElementById('handSVG');
+      hand.classList.remove('nails-short', 'nails-long');
+      hand.classList.add(size === 'long' ? 'nails-long' : 'nails-short');
+      document.querySelectorAll('[data-nail-size]').forEach(b => { b.classList.toggle('active', b.dataset.nailSize === size); b.setAttribute('aria-pressed', b.dataset.nailSize === size); });
+      if (btn) btn.classList.add('active');
+      document.getElementById('nailSizeLabel').innerText = size === 'long' ? 'Grande' : 'Pequena';
+      renderNailGeometry();
+      updateStatusBadge();
+    }
+
+    function setNailShape(shape, btn) {
+      currentNailShape = shape;
+      const hand = document.getElementById('handSVG');
+      hand.classList.remove('nails-round', 'nails-square');
+      hand.classList.add(shape === 'square' ? 'nails-square' : 'nails-round');
+      document.querySelectorAll('[data-nail-shape]').forEach(b => { b.classList.toggle('active', b.dataset.nailShape === shape); b.setAttribute('aria-pressed', b.dataset.nailShape === shape); });
+      if (btn) btn.classList.add('active');
+      document.getElementById('nailShapeLabel').innerText = shape === 'square' ? 'Quadrada' : 'Redonda';
+      renderNailGeometry();
+      updateStatusBadge();
+    }
 
     function setLightingMode(mode) {
       currentLighting = mode;
@@ -2468,8 +2641,10 @@
 
     function updateStatusBadge() {
       const modeLabel = currentLighting === 'dia' ? 'Luz Natural / Dia' : 'Luz Glamour / Noite';
+      const sizeLabel = currentNailSize === 'long' ? 'Grande' : 'Pequena';
+      const shapeLabel = currentNailShape === 'square' ? 'Quadrada' : 'Redonda';
       document.getElementById('selectedVibeStatus').innerText = 
-        `Vibe ${currentVibeName}: Esmalte ${activePolish.name} (${modeLabel})`;
+        `Vibe ${currentVibeName}: ${activePolish.name} • ${sizeLabel} • ${shapeLabel} (${modeLabel})`;
     }
 
     // Build Swatches
@@ -2508,13 +2683,17 @@
 
     function agendarNailStudio() {
       const modeText = currentLighting === 'dia' ? 'Vibe Dia (Luz Natural)' : 'Vibe Noite (Glamour)';
-      const msg = `Olá Isis! Testei a "Vibe ${currentVibeName}" no Simulador Vibe Day (${modeText}) com a cor de esmalte "${activePolish.name}" (${activePolish.hex}) e o tom de pele "${activeSkin.name}". Gostaria de agendar meu horário!`;
+      const sizeText = currentNailSize === 'long' ? 'unha grande' : 'unha pequena';
+      const shapeText = currentNailShape === 'square' ? 'formato quadrado' : 'formato redondo';
+      const msg = `Olá Isis! Testei a "Vibe ${currentVibeName}" no Simulador Vibe Day (${modeText}) com a cor de esmalte "${activePolish.name}" (${activePolish.hex}), ${sizeText}, ${shapeText} e o tom de pele "${activeSkin.name}". Gostaria de agendar meu horário!`;
       window.open(`https://wa.me/5500000000000?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     // Initialize Nail Simulator
     applyPolishColor(activePolish.hex, activePolish.name);
     applySkinTone(activeSkin.hex, activeSkin.name);
+    setNailSize('short', document.querySelector('[data-nail-size="short"]'));
+    setNailShape('round', document.querySelector('[data-nail-shape="round"]'));
   </script>
 </body>
 </html>
