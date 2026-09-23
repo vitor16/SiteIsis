@@ -27,4 +27,11 @@ Referências: [guia oficial de segmentação para Web](https://developers.google
 
 Chrome headless: quatro modelos, upload de foto do salão, seleção real pelo input de arquivo, troca entre modelo e foto mantendo a imagem enviada, comparação original/simulação, arquivo inválido, limite de tamanho, foto sem cabelo e recuperação. Verificadas as larguras 320, 390, 768, 1024 e 1440, navegação móvel e abertura HTTP e file://. Sem exceções JavaScript ou caminhos de imagem ausentes.
 
-O número de WhatsApp ainda é o placeholder `5500000000000` do projeto original; deve ser substituído pelo número do salão antes de publicar.
+Contato atualizado a partir dos prints fornecidos: +55 27 99289-4284; Rua Antônio Pagari, 1, Enseada Jacaraípe, Serra – ES, CEP 29175-337. Atendimento de terça a sábado, 9h–18h; fechado domingo e segunda. O formulário solicita confirmação de disponibilidade pelo WhatsApp e bloqueia dias fechados.
+
+## Portfólio compacto e unhas em foto
+
+- `portfolio.js`: carrossel com 15 trabalhos e todas as 57 fotos originais, navegação por setas, seletor, teclado e gesto horizontal. O comparador inicial foi preservado.
+- `nail-studio.js`: quatro mãos modelo fornecidas pelo usuário, upload JPG/PNG/WebP (até 20 MB), segmentação de unhas em worker, troca de esmalte/intensidade, comparação e download. Comprimento e formato são preferências enviadas ao WhatsApp; a prévia em foto altera a cor.
+- Distribua também `portfolio.js`, `nail-studio.js` e `assets/nails/` ao publicar. Modelo e runtime carregados sob demanda, com aproximadamente 56 MB na primeira inicialização. Os resultados ficam em cache na sessão.
+- Fontes, licenças e limites da detecção em [assets/nails/README.md](assets/nails/README.md).
