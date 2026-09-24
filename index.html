@@ -855,6 +855,98 @@
       box-shadow: 0 4px 15px rgba(229, 184, 105, 0.35);
     }
 
+    .time-slot { font-family: var(--font-body); appearance: none; }
+
+    .available-days-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .available-day {
+      min-height: 72px;
+      padding: 10px 8px;
+      border-radius: 14px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all .25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .available-day:hover,
+    .available-day.selected {
+      border-color: var(--accent-gold);
+      background: rgba(229, 184, 105, .16);
+      transform: translateY(-1px);
+    }
+
+    .available-day .day-week {
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .available-day .day-date {
+      font-size: .95rem;
+      font-weight: 800;
+    }
+
+    .available-day .day-count {
+      font-size: .68rem;
+      color: var(--text-muted);
+    }
+
+    .schedule-message {
+      grid-column: 1 / -1;
+      padding: 16px;
+      border: 1px dashed var(--border-glass);
+      border-radius: 14px;
+      color: var(--text-muted);
+      font-size: .84rem;
+      line-height: 1.5;
+      background: rgba(255,255,255,.025);
+    }
+
+    .schedule-message.error {
+      border-color: rgba(226, 141, 136, .45);
+      color: #ffc1bd;
+      background: rgba(226, 141, 136, .08);
+    }
+
+    .booking-status {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: .84rem;
+      border: 1px solid var(--border-glass);
+    }
+
+    .booking-status.show { display: block; }
+    .booking-status.success { color: #bdf6ce; border-color: rgba(79, 209, 126, .35); background: rgba(79, 209, 126, .08); }
+    .booking-status.error { color: #ffc1bd; border-color: rgba(226, 141, 136, .45); background: rgba(226, 141, 136, .08); }
+
+    #bookingSubmit:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    @media (max-width: 600px) {
+      .available-days-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .time-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     .calendar-card {
       background: rgba(10, 10, 14, 0.6);
       border: 1px solid var(--border-glass);
@@ -1649,11 +1741,11 @@
     </div>
   </section>
 
-  <!-- Scheduler Section (Agendamento Automático com Marcação no Google Calendar) -->
+  <!-- Scheduler Section (agenda ao vivo sincronizada com Google Calendar) -->
   <section class="scheduler-section" id="agendamento">
     <div class="section-title">
-      <h2>Solicite seu horário</h2>
-      <p>Terça a sábado, das 9h às 18h. Escolha sua preferência e confirme a disponibilidade com a Isis pelo WhatsApp.</p>
+      <h2>Agende seu horário</h2>
+      <p>Escolha somente entre os dias e horários que estão realmente livres na agenda do stúdio.</p>
     </div>
 
     <div class="scheduler-container">
@@ -1661,18 +1753,18 @@
         <form id="bookingForm" onsubmit="handleBooking(event)">
           <div class="form-group">
             <label for="clientName"><i data-lucide="user" style="width:14px; display:inline;"></i> Seu Nome Completo</label>
-            <input type="text" id="clientName" class="form-control" placeholder="Ex: Juliana Silva" required />
+            <input type="text" id="clientName" class="form-control" placeholder="Ex: Juliana Silva" autocomplete="name" required />
           </div>
 
           <div class="form-group">
             <label for="clientPhone"><i data-lucide="phone" style="width:14px; display:inline;"></i> Telefone / WhatsApp</label>
-            <input type="tel" id="clientPhone" class="form-control" placeholder="(00) 90000-0000" required />
+            <input type="tel" id="clientPhone" class="form-control" placeholder="(00) 90000-0000" autocomplete="tel" required />
           </div>
 
           <div class="form-group">
             <label for="serviceSelect"><i data-lucide="scissors" style="width:14px; display:inline;"></i> Serviço Desejado</label>
             <select id="serviceSelect" class="form-control" required>
-              <option value="Morena Iluminada & Mechas">Morena Iluminada & Mechas (Hair Studio)</option>
+              <option value="Morena Iluminada &amp; Mechas">Morena Iluminada &amp; Mechas (Hair Studio)</option>
               <option value="Transformação Capilar / Coloração">Transformação Capilar / Coloração</option>
               <option value="Unhas em Gel / Alongamento com Molde / Postiça">Unhas em Gel / Alongamento com Molde / Postiça (Nail Tech)</option>
               <option value="Combo Express Vibe">Combo Express Vibe</option>
@@ -1682,47 +1774,52 @@
           </div>
 
           <div class="form-group">
-            <label for="bookingDate"><i data-lucide="calendar" style="width:14px; display:inline;"></i> Escolha o dia</label>
-            <input type="date" id="bookingDate" class="form-control" required aria-describedby="bookingHours" />
-            <small id="bookingHours">Terça a sábado, 9h às 18h. Domingo e segunda: fechado.</small>
+            <label><i data-lucide="calendar-days" style="width:14px; display:inline;"></i> Dias disponíveis</label>
+            <div id="availableDays" class="available-days-grid" aria-live="polite">
+              <div class="schedule-message">Carregando agenda disponível…</div>
+            </div>
+            <input type="hidden" id="bookingDate" required>
           </div>
 
           <div class="form-group">
-            <label><i data-lucide="clock" style="width:14px; display:inline;"></i> Horário Disponível</label>
-            <div class="time-grid" id="timeGrid">
-              <div class="time-slot" onclick="selectTimeSlot(this)">09:00</div>
-              <div class="time-slot" onclick="selectTimeSlot(this)">11:00</div>
-              <div class="time-slot selected" onclick="selectTimeSlot(this)">14:00</div>
-              <div class="time-slot" onclick="selectTimeSlot(this)">16:00</div>
-              <div class="time-slot" onclick="selectTimeSlot(this)">17:00</div>
+            <label><i data-lucide="clock" style="width:14px; display:inline;"></i> Horários disponíveis</label>
+            <div class="time-grid" id="timeGrid" aria-live="polite">
+              <div class="schedule-message">Selecione um dia disponível.</div>
             </div>
           </div>
 
-          <button type="submit" class="btn-cta" style="width: 100%; justify-content: center; margin-top: 10px;">
-            <i data-lucide="calendar-plus"></i> Solicitar horário & abrir Google Calendar
+          <button type="submit" id="bookingSubmit" class="btn-cta" style="width: 100%; justify-content: center; margin-top: 10px;" disabled>
+            <i data-lucide="calendar-check-2"></i> Reservar este horário
           </button>
+          <div id="bookingStatus" class="booking-status" role="status" aria-live="polite"></div>
         </form>
       </div>
 
       <div class="calendar-card">
         <div>
           <div class="sync-badge">
-            <i data-lucide="check-circle-2" style="width:16px;"></i> Lembrete no Google Calendar
+            <i data-lucide="refresh-cw" style="width:16px;"></i> Agenda sincronizada
           </div>
-          <h3 style="font-family: var(--font-title); font-size: 1.4rem; margin-bottom: 12px;">Vamos combinar seu horário</h3>
+          <h3 style="font-family: var(--font-title); font-size: 1.4rem; margin-bottom: 12px;">Horários realmente disponíveis</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
-            Envie sua preferência pelo WhatsApp e aguarde a confirmação da Isis. Você também pode salvar um lembrete no seu Google Calendar.
+            O site consulta a agenda do stúdio e mostra somente horários livres. Ao reservar, o horário é bloqueado para evitar duas marcações no mesmo período.
           </p>
-          
+
           <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-glass); padding: 18px; border-radius: 16px; margin-bottom: 20px;">
-            <div style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;">Local do Atendimento:</div>
+            <div style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;">Funcionamento</div>
+            <div style="font-size: 0.9rem; color: #fff; margin-top: 4px;">Terça a sábado · 9h às 18h</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Domingo e segunda: fechado. A agenda é atualizada automaticamente enquanto esta página estiver aberta.</div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--border-glass); padding: 18px; border-radius: 16px; margin-bottom: 20px;">
+            <div style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;">Local do Atendimento</div>
             <div style="font-size: 0.9rem; color: #fff; margin-top: 4px;">Isis Avelar Stúdio — Beauty Concept</div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">Rua Antônio Pagari, 1 · Enseada Jacaraípe<br>Serra – ES · CEP 29175-337</div>
           </div>
         </div>
 
         <div style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">
-          Dúvidas no agendamento? <a href="https://wa.me/5527992894284" target="_blank" style="color: var(--accent-gold); text-decoration: underline;">Fale direto no WhatsApp</a>
+          Precisa falar com a Isis? <a href="https://wa.me/5527992894284" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); text-decoration: underline;">Abrir WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1976,73 +2073,235 @@
   <script>
     if (window.lucide) lucide.createIcons();
 
-    // Dates follow the salon's timezone, regardless of the visitor's location.
+    // ============================================================
+    // LIVE GOOGLE CALENDAR AVAILABILITY
+    // After deploying Code.gs as a Google Apps Script Web App, paste
+    // the /exec deployment URL below.
+    // ============================================================
+    const SCHEDULER_API_URL = 'https://script.google.com/macros/s/AKfycbzS0Aw3ElmkphIk_npc256nBf3rkSKWfb12kpLcb11AXXxiBTjjI6OBXB-qv07SxNMy/exec';
     const bookingDateInput = document.getElementById('bookingDate');
-    const salonToday = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Sao_Paulo', year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-    bookingDateInput.min = salonToday;
-    const nextOpenDay = new Date(salonToday + 'T12:00:00');
-    nextOpenDay.setDate(nextOpenDay.getDate() + 1);
-    while ([0,1].includes(nextOpenDay.getDay())) nextOpenDay.setDate(nextOpenDay.getDate() + 1);
-    bookingDateInput.value = `${nextOpenDay.getFullYear()}-${String(nextOpenDay.getMonth()+1).padStart(2,'0')}-${String(nextOpenDay.getDate()).padStart(2,'0')}`;
-    function validateBookingDate() {
-      const value = bookingDateInput.value;
-      const closed = value && [0,1].includes(new Date(value + 'T12:00:00').getDay());
-      bookingDateInput.setCustomValidity(closed ? 'O salão atende de terça a sábado. Escolha um desses dias.' : value && value < salonToday ? 'Escolha uma data a partir de hoje.' : '');
-      return bookingDateInput.checkValidity();
-    }
-    bookingDateInput.addEventListener('change', () => {validateBookingDate();bookingDateInput.reportValidity();});
+    const serviceSelect = document.getElementById('serviceSelect');
+    const availableDaysEl = document.getElementById('availableDays');
+    const timeGridEl = document.getElementById('timeGrid');
+    const bookingSubmit = document.getElementById('bookingSubmit');
+    const bookingStatus = document.getElementById('bookingStatus');
 
-    // Selected Time Slot Handler
-    let selectedTime = "14:00";
-    function selectTimeSlot(el) {
-      document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-      el.classList.add('selected');
-      selectedTime = el.innerText;
+    let availabilityDays = [];
+    let selectedDate = '';
+    let selectedTime = '';
+    let availabilityRefreshTimer = null;
+
+    function schedulerConfigured() {
+      return /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/.test(SCHEDULER_API_URL);
     }
 
-    // Google Calendar Event Integration & WhatsApp Agendamento
-    function handleBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById('clientName').value;
-      const phone = document.getElementById('clientPhone').value;
-      const service = document.getElementById('serviceSelect').value;
-      const dateVal = document.getElementById('bookingDate').value;
+    function setBookingStatus(message, type = '') {
+      bookingStatus.textContent = message || '';
+      bookingStatus.className = 'booking-status' + (message ? ' show' : '') + (type ? ' ' + type : '');
+    }
 
-      if (!validateBookingDate()) { bookingDateInput.reportValidity(); return; }
-      if (!dateVal || !selectedTime) {
-        alert("Por favor, selecione uma data e horário válidos.");
+    function setScheduleMessage(container, message, isError = false) {
+      container.innerHTML = '';
+      const box = document.createElement('div');
+      box.className = 'schedule-message' + (isError ? ' error' : '');
+      box.textContent = message;
+      container.appendChild(box);
+    }
+
+    function jsonpRequest(params) {
+      return new Promise((resolve, reject) => {
+        if (!schedulerConfigured()) {
+          reject(new Error('Agenda ainda não conectada ao Google Calendar.'));
+          return;
+        }
+
+        const callbackName = '__isisSchedule_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+        const script = document.createElement('script');
+        const timeout = setTimeout(() => cleanup(new Error('A agenda demorou demais para responder.')), 12000);
+
+        function cleanup(error, data) {
+          clearTimeout(timeout);
+          try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+          error ? reject(error) : resolve(data);
+        }
+
+        window[callbackName] = data => cleanup(null, data);
+        script.onerror = () => cleanup(new Error('Não foi possível conectar à agenda.'));
+
+        const query = new URLSearchParams({
+          ...params,
+          callback: callbackName,
+          ts: String(Date.now())
+        });
+        script.src = SCHEDULER_API_URL + (SCHEDULER_API_URL.includes('?') ? '&' : '?') + query.toString();
+        document.head.appendChild(script);
+      });
+    }
+
+    function formatAvailableDay(dateText) {
+      const [year, month, day] = dateText.split('-').map(Number);
+      const date = new Date(Date.UTC(year, month - 1, day, 12));
+      return {
+        week: new Intl.DateTimeFormat('pt-BR', { weekday: 'short', timeZone: 'UTC' }).format(date).replace('.', ''),
+        date: new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'UTC' }).format(date)
+      };
+    }
+
+    async function loadAvailability(options = {}) {
+      const preserveSelection = options.preserveSelection !== false;
+      const previousDate = preserveSelection ? selectedDate : '';
+      const previousTime = preserveSelection ? selectedTime : '';
+
+      bookingSubmit.disabled = true;
+      setBookingStatus('');
+      setScheduleMessage(availableDaysEl, 'Atualizando dias disponíveis…');
+      setScheduleMessage(timeGridEl, 'Aguarde a atualização da agenda.');
+
+      if (!schedulerConfigured()) {
+        setScheduleMessage(availableDaysEl, 'Falta conectar esta página ao Google Apps Script. Veja o arquivo SETUP.md incluído com a atualização.', true);
+        setScheduleMessage(timeGridEl, 'A agenda ficará disponível assim que o endereço do backend for configurado.', true);
         return;
       }
 
-      // Format ISO dates for Google Calendar API URL
-      const dateParts = dateVal.split('-');
-      const hourParts = selectedTime.split(':');
-      
-      const startDate = new Date(`${dateVal}T${selectedTime}:00-03:00`);
-      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hr duration
+      try {
+        const data = await jsonpRequest({
+          action: 'availability',
+          service: serviceSelect.value,
+          days: '45'
+        });
 
-      function formatGCalDate(d) {
-        return d.toISOString().replace(/-|:|\.\d\d\d/g, "");
+        if (!data || !data.ok) throw new Error((data && data.message) || 'Não foi possível carregar a agenda.');
+        availabilityDays = Array.isArray(data.days) ? data.days : [];
+        renderAvailableDays(previousDate, previousTime);
+      } catch (err) {
+        setScheduleMessage(availableDaysEl, err.message || 'Não foi possível carregar os dias disponíveis.', true);
+        setScheduleMessage(timeGridEl, 'Tente novamente em alguns instantes.', true);
+      }
+    }
+
+    function renderAvailableDays(preferredDate = '', preferredTime = '') {
+      availableDaysEl.innerHTML = '';
+      selectedDate = '';
+      selectedTime = '';
+      bookingDateInput.value = '';
+      bookingSubmit.disabled = true;
+
+      if (!availabilityDays.length) {
+        setScheduleMessage(availableDaysEl, 'No momento não há horários livres nos próximos dias.');
+        setScheduleMessage(timeGridEl, 'Nenhum horário disponível.');
+        return;
       }
 
-      const gcalStart = formatGCalDate(startDate);
-      const gcalEnd = formatGCalDate(endDate);
+      availabilityDays.forEach(day => {
+        const label = formatAvailableDay(day.date);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'available-day';
+        button.dataset.date = day.date;
+        button.setAttribute('aria-label', `${label.week}, ${label.date}, ${day.slots.length} horários disponíveis`);
+        button.innerHTML = `<span class="day-week">${label.week}</span><span class="day-date">${label.date}</span><span class="day-count">${day.slots.length} horário${day.slots.length === 1 ? '' : 's'}</span>`;
+        button.addEventListener('click', () => selectAvailableDay(day.date));
+        availableDaysEl.appendChild(button);
+      });
 
-      const title = encodeURIComponent(`A confirmar — Isis Avelar Stúdio: ${service}`);
-      const details = encodeURIComponent(`Agendamento de ${name}\nTelefone: ${phone}\nServiço: ${service}\nLocal: Isis Avelar Stúdio`);
-      const location = encodeURIComponent("Isis Avelar Stúdio — Rua Antônio Pagari, 1, Enseada Jacaraípe, Serra - ES, 29175-337, Brasil");
-
-      const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gcalStart}/${gcalEnd}&details=${details}&location=${location}`;
-
-      // Open Google Calendar link in new tab
-      window.open(gcalUrl, '_blank');
-
-      // WhatsApp confirmation link
-      const waMsg = `Olá Isis! Gostaria de confirmar a disponibilidade deste horário:\n\n*Cliente:* ${name}\n*Serviço:* ${service}\n*Data:* ${dateVal} às ${selectedTime}\n*Telefone:* ${phone}\n\nAguardo sua confirmação. Obrigada!`;
-      setTimeout(() => {
-        window.open(`https://wa.me/5527992894284?text=${encodeURIComponent(waMsg)}`, '_blank');
-      }, 800);
+      const firstDate = availabilityDays.some(day => day.date === preferredDate) ? preferredDate : availabilityDays[0].date;
+      selectAvailableDay(firstDate, preferredTime);
     }
+
+    function selectAvailableDay(dateText, preferredTime = '') {
+      const day = availabilityDays.find(item => item.date === dateText);
+      if (!day) return;
+
+      selectedDate = dateText;
+      selectedTime = '';
+      bookingDateInput.value = dateText;
+
+      document.querySelectorAll('.available-day').forEach(button => {
+        const active = button.dataset.date === dateText;
+        button.classList.toggle('selected', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      timeGridEl.innerHTML = '';
+      day.slots.forEach(time => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'time-slot';
+        button.dataset.time = time;
+        button.textContent = time;
+        button.addEventListener('click', () => selectTimeSlot(button));
+        timeGridEl.appendChild(button);
+      });
+
+      const preferredButton = preferredTime ? timeGridEl.querySelector(`[data-time="${CSS.escape(preferredTime)}"]`) : null;
+      if (preferredButton) selectTimeSlot(preferredButton);
+      bookingSubmit.disabled = !selectedTime;
+    }
+
+    function selectTimeSlot(el) {
+      document.querySelectorAll('#timeGrid .time-slot').forEach(slot => slot.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedTime = el.dataset.time || el.textContent.trim();
+      bookingSubmit.disabled = !(selectedDate && selectedTime);
+      setBookingStatus('');
+    }
+
+    async function handleBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const phone = document.getElementById('clientPhone').value.trim();
+      const service = serviceSelect.value;
+
+      if (!name || !phone || !selectedDate || !selectedTime) {
+        setBookingStatus('Preencha seus dados e escolha um dos horários disponíveis.', 'error');
+        return;
+      }
+
+      bookingSubmit.disabled = true;
+      const originalText = bookingSubmit.innerHTML;
+      bookingSubmit.innerHTML = '<span class="loading-ring" style="width:18px;height:18px;"></span> Reservando…';
+      setBookingStatus('Confirmando o horário diretamente na agenda…');
+
+      try {
+        const data = await jsonpRequest({
+          action: 'book',
+          name,
+          phone,
+          service,
+          date: selectedDate,
+          time: selectedTime
+        });
+
+        if (!data || !data.ok) {
+          if (data && data.code === 'slot_taken') {
+            setBookingStatus(data.message, 'error');
+            await loadAvailability({ preserveSelection: false });
+            return;
+          }
+          throw new Error((data && data.message) || 'Não foi possível concluir a reserva.');
+        }
+
+        const bookedDate = selectedDate;
+        const bookedTime = selectedTime;
+        const label = formatAvailableDay(bookedDate);
+        setBookingStatus(`Reserva recebida para ${label.date} às ${bookedTime}. O horário já foi bloqueado na agenda do stúdio.`, 'success');
+
+        // Refresh immediately so this reservation disappears for the next visitor.
+        await loadAvailability({ preserveSelection: false });
+        setBookingStatus(`Reserva recebida para ${label.date} às ${bookedTime}. O horário já foi bloqueado na agenda do stúdio.`, 'success');
+      } catch (err) {
+        setBookingStatus(err.message || 'Não foi possível concluir a reserva. Tente novamente.', 'error');
+      } finally {
+        bookingSubmit.innerHTML = originalText;
+        bookingSubmit.disabled = !(selectedDate && selectedTime);
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    serviceSelect.addEventListener('change', () => loadAvailability({ preserveSelection: false }));
+    loadAvailability({ preserveSelection: false });
+    availabilityRefreshTimer = setInterval(() => loadAvailability({ preserveSelection: true }), 60000);
 
     // Try audible autoplay, falling back to the first permitted interaction.
     const bgAudio = document.getElementById('bgAudio');
