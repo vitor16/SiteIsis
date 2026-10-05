@@ -2069,7 +2069,9 @@
   <script src="hair-studio.js"></script>
   <script src="nail-studio.js"></script>
   <script src="portfolio.js"></script>
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="nail-backend.js"></script>
+<script>
     if (window.lucide) lucide.createIcons();
 
     // ============================================================
@@ -2531,21 +2533,15 @@
     // NAIL & VIBE DAY SIMULATOR TECH
     // =========================================================
     const polishPaletteDefault = [{"name":"Colorama Gabriele","hex":"#c41224","enabled":true},{"name":"Colorama Tapete Vermelho","hex":"#b31217","enabled":true},{"name":"Colorama Vermelho Ivete","hex":"#990f1d","enabled":true},{"name":"Colorama Paixão","hex":"#75141e","enabled":true},{"name":"Colorama Melancia","hex":"#e83344","enabled":true},{"name":"Colorama Fini Última Fini","hex":"#e02838","enabled":true},{"name":"Risqué KitKat Mania","hex":"#a91b29","enabled":true},{"name":"Colorama Fini Beijos de Fini","hex":"#dc1868","enabled":true},{"name":"Colorama Toda Barbiezinha","hex":"#f398b5","enabled":true},{"name":"Colorama Boneca","hex":"#e4a8b7","enabled":true},{"name":"Colorama Rosa de Vergonha","hex":"#db5288","enabled":true},{"name":"Colorama Puro Glamour","hex":"#d42065","enabled":true},{"name":"Colorama Rosa Antigo","hex":"#9d5d6a","enabled":true},{"name":"Colorama Algodão Doce","hex":"#f6d2da","enabled":true},{"name":"Colorama Pétala","hex":"#f7dde5","enabled":true},{"name":"Risqué Rose Bombom","hex":"#f0b5be","enabled":true},{"name":"Risqué Amor à Primeira Mordida","hex":"#be1d58","enabled":true},{"name":"Risqué Nude","hex":"#c9a595","enabled":true},{"name":"Risqué Pó de Arroz","hex":"#eedcd5","enabled":true},{"name":"Colorama Chic Bege","hex":"#c3a492","enabled":true},{"name":"Colorama Nude 2.0","hex":"#8c7f7a","enabled":true},{"name":"Colorama Nude 3.0","hex":"#9e7b68","enabled":true},{"name":"Colorama Nude 7.0","hex":"#7c5132","enabled":true},{"name":"Risqué Chik Pop","hex":"#bf9b88","enabled":true},{"name":"Risqué Cappuccino","hex":"#826359","enabled":true},{"name":"Risqué Bali","hex":"#7d595e","enabled":true},{"name":"Risqué Astral","hex":"#b4858d","enabled":true},{"name":"Risqué Energia","hex":"#995c64","enabled":true},{"name":"Risqué Terracota que Provoca","hex":"#8b4a3a","enabled":true},{"name":"Risqué Meu Wafervorito","hex":"#ded5b8","enabled":true},{"name":"Risqué Só Mais Um Pedacinho","hex":"#8e5428","enabled":true},{"name":"Risqué Vem Kit Kero","hex":"#6c4b37","enabled":true},{"name":"Risqué Choco Cósmico","hex":"#4a2824","enabled":true},{"name":"Risqué Crocante na Medida","hex":"#6d7649","enabled":true},{"name":"Risqué O Break Perfeito Existe","hex":"#7f5e9d","enabled":true},{"name":"Risqué Eu Mereço Esse Glow","hex":"#19586b","enabled":true},{"name":"Colorama Retrô Zazá","hex":"#b3bfdb","enabled":true},{"name":"Risqué Gota dos Anjos","hex":"#d9cfba","enabled":true},{"name":"Colorama Black","hex":"#1a1a1a","enabled":true}];
-    const polishPalette = (() => {
-      try {
-        const saved = JSON.parse(localStorage.getItem('isis_nail_palette') || 'null');
-        if (Array.isArray(saved) && saved.length) return saved.filter(p => p && p.name && /^#[0-9a-fA-F]{6}$/.test(p.hex) && p.enabled !== false);
-      } catch (e) {}
-      return polishPaletteDefault;
-    })();
-
-    let activePolish = polishPalette[0];
+    let polishPalette = [];
+    let activePolish = null;
     let currentNailShape = 'round';
     function setNailShape(shape) {
       currentNailShape = shape;
       document.querySelectorAll('[data-nail-shape]').forEach(b => {b.classList.toggle('active',b.dataset.nailShape===shape);b.setAttribute('aria-pressed',b.dataset.nailShape===shape);});
     }
     function applyPolishColor(hex, name='Personalizada') {
+      if (!hex) return;
       activePolish = {hex,name};
       document.getElementById('polishHexLabel').textContent=hex.toUpperCase();
       document.getElementById('nailColorName').textContent=name;
@@ -2553,24 +2549,32 @@
       document.querySelectorAll('#polishSwatches button').forEach(b=>{const selected=b.dataset.hex===hex;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',selected);});
       NailStudio.render(hex,Number(document.getElementById('nailIntensity').value)/100);
     }
-    polishPalette.forEach(p=>{
-      const btn=document.createElement('button');btn.type='button';btn.className='swatch';btn.dataset.hex=p.hex;
-      btn.title=p.name;btn.setAttribute('aria-label',p.name);btn.style.setProperty('--polish',p.hex);
-      btn.onclick=()=>applyPolishColor(p.hex,p.name);document.getElementById('polishSwatches').appendChild(btn);
-    });
+    async function initNailPalette() {
+      polishPalette = await window.NailBackend.getPublicPalette(polishPaletteDefault);
+      activePolish = polishPalette[0] || polishPaletteDefault[0];
+      const swatches=document.getElementById('polishSwatches');
+      swatches.innerHTML='';
+      polishPalette.forEach(p=>{
+        const btn=document.createElement('button');btn.type='button';btn.className='swatch';btn.dataset.hex=p.hex;
+        btn.title=p.name;btn.setAttribute('aria-label',p.name);btn.style.setProperty('--polish',p.hex);
+        btn.onclick=()=>applyPolishColor(p.hex,p.name);swatches.appendChild(btn);
+      });
+      applyPolishColor(activePolish.hex,activePolish.name);
+    }
     document.getElementById('customPolishPicker').addEventListener('input',e=>applyPolishColor(e.target.value));
-    document.getElementById('nailIntensity').addEventListener('input',e=>{document.getElementById('nailIntensityLabel').textContent=e.target.value+'%';NailStudio.render(activePolish.hex,e.target.value/100);});
+    document.getElementById('nailIntensity').addEventListener('input',e=>{document.getElementById('nailIntensityLabel').textContent=e.target.value+'%';if(activePolish) NailStudio.render(activePolish.hex,e.target.value/100);});
     document.getElementById('nailPhotoInput').addEventListener('change',e=>{const file=e.target.files[0];e.target.value='';if(file)NailStudio.upload(file);});
     function agendarNailStudio() {
+      if (!activePolish) return;
       const msg=`Olá Isis! Testei o esmalte ${activePolish.name} (${activePolish.hex}) no site. Gostaria de agendar para fazer as unhas em formato ${currentNailShape==='square'?'quadrado':'redondo'}. Podemos combinar um horário?`;
       window.open(`https://wa.me/5527992894284?text=${encodeURIComponent(msg)}`,'_blank','noopener');
     }
-    applyPolishColor(activePolish.hex,activePolish.name);
     const nailObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){NailStudio.start();nailObserver.disconnect();}},{rootMargin:'150px'});
     nailObserver.observe(document.getElementById('simulador-vibe'));
+    initNailPalette().catch(err=>console.error('[NailSimulator] Palette initialization failed:',err));
   </script>
 <script src="photo-camera.js"></script>
 </body>
 </html>
-
+/* test */
 
