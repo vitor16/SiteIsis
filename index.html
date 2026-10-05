@@ -2572,9 +2572,42 @@
     const nailObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){NailStudio.start();nailObserver.disconnect();}},{rootMargin:'150px'});
     nailObserver.observe(document.getElementById('simulador-vibe'));
     initNailPalette().catch(err=>console.error('[NailSimulator] Palette initialization failed:',err));
+    
+    // =========================================================
+    // HIDDEN ADMIN SHORTCUT — 10 CLICKS ON THE ISIS LOGO
+    // =========================================================
+
+    (() => {
+      const logo = document.querySelector('.logo-container');
+
+      if (!logo) return;
+
+      let logoClickCount = 0;
+      let logoClickTimer = null;
+
+      logo.addEventListener('click', event => {
+        event.preventDefault();
+
+        logoClickCount++;
+
+        clearTimeout(logoClickTimer);
+
+        logoClickTimer = setTimeout(() => {
+          logoClickCount = 0;
+        }, 3000);
+
+        if (logoClickCount >= 10) {
+          logoClickCount = 0;
+          clearTimeout(logoClickTimer);
+
+          window.location.href = '/nail-admin.html';
+        }
+      });
+    })();
+
   </script>
-<script src="photo-camera.js"></script>
+
+  <script src="photo-camera.js"></script>
 </body>
 </html>
-/* test */
 
