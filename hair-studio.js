@@ -46,7 +46,7 @@ window.HairStudio = (() => {
       if (!previewPromise) previewPromise = script('assets/model-previews.js').catch(e => {previewPromise = null;throw e;});
       await previewPromise;return window.IsisModelPreviews[key];
     }
-    return `model_${key}.jpg`;
+    return `assets/models/model_${key}.jpg`;
   }
   async function analyze(img) {
     const ai = await engine();

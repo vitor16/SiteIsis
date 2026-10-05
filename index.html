@@ -1512,7 +1512,7 @@
   <header>
     <a href="#" class="logo-container">
       <div class="logo-badge">
-        <img src="logo.jpeg" alt="Isis Avelar Stúdio">
+        <img src="assets/images/logo.jpeg" alt="Isis Avelar Stúdio">
         <div class="logo-ring"></div>
       </div>
       <div class="logo-text-group">
@@ -1585,7 +1585,7 @@
         <div class="hair-viewport-box">
           <div class="hair-canvas-wrapper" id="hairViewport">
             <!-- 1. Real Model Photo Base Layer -->
-            <img id="mainHairPhoto" src="model_waves.jpg" alt="Modelo Capilar" class="hair-photo-layer">
+            <img id="mainHairPhoto" src="assets/models/model_waves.jpg" alt="Modelo Capilar" class="hair-photo-layer">
             
             <canvas id="hairResultCanvas" aria-label="Prévia da cor aplicada ao cabelo"></canvas>
             <div class="hair-processing" id="hairProcessing" hidden><span class="loading-ring"></span><span>Identificando seu cabelo…</span></div>
@@ -1638,19 +1638,19 @@
         <div id="modelsPickerBox">
           <div class="model-selector-row">
             <button class="model-card-btn active" onclick="switchRealModel('waves', this)">
-              <img src="model_waves.jpg" class="model-card-thumb" alt="Ondulado">
+              <img src="assets/models/model_waves.jpg" class="model-card-thumb" alt="Ondulado">
               <span>Ondulado Longo</span>
             </button>
             <button class="model-card-btn" onclick="switchRealModel('straight', this)">
-              <img src="model_straight.jpg" class="model-card-thumb" alt="Liso">
+              <img src="assets/models/model_straight.jpg" class="model-card-thumb" alt="Liso">
               <span>Liso Espelhado</span>
             </button>
             <button class="model-card-btn" onclick="switchRealModel('curls', this)">
-              <img src="model_curls.jpg" class="model-card-thumb" alt="Cachos">
+              <img src="assets/models/model_curls.jpg" class="model-card-thumb" alt="Cachos">
               <span>Cachos Volume</span>
             </button>
             <button class="model-card-btn" onclick="switchRealModel('bob', this)">
-              <img src="model_bob.jpg" class="model-card-thumb" alt="Bob">
+              <img src="assets/models/model_bob.jpg" class="model-card-thumb" alt="Bob">
               <span>Corte Bob Chic</span>
             </button>
           </div>
@@ -1890,17 +1890,16 @@
           <button type="button" class="hair-btn-tool nail-compare" id="nailCompare" aria-pressed="false" disabled onclick="NailStudio.toggleOriginal()">Ver original</button>
         </div>
         <input type="file" id="nailPhotoInput" accept="image/jpeg,image/png,image/webp" hidden>
-        <div class="nail-model-picker" id="nailModels"><button type="button" class="model-card-btn active" data-nail-model="classic" aria-pressed="true" onclick="NailStudio.selectModel('classic')"><img src="assets/nails/hand-classic.png" alt="" class="model-card-thumb"><span>Clássica</span></button><button type="button" class="model-card-btn" data-nail-model="delicate" aria-pressed="false" onclick="NailStudio.selectModel('delicate')"><img src="assets/nails/hand-delicate.png" alt="" class="model-card-thumb"><span>Delicada</span></button><button type="button" class="model-card-btn" data-nail-model="mauve" aria-pressed="false" onclick="NailStudio.selectModel('mauve')"><img src="assets/nails/hand-mauve.png" alt="" class="model-card-thumb"><span>Malva</span></button><button type="button" class="model-card-btn" data-nail-model="white" aria-pressed="false" onclick="NailStudio.selectModel('white')"><img src="assets/nails/hand-white.png" alt="" class="model-card-thumb"><span>Branco & dourado</span></button></div>
+        <div class="nail-model-picker" id="nailModels"><button type="button" class="model-card-btn active" data-nail-model="classic" aria-pressed="true" onclick="NailStudio.selectModel('classic')"><img src="assets/nails/hand-classic.png" alt="" class="model-card-thumb"><span>Clássica</span></button><button type="button" class="model-card-btn" data-nail-model="delicate" aria-pressed="false" onclick="NailStudio.selectModel('delicate')"><img src="assets/nails/hand-delicate.png" alt="" class="model-card-thumb"><span>Delicada</span></button><button type="button" class="model-card-btn" data-nail-model="mauve" aria-pressed="false" onclick="NailStudio.selectModel('mauve')"><img src="assets/nails/hand-mauve.png" alt="" class="model-card-thumb"><span>Malva</span></button><button type="button" class="model-card-btn" data-nail-model="white" aria-pressed="false" onclick="NailStudio.selectModel('white')"><img src="assets/nails/hand-white.png" alt="" class="model-card-thumb"><span>Branco & dourado</span></button><button type="button" class="model-card-btn" data-nail-model="long" aria-pressed="false" onclick="NailStudio.selectModel('long')"><img src="assets/nails/hand-long.png" alt="" class="model-card-thumb"><span>Unhas Longas</span></button><button type="button" class="model-card-btn" data-nail-model="short" aria-pressed="false" onclick="NailStudio.selectModel('short')"><img src="assets/nails/hand-short.png" alt="" class="model-card-thumb"><span>Unhas Curtas</span></button></div>
         <p id="nailFeedback" class="hair-feedback" role="status" aria-live="polite">Escolha sua cor favorita para começar.</p>
         <div class="hair-actions"><button type="button" class="hair-btn-tool" id="nailReplace" hidden onclick="document.getElementById('nailPhotoInput').click()">Trocar foto</button><button type="button" class="hair-btn-tool" onclick="PhotoCamera.open('nail')">Usar câmera</button><button type="button" class="hair-btn-tool" id="nailRetry" hidden onclick="NailStudio.retry()">Tentar novamente</button><button type="button" class="hair-btn-tool" id="nailDownload" disabled onclick="NailStudio.download()">Salvar prévia ↓</button></div>
       </div>
       <div class="studio-controls nail-photo-controls">
         <span class="eyebrow">NAIL STUDIO</span><h3>Um toque de cor. Seu estilo.</h3>
         <p class="nail-description">A IA identifica as unhas para aplicar o esmalte, mantendo a textura e os reflexos da foto.</p>
-        <div class="control-group"><label for="customPolishPicker">Escolha o esmalte <span id="polishHexLabel">#D50000</span></label><div class="color-swatches" id="polishSwatches" aria-label="Cores de esmalte"></div><p id="nailColorName" class="nail-color-name">Vermelho Sedução</p><div class="custom-color-picker"><input type="color" id="customPolishPicker" value="#d50000"><span>Ou crie sua própria cor</span></div></div>
+        <div class="control-group"><label for="customPolishPicker">Escolha o esmalte <span id="polishHexLabel">#C41224</span></label><div class="color-swatches" id="polishSwatches" aria-label="Cores de esmalte"></div><p id="nailColorName" class="nail-color-name">Colorama Gabriele</p><div class="custom-color-picker"><input type="color" id="customPolishPicker" value="#c41224"><span>Ou crie sua própria cor</span></div></div>
         <div class="control-group"><label for="nailIntensity">Intensidade <span id="nailIntensityLabel">85%</span></label><input type="range" id="nailIntensity" class="custom-range" min="20" max="100" value="85"></div>
-        <div class="nail-preferences"><h4>Como você quer fazer no salão?</h4><p>A foto simula a cor. Comprimento e formato ficam registrados no seu pedido.</p>
-          <div class="control-group"><label>Comprimento desejado</label><div class="nail-option-grid"><button type="button" class="nail-option-btn active" aria-pressed="true" data-nail-size="short" onclick="setNailSize('short')">Pequena</button><button type="button" class="nail-option-btn" aria-pressed="false" data-nail-size="long" onclick="setNailSize('long')">Grande</button></div></div>
+        <div class="nail-preferences"><h4>Como você quer fazer no salão?</h4><p>A foto simula a cor. O formato fica registrado no seu pedido.</p>
           <div class="control-group"><label>Formato desejado</label><div class="nail-option-grid"><button type="button" class="nail-option-btn" aria-pressed="false" data-nail-shape="square" onclick="setNailShape('square')">Quadrada</button><button type="button" class="nail-option-btn active" aria-pressed="true" data-nail-shape="round" onclick="setNailShape('round')">Redonda</button></div></div>
         </div>
         <p class="simulation-note">Prévia ilustrativa. Luz, esmalte original e posição da mão podem alterar a detecção e a cor.</p>
@@ -2392,22 +2391,22 @@
     // =========================================================
     const realModels = {
       waves: {
-        file: "model_waves.jpg",
+        file: "assets/models/model_waves.jpg",
         name: "Ondulado Longo & Balayage",
         cutName: "Ondulado Glamour"
       },
       straight: {
-        file: "model_straight.jpg",
+        file: "assets/models/model_straight.jpg",
         name: "Liso Espelhado & Silky",
         cutName: "Liso Espelhado"
       },
       curls: {
-        file: "model_curls.jpg",
+        file: "assets/models/model_curls.jpg",
         name: "Cachos Volumosos & Definidos",
         cutName: "Cachos com Volume"
       },
       bob: {
-        file: "model_bob.jpg",
+        file: "assets/models/model_bob.jpg",
         name: "Corte Bob Elegance & French",
         cutName: "Short Bob Moderno"
       }
@@ -2532,26 +2531,56 @@
     // NAIL & VIBE DAY SIMULATOR TECH
     // =========================================================
     const polishPalette = [
-      { name: "Vermelho Sedução", hex: "#d50000" },
-      { name: "Vinho Marsala", hex: "#7a0c1e" },
-      { name: "Rosa Quartz", hex: "#e28d88" },
-      { name: "Nude Clássico", hex: "#dbb595" },
-      { name: "Ouro Imperial", hex: "#e5b869" },
-      { name: "Preto Vinil", hex: "#111111" },
-      { name: "Branco Renda", hex: "#f7f3f0" },
-      { name: "Lavanda Chic", hex: "#8b68c6" },
-      { name: "Azul Royal", hex: "#2979ff" },
-      { name: "Verde Esmeralda", hex: "#00c853" },
-      { name: "Terracota Sun", hex: "#ff6d00" },
-      { name: "Rosa Bebê", hex: "#ffb7c5" }
+      // Vermelhos & Clássicos (11093.jpg, 11094.jpg, 11099.jpg)
+      { name: "Colorama Gabriele", hex: "#c41224" },
+      { name: "Colorama Tapete Vermelho", hex: "#b31217" },
+      { name: "Colorama Vermelho Ivete", hex: "#990f1d" },
+      { name: "Colorama Paixão", hex: "#75141e" },
+      { name: "Colorama Melancia", hex: "#e83344" },
+      { name: "Colorama Fini Última Fini", hex: "#e02838" },
+      { name: "Risqué KitKat Mania", hex: "#a91b29" },
+
+      // Rosas & Românticos (11094.jpg, 11096.jpg, 11097.jpg, 11100.jpg, 11102.jpg)
+      { name: "Colorama Fini Beijos de Fini", hex: "#dc1868" },
+      { name: "Colorama Toda Barbiezinha", hex: "#f398b5" },
+      { name: "Colorama Boneca", hex: "#e4a8b7" },
+      { name: "Colorama Rosa de Vergonha", hex: "#db5288" },
+      { name: "Colorama Puro Glamour", hex: "#d42065" },
+      { name: "Colorama Rosa Antigo", hex: "#9d5d6a" },
+      { name: "Colorama Algodão Doce", hex: "#f6d2da" },
+      { name: "Colorama Pétala", hex: "#f7dde5" },
+      { name: "Risqué Rose Bombom", hex: "#f0b5be" },
+      { name: "Risqué Amor à Primeira Mordida", hex: "#be1d58" },
+
+      // Nudes & Neutros Elegantes (11099.jpg, 11100.jpg, 11101.jpg)
+      { name: "Risqué Nude", hex: "#c9a595" },
+      { name: "Risqué Pó de Arroz", hex: "#eedcd5" },
+      { name: "Colorama Chic Bege", hex: "#c3a492" },
+      { name: "Colorama Nude 2.0", hex: "#8c7f7a" },
+      { name: "Colorama Nude 3.0", hex: "#9e7b68" },
+      { name: "Colorama Nude 7.0", hex: "#7c5132" },
+      { name: "Risqué Chik Pop", hex: "#bf9b88" },
+      { name: "Risqué Cappuccino", hex: "#826359" },
+      { name: "Risqué Bali", hex: "#7d595e" },
+      { name: "Risqué Astral", hex: "#b4858d" },
+      { name: "Risqué Energia", hex: "#995c64" },
+      { name: "Risqué Terracota que Provoca", hex: "#8b4a3a" },
+
+      // Coleção Risqué KitKat & Especiais (11098.jpg, 11097.jpg, 11100.jpg, 11094.jpg)
+      { name: "Risqué Meu Wafervorito", hex: "#ded5b8" },
+      { name: "Risqué Só Mais Um Pedacinho", hex: "#8e5428" },
+      { name: "Risqué Vem Kit Kero", hex: "#6c4b37" },
+      { name: "Risqué Choco Cósmico", hex: "#4a2824" },
+      { name: "Risqué Crocante na Medida", hex: "#6d7649" },
+      { name: "Risqué O Break Perfeito Existe", hex: "#7f5e9d" },
+      { name: "Risqué Eu Mereço Esse Glow", hex: "#19586b" },
+      { name: "Colorama Retrô Zazá", hex: "#b3bfdb" },
+      { name: "Risqué Gota dos Anjos", hex: "#d9cfba" },
+      { name: "Colorama Black", hex: "#1a1a1a" }
     ];
 
     let activePolish = polishPalette[0];
-    let currentNailSize = 'short', currentNailShape = 'round';
-    function setNailSize(size) {
-      currentNailSize = size;
-      document.querySelectorAll('[data-nail-size]').forEach(b => {b.classList.toggle('active',b.dataset.nailSize===size);b.setAttribute('aria-pressed',b.dataset.nailSize===size);});
-    }
+    let currentNailShape = 'round';
     function setNailShape(shape) {
       currentNailShape = shape;
       document.querySelectorAll('[data-nail-shape]').forEach(b => {b.classList.toggle('active',b.dataset.nailShape===shape);b.setAttribute('aria-pressed',b.dataset.nailShape===shape);});
@@ -2573,7 +2602,7 @@
     document.getElementById('nailIntensity').addEventListener('input',e=>{document.getElementById('nailIntensityLabel').textContent=e.target.value+'%';NailStudio.render(activePolish.hex,e.target.value/100);});
     document.getElementById('nailPhotoInput').addEventListener('change',e=>{const file=e.target.files[0];e.target.value='';if(file)NailStudio.upload(file);});
     function agendarNailStudio() {
-      const msg=`Olá Isis! Testei o esmalte ${activePolish.name} (${activePolish.hex}) no site. Gostaria de unhas ${currentNailSize==='long'?'grandes':'pequenas'}, em formato ${currentNailShape==='square'?'quadrado':'redondo'}. Podemos combinar um horário?`;
+      const msg=`Olá Isis! Testei o esmalte ${activePolish.name} (${activePolish.hex}) no site. Gostaria de agendar para fazer as unhas em formato ${currentNailShape==='square'?'quadrado':'redondo'}. Podemos combinar um horário?`;
       window.open(`https://wa.me/5527992894284?text=${encodeURIComponent(msg)}`,'_blank','noopener');
     }
     applyPolishColor(activePolish.hex,activePolish.name);

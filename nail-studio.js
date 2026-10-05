@@ -3,7 +3,7 @@ window.NailStudio = (() => {
   const $=id=>document.getElementById(id), cache=new Map();
   let mode='model', model='classic', uploaded, source, active, serial=0, uploadSerial=0;
   let worker, workerURL, pending=new Map(), job=0, previewsPromise, started=false;
-  let hex='#d50000', intensity=.85, original=false, frame;
+  let hex='#c41224', intensity=.85, original=false, frame;
   const clamp=v=>Math.max(0,Math.min(1,v));
   function message(text,error=false){$('nailFeedback').textContent=text;$('nailFeedback').classList.toggle('is-error',error);}
   function busy(value){$('nailProcessing').hidden=!value;$('nailViewport').setAttribute('aria-busy',value);$('nailDownload').disabled=value||!active;$('nailCompare').disabled=value||!active;}
