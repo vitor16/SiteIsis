@@ -303,6 +303,37 @@
     .package-badge { position:absolute; top:-14px; right:24px; background:linear-gradient(135deg,var(--accent-gold) 0%,#b88d3e 100%); color:#0a0a0c; font-size:.75rem; font-weight:800; padding:4px 14px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; }
     .package-price { font-size:2.2rem; font-weight:800; color:#fff; margin:16px 0; font-family:var(--font-title); }
     .package-price span { font-size:.9rem; color:var(--text-muted); font-weight:400; }
+
+    /* Service price menu — follows the site's dark/gold identity */
+    .price-menu-section { padding:100px 5%; background:linear-gradient(180deg,#0b0b0f 0%,#111119 100%); border-top:1px solid var(--border-glass); }
+    .price-menu-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.35fr .85fr; gap:26px; align-items:start; }
+    .price-menu-card { background:var(--card-bg); border:1px solid var(--border-glass); border-radius:26px; padding:30px; box-shadow:0 18px 45px rgba(0,0,0,.38); backdrop-filter:blur(16px); }
+    .price-menu-card.featured-service { border-color:rgba(229,184,105,.38); background:linear-gradient(145deg,rgba(229,184,105,.07),rgba(20,20,26,.82)); }
+    .price-menu-head { display:flex; gap:14px; align-items:center; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid rgba(229,184,105,.12); }
+    .price-menu-icon { width:48px; height:48px; border-radius:15px; display:flex; align-items:center; justify-content:center; flex:0 0 48px; color:var(--accent-gold); background:rgba(229,184,105,.1); border:1px solid rgba(229,184,105,.18); }
+    .price-menu-head h3 { font-family:var(--font-title); font-size:1.35rem; color:#fff; margin:0; }
+    .price-menu-head p { color:var(--text-muted); font-size:.78rem; margin:3px 0 0; }
+    .service-price-row { padding:18px 0; border-bottom:1px solid rgba(229,184,105,.09); }
+    .service-price-row:last-of-type { border-bottom:none; }
+    .service-price-top { display:flex; align-items:baseline; justify-content:space-between; gap:18px; }
+    .service-price-name { color:#fff; font-weight:800; font-size:1rem; }
+    .service-price-value { color:var(--accent-gold-light); font-family:var(--font-title); font-size:1.22rem; font-weight:800; white-space:nowrap; }
+    .service-price-desc { margin-top:7px; color:var(--text-muted); font-size:.82rem; line-height:1.65; }
+    .service-contact-note { margin-top:20px; padding:15px 16px; border-radius:15px; background:rgba(229,184,105,.06); border:1px solid rgba(229,184,105,.13); color:var(--text-muted); font-size:.79rem; line-height:1.6; }
+    .service-contact-note strong { color:var(--accent-gold); }
+    .service-whatsapp-row { cursor:pointer; border-radius:14px; padding-left:12px; padding-right:12px; margin-left:-12px; margin-right:-12px; transition:background .22s ease,border-color .22s ease,transform .22s ease; outline:none; }
+    .service-whatsapp-row:hover { background:rgba(229,184,105,.08); transform:translateX(3px); }
+    .service-whatsapp-row:focus-visible { background:rgba(229,184,105,.1); box-shadow:0 0 0 2px rgba(229,184,105,.34); }
+    .service-whatsapp-row .service-price-top::after { content:'WhatsApp ↗'; margin-left:auto; color:var(--accent-gold); font-size:.66rem; font-weight:800; letter-spacing:.35px; white-space:nowrap; }
+    .service-list-link { cursor:pointer; border-radius:9px; padding:7px 8px; margin-left:-8px; margin-right:-8px; transition:background .2s ease,color .2s ease; outline:none; }
+    .service-list-link:hover,.service-list-link:focus-visible { background:rgba(229,184,105,.09); color:#fff; }
+    .service-list-link::after { content:' ↗'; color:var(--accent-gold); font-weight:800; }
+    .package-card.package-whatsapp { cursor:pointer; outline:none; }
+    .package-card.package-whatsapp:hover { border-color:rgba(229,184,105,.5); }
+    .package-card.package-whatsapp:focus-visible { border-color:var(--accent-gold); box-shadow:0 0 0 3px rgba(229,184,105,.16),0 20px 40px rgba(0,0,0,.5); transform:translateY(-5px); }
+    .package-whatsapp-hint { margin:-8px 0 18px; color:var(--text-muted); font-size:.72rem; line-height:1.45; }
+    .package-whatsapp .btn-cta { width:100%; justify-content:center; pointer-events:none; }
+
     footer { border-top:1px solid var(--border-glass); padding:50px 5% 30px; text-align:center; color:var(--text-muted); font-size:.9rem; }
     .whatsapp-float { position:fixed; bottom:24px; right:24px; background:#25d366; color:#fff; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 25px rgba(37,211,102,.4); z-index:1000; text-decoration:none; transition:transform .3s ease; }
     .whatsapp-float:hover { transform:scale(1.1); }
@@ -372,6 +403,7 @@
       .scheduler-container { grid-template-columns:1fr; }
       .calendar-card { position:static; }
       .contact-grid { grid-template-columns:1fr 1fr; }
+      .price-menu-grid { grid-template-columns:1fr; }
     }
 
     @media (max-width:700px) {
@@ -687,20 +719,40 @@
   </section>
 
   <section class="services" id="servicos">
-    <div class="section-title"><h2>O Universo ISIS AVELAR</h2><p>Três pilares integrados para uma experiência completa.</p></div>
+    <div class="section-title"><h2>O Universo ISIS AVELAR</h2><p>Beleza completa em cabelo, unhas, maquiagem e estilo.</p></div>
     <div class="grid-3">
       <div class="card"><div class="card-icon"><i data-lucide="scissors"></i></div><h3>Hair Studio</h3><p>Transformações e tratamentos capilares focados na saúde do fio e visagismo.</p><ul class="card-list"><li><i data-lucide="check"></i> Morena Iluminada & Balayage</li><li><i data-lucide="check"></i> Tratamentos de Alta Nutrição</li><li><i data-lucide="check"></i> Cortes Modernos & Visagismo</li></ul></div>
-      <div class="card"><div class="card-icon"><i data-lucide="sparkle"></i></div><h3>Nail Tech</h3><p>Extensões de alta durabilidade com acabamento natural e elegante.</p><ul class="card-list"><li><i data-lucide="check"></i> Gel, Alongamento com Molde & Postiça</li><li><i data-lucide="check"></i> Cutilagem Russa</li><li><i data-lucide="check"></i> Nail Art Exclusiva</li></ul></div>
+      <div class="card"><div class="card-icon"><i data-lucide="sparkle"></i></div><h3>Nail Tech</h3><p>Unhas cuidadas com opções para o dia a dia ou acabamento em gel. Toque em um serviço para pedir pelo WhatsApp.</p><ul class="card-list"><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('pe-mao')" onkeydown="serviceCardKey(event,'pe-mao')"><i data-lucide="check"></i> Pé e mão comum · R$ 50</li><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('gel')" onkeydown="serviceCardKey(event,'gel')"><i data-lucide="check"></i> Gel · R$ 100</li><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('alongamento')" onkeydown="serviceCardKey(event,'alongamento')"><i data-lucide="check"></i> Alongamento com Molde & Postiça</li></ul></div>
+      <div class="card"><div class="card-icon"><i data-lucide="brush"></i></div><h3>Makeup Artist · Ana Avelar</h3><p>Maquiagem para realçar sua beleza natural, do visual leve ao glam. Toque em uma opção para falar diretamente com a Ana.</p><ul class="card-list"><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('make-basica')" onkeydown="serviceCardKey(event,'make-basica')"><i data-lucide="check"></i> Maquiagem Básica · R$ 70</li><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('make-social')" onkeydown="serviceCardKey(event,'make-social')"><i data-lucide="check"></i> Maquiagem Social · R$ 90</li><li class="service-list-link" role="link" tabindex="0" onclick="openServiceWhatsApp('make-glam')" onkeydown="serviceCardKey(event,'make-glam')"><i data-lucide="check"></i> Maquiagem Social Glam · R$ 110</li></ul></div>
       <div class="card"><div class="card-icon"><i data-lucide="shopping-bag"></i></div><h3>Isis Boutique</h3><p>Curadoria de vestuário feminino para compor seu visual completo.</p><ul class="card-list"><li><i data-lucide="check"></i> Moda Feminina Premium</li><li><i data-lucide="check"></i> Peças Casual & Night Out</li><li><i data-lucide="check"></i> Consultoria de Estilo</li></ul></div>
     </div>
   </section>
 
+  <section class="price-menu-section" id="valores">
+    <div class="section-title"><h2>Serviços & Valores</h2><p>Valores informados pelo stúdio, apresentados no visual oficial do site.</p></div>
+    <div class="price-menu-grid">
+      <article class="price-menu-card featured-service">
+        <div class="price-menu-head"><div class="price-menu-icon"><i data-lucide="brush"></i></div><div><h3>Ana Avelar · Makeup Artist</h3><p>Realce sua beleza natural</p></div></div>
+        <div class="service-price-row service-whatsapp-row" role="link" tabindex="0" aria-label="Pedir Maquiagem Básica pelo WhatsApp" onclick="openServiceWhatsApp('make-basica')" onkeydown="serviceCardKey(event,'make-basica')"><div class="service-price-top"><span class="service-price-name">Maquiagem Básica</span><span class="service-price-value">R$ 70</span></div><p class="service-price-desc">Make mais leve e natural. Ideal para almoço, aniversário simples, fotos e ocasiões semelhantes.</p></div>
+        <div class="service-price-row service-whatsapp-row" role="link" tabindex="0" aria-label="Pedir Maquiagem Social pelo WhatsApp" onclick="openServiceWhatsApp('make-social')" onkeydown="serviceCardKey(event,'make-social')"><div class="service-price-top"><span class="service-price-name">Maquiagem Social</span><span class="service-price-value">R$ 90</span></div><p class="service-price-desc">Acabamento mais elaborado para eventos, jantar, convidada de casamento e outras ocasiões especiais.</p></div>
+        <div class="service-price-row service-whatsapp-row" role="link" tabindex="0" aria-label="Pedir Maquiagem Social Glam pelo WhatsApp" onclick="openServiceWhatsApp('make-glam')" onkeydown="serviceCardKey(event,'make-glam')"><div class="service-price-top"><span class="service-price-name">Maquiagem Social Glam</span><span class="service-price-value">R$ 110</span></div><p class="service-price-desc">Make mais elaborada/glam, com mais preparação. Indicada para 15 anos, formatura, festas e eventos.</p></div>
+        <div class="service-contact-note"><strong>Ana Avelar</strong> · @byanaavelar · (27) 99993-7023</div>
+      </article>
+      <article class="price-menu-card">
+        <div class="price-menu-head"><div class="price-menu-icon"><i data-lucide="sparkles"></i></div><div><h3>Unhas</h3><p>Cuidados essenciais e acabamento em gel</p></div></div>
+        <div class="service-price-row service-whatsapp-row" role="link" tabindex="0" aria-label="Pedir Pé e mão comum pelo WhatsApp" onclick="openServiceWhatsApp('pe-mao')" onkeydown="serviceCardKey(event,'pe-mao')"><div class="service-price-top"><span class="service-price-name">Pé e mão comum</span><span class="service-price-value">R$ 50</span></div><p class="service-price-desc">Serviço tradicional de pé e mão.</p></div>
+        <div class="service-price-row service-whatsapp-row" role="link" tabindex="0" aria-label="Pedir Gel pelo WhatsApp" onclick="openServiceWhatsApp('gel')" onkeydown="serviceCardKey(event,'gel')"><div class="service-price-top"><span class="service-price-name">Gel</span><span class="service-price-value">R$ 100</span></div><p class="service-price-desc">Serviço em gel com acabamento do stúdio.</p></div>
+        <div class="service-contact-note"><strong>Nos combos:</strong> a Maquiagem Básica é a opção incluída. Se a cliente preferir Social ou Social Glam, o valor é atualizado no orçamento.</div>
+      </article>
+    </div>
+  </section>
+
   <section class="packages-section" id="pacotes">
-    <div class="section-title"><h2>Pacotes Exclusivos</h2><p>Combos especiais criados para transformar seu visual com condições imperdíveis.</p></div>
+    <div class="section-title"><h2>Pacotes Exclusivos</h2><p>Toque em qualquer pacote para abrir o WhatsApp com a mensagem pronta.</p></div>
     <div class="grid-3">
-      <div class="package-card"><div><h3>Combo Express Vibe</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">Ideal para a rotina do dia a dia com máxima elegância.</p><div class="package-price">R$ 140 <span>/sessão</span></div><ul class="card-list" style="margin-bottom:24px;"><li><i data-lucide="check"></i> Manicure & Pedicure Completa</li><li><i data-lucide="check"></i> Escova Modeladora / Liso Espelhado</li><li><i data-lucide="check"></i> Design de Sobrancelhas Simples</li></ul></div><a href="#agendamento" class="btn-cta" style="width:100%;justify-content:center;"><i data-lucide="calendar"></i> Agendar Combo</a></div>
-      <div class="package-card featured"><span class="package-badge">Mais Desejado</span><div><h3>Vibe Day Full Experience</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">A transformação completa para o seu evento ou dia especial.</p><div class="package-price">R$ 300 <span>/sessão</span></div><ul class="card-list" style="margin-bottom:24px;"><li><i data-lucide="check"></i> Unhas em Gel / Alongamento com Molde / Postiça</li><li><i data-lucide="check"></i> Tratamento Capilar de Alta Nutrição</li><li><i data-lucide="check"></i> Escova & Finalização de Estúdio</li><li><i data-lucide="check"></i> Consultoria rápida de look Isis Boutique</li></ul></div><a href="#agendamento" class="btn-cta" style="width:100%;justify-content:center;"><i data-lucide="sparkles"></i> Agendar Vibe Day</a></div>
-      <div class="package-card"><div><h3>Glow Up VIP Club</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">Pacote mensal recorrente para manter suas unhas e cabelos impecáveis.</p><div class="package-price">R$ 400 <span>/mês</span></div><ul class="card-list" style="margin-bottom:24px;"><li><i data-lucide="check"></i> 2 Manutenções de Unhas em Gel</li><li><i data-lucide="check"></i> 4 Escovas & Hidratações no Mês</li><li><i data-lucide="check"></i> 15% OFF em peças na Isis Boutique</li></ul></div><a href="#agendamento" class="btn-cta" style="width:100%;justify-content:center;"><i data-lucide="crown"></i> Assinar VIP</a></div>
+      <article class="package-card package-whatsapp" role="link" tabindex="0" aria-label="Pedir Combo Express Vibe pelo WhatsApp" onclick="openPackageWhatsApp('express')" onkeydown="packageCardKey(event,'express')"><div><h3>Combo Express Vibe</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">Ideal para a rotina do dia a dia com máxima elegância.</p><div class="package-price">R$ 140 <span>/sessão</span></div><ul class="card-list" style="margin-bottom:18px;"><li><i data-lucide="check"></i> Pé e mão comum</li><li><i data-lucide="check"></i> Escova Modeladora / Liso Espelhado</li><li><i data-lucide="check"></i> Design de Sobrancelhas Simples</li><li><i data-lucide="check"></i> Maquiagem Básica</li></ul><p class="package-whatsapp-hint">Quer Social ou Social Glam? A diferença é ajustada no orçamento.</p></div><span class="btn-cta"><i data-lucide="message-circle"></i> Pedir no WhatsApp</span></article>
+      <article class="package-card package-whatsapp featured" role="link" tabindex="0" aria-label="Pedir Vibe Day Full Experience pelo WhatsApp" onclick="openPackageWhatsApp('vibeday')" onkeydown="packageCardKey(event,'vibeday')"><span class="package-badge">Mais Desejado</span><div><h3>Vibe Day Full Experience</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">A transformação completa para o seu evento ou dia especial.</p><div class="package-price">R$ 300 <span>/sessão</span></div><ul class="card-list" style="margin-bottom:18px;"><li><i data-lucide="check"></i> Unhas em Gel / Alongamento com Molde / Postiça</li><li><i data-lucide="check"></i> Tratamento Capilar de Alta Nutrição</li><li><i data-lucide="check"></i> Escova & Finalização de Estúdio</li><li><i data-lucide="check"></i> Maquiagem Básica</li><li><i data-lucide="check"></i> Consultoria rápida de look Isis Boutique</li></ul><p class="package-whatsapp-hint">Quer Social ou Social Glam? A diferença é ajustada no orçamento.</p></div><span class="btn-cta"><i data-lucide="message-circle"></i> Pedir no WhatsApp</span></article>
+      <article class="package-card package-whatsapp" role="link" tabindex="0" aria-label="Pedir Glow Up VIP Club pelo WhatsApp" onclick="openPackageWhatsApp('glowup')" onkeydown="packageCardKey(event,'glowup')"><div><h3>Glow Up VIP Club</h3><p style="color:var(--text-muted);font-size:.9rem;margin-top:6px;">Pacote mensal recorrente para manter suas unhas e cabelos impecáveis.</p><div class="package-price">R$ 400 <span>/mês</span></div><ul class="card-list" style="margin-bottom:18px;"><li><i data-lucide="check"></i> 2 Manutenções de Unhas em Gel</li><li><i data-lucide="check"></i> 4 Escovas & Hidratações no Mês</li><li><i data-lucide="check"></i> Maquiagem Básica</li><li><i data-lucide="check"></i> 15% OFF em peças na Isis Boutique</li></ul><p class="package-whatsapp-hint">Quer Social ou Social Glam? A diferença é ajustada no orçamento.</p></div><span class="btn-cta"><i data-lucide="message-circle"></i> Pedir no WhatsApp</span></article>
     </div>
   </section>
 
@@ -834,6 +886,38 @@
     document.getElementById('nailIntensity').addEventListener('input',e=>{document.getElementById('nailIntensityLabel').textContent=e.target.value+'%';if(activePolish)NailStudio.render(activePolish.hex,e.target.value/100);});
     document.getElementById('nailPhotoInput').addEventListener('change',e=>{const file=e.target.files[0];e.target.value='';if(file)NailStudio.upload(file);});
     function agendarNailStudio(){if(!activePolish)return;const msg=`Olá Isis! Testei o esmalte ${activePolish.name} (${activePolish.hex}) no site. Gostaria de agendar para fazer as unhas em formato ${currentNailShape==='square'?'quadrado':'redondo'}. Podemos combinar um horário?`;window.open(`https://wa.me/5527992894284?text=${encodeURIComponent(msg)}`,'_blank','noopener');}
+
+    const serviceWhatsApp={
+      'make-basica':{phone:'5527999937023',message:`Olá Ana! Vi no site a *Maquiagem Básica* por *R$ 70* e gostaria de agendar. Pode me informar os horários disponíveis?`},
+      'make-social':{phone:'5527999937023',message:`Olá Ana! Vi no site a *Maquiagem Social* por *R$ 90* e gostaria de agendar. Pode me informar os horários disponíveis?`},
+      'make-glam':{phone:'5527999937023',message:`Olá Ana! Vi no site a *Maquiagem Social Glam* por *R$ 110* e gostaria de agendar. Pode me informar os horários disponíveis?`},
+      'pe-mao':{phone:'5527992894284',message:`Olá Isis! Vi no site o serviço de *Pé e mão comum* por *R$ 50* e gostaria de agendar. Quais horários estão disponíveis?`},
+      'gel':{phone:'5527992894284',message:`Olá Isis! Vi no site o serviço de *Gel* por *R$ 100* e gostaria de agendar. Quais horários estão disponíveis?`},
+      'alongamento':{phone:'5527992894284',message:`Olá Isis! Vi no site o serviço de *Alongamento com Molde / Postiça* e tenho interesse. Gostaria de saber o valor e consultar os horários disponíveis.`}
+    };
+    function openServiceWhatsApp(serviceId){
+      const service=serviceWhatsApp[serviceId];
+      if(!service)return;
+      window.open(`https://wa.me/${service.phone}?text=${encodeURIComponent(service.message)}`,'_blank','noopener');
+    }
+    function serviceCardKey(event,serviceId){
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceWhatsApp(serviceId);}
+    }
+
+    const packageMessages={
+      express:`Olá! Vi o *Combo Express Vibe* no site por *R$ 140* e tenho interesse em agendar. Gostaria de consultar as datas disponíveis.\n\nVi que o combo inclui Maquiagem Básica. Caso eu prefira Maquiagem Social ou Social Glam, gostaria de receber o valor atualizado no orçamento.`,
+      vibeday:`Olá! Vi o *Vibe Day Full Experience* no site por *R$ 300* e tenho interesse em agendar. Gostaria de consultar as datas disponíveis.\n\nVi que o pacote inclui Maquiagem Básica. Caso eu prefira Maquiagem Social ou Social Glam, gostaria de receber o valor atualizado no orçamento.`,
+      glowup:`Olá! Vi o *Glow Up VIP Club* no site por *R$ 400/mês* e tenho interesse. Gostaria de saber como funciona e consultar a disponibilidade.\n\nVi que o pacote inclui Maquiagem Básica. Caso eu prefira Maquiagem Social ou Social Glam, gostaria de receber o valor atualizado no orçamento.`
+    };
+    function openPackageWhatsApp(packageId){
+      const msg=packageMessages[packageId];
+      if(!msg)return;
+      window.open(`https://wa.me/5527992894284?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+    }
+    function packageCardKey(event,packageId){
+      if(event.key==='Enter'||event.key===' '){event.preventDefault();openPackageWhatsApp(packageId);}
+    }
+
     const nailObserver=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){NailStudio.start();nailObserver.disconnect();}},{rootMargin:'150px'}); nailObserver.observe(document.getElementById('simulador-vibe'));
     initNailPalette().catch(err=>console.error('[NailSimulator] Palette initialization failed:',err));
 
