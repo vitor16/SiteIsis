@@ -119,69 +119,74 @@
     .custom-range::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-gold); box-shadow: 0 0 10px rgba(229, 184, 105, 0.8); cursor: pointer; }
 
     /* =========================
-       ORGANIZED SCHEDULER
+       MAAPP BOOKING EMBED
     ========================== */
-    .scheduler-section { padding: 110px 5%; background: radial-gradient(circle at 15% 15%, rgba(229,184,105,.06), transparent 34%), radial-gradient(circle at 85% 80%, rgba(226,141,136,.05), transparent 34%), linear-gradient(180deg, #09090c 0%, #12121a 100%); border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); }
-    .scheduler-container { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.25fr) minmax(320px,.75fr); gap: 28px; align-items: start; }
-    .booking-panel { background: rgba(20,20,26,.78); border: 1px solid var(--border-glass); border-radius: 28px; padding: 32px; backdrop-filter: blur(20px); box-shadow: 0 25px 60px rgba(0,0,0,.45); }
-    .booking-header { margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border-glass); }
-    .booking-eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: .72rem; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-gold); margin-bottom: 7px; text-transform: uppercase; }
-    .booking-header h3 { font-family: var(--font-title); font-size: 1.7rem; color: #fff; margin-bottom: 6px; }
-    .booking-header p { color: var(--text-muted); font-size: .87rem; max-width: 620px; }
-    .booking-step { padding: 22px 0; border-bottom: 1px solid rgba(229,184,105,.09); }
-    .booking-step:last-of-type { border-bottom: none; }
-    .booking-step-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
-    .booking-step-number { flex: 0 0 30px; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(229,184,105,.12); border: 1px solid rgba(229,184,105,.35); color: var(--accent-gold); font-size: .78rem; font-weight: 800; }
-    .booking-step-head h4 { color: #fff; font-size: .98rem; margin-bottom: 2px; }
-    .booking-step-head p { color: var(--text-muted); font-size: .78rem; }
-    .booking-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .booking-fields .form-group { margin-bottom: 0; }
-    .booking-fields .form-group.full { grid-column: 1 / -1; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--accent-gold); margin-bottom: 8px; }
-    .form-control { width: 100%; min-height: 48px; padding: 12px 16px; background: rgba(255,255,255,.04); border: 1px solid var(--border-glass); border-radius: 14px; color: #fff; font-family: var(--font-body); font-size: .95rem; outline: none; transition: all .3s ease; }
-    .form-control:focus { border-color: var(--accent-gold); background: rgba(255,255,255,.08); box-shadow: 0 0 15px rgba(229,184,105,.2); }
-    select.form-control { cursor: pointer; }
-    .available-days-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
-    .available-day { min-height: 78px; padding: 10px 6px; border-radius: 15px; border: 1px solid var(--border-glass); background: rgba(255,255,255,.025); color: var(--text-main); cursor: pointer; font-family: var(--font-body); transition: all .25s ease; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; position: relative; }
-    .available-day:hover { border-color: rgba(229,184,105,.55); background: rgba(229,184,105,.08); transform: translateY(-1px); }
-    .available-day.selected { border-color: var(--accent-gold); background: linear-gradient(180deg,rgba(229,184,105,.2) 0%,rgba(229,184,105,.08) 100%); box-shadow: inset 0 0 0 1px rgba(229,184,105,.12); }
-    .available-day .day-week { font-size: .68rem; font-weight: 800; color: var(--accent-gold); text-transform: uppercase; letter-spacing: .8px; }
-    .available-day .day-date { font-size: .92rem; font-weight: 800; }
-    .available-day .day-count { font-size: .64rem; color: var(--text-muted); }
-    .time-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; }
-    .time-slot { min-height: 44px; padding: 9px 6px; text-align: center; background: rgba(255,255,255,.03); border: 1px solid var(--border-glass); border-radius: 12px; color: var(--text-main); font-family: var(--font-body); font-size: .88rem; font-weight: 600; cursor: pointer; transition: all .25s ease; appearance: none; }
-    .time-slot:hover { background: rgba(229,184,105,.08); border-color: rgba(229,184,105,.55); }
-    .time-slot.selected { background: var(--accent-gold); color: #0a0a0c; border-color: var(--accent-gold); box-shadow: 0 5px 18px rgba(229,184,105,.3); }
-    .schedule-message { grid-column: 1 / -1; padding: 16px; border: 1px dashed var(--border-glass); border-radius: 14px; color: var(--text-muted); font-size: .84rem; line-height: 1.5; background: rgba(255,255,255,.025); }
-    .schedule-message.error { border-color: rgba(226,141,136,.45); color: #ffc1bd; background: rgba(226,141,136,.08); }
-    .booking-selection-summary { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 22px 0 16px; }
-    .selection-box { min-width: 0; padding: 13px 14px; border-radius: 15px; background: rgba(255,255,255,.025); border: 1px solid rgba(229,184,105,.12); }
-    .selection-box small { display:block; color: var(--text-muted); font-size: .67rem; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 4px; }
-    .selection-box strong { display:block; color:#fff; font-size:.82rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .selection-box.active strong { color:var(--accent-gold); }
-    .booking-submit-wrap { margin-top: 6px; }
-    .booking-submit-wrap .btn-cta { min-height: 50px; }
-    .booking-hint { text-align:center; color:var(--text-muted); font-size:.7rem; margin-top:9px; }
-    .booking-status { display:none; margin-top:14px; padding:12px 14px; border-radius:14px; font-size:.84rem; border:1px solid var(--border-glass); }
-    .booking-status.show { display:block; }
-    .booking-status.success { color:#bdf6ce; border-color:rgba(79,209,126,.35); background:rgba(79,209,126,.08); }
-    .booking-status.error { color:#ffc1bd; border-color:rgba(226,141,136,.45); background:rgba(226,141,136,.08); }
-    #bookingSubmit:disabled { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
-    .calendar-card { position: sticky; top: 105px; background: rgba(15,15,20,.78); border:1px solid var(--border-glass); border-radius:28px; padding:26px; backdrop-filter:blur(18px); box-shadow:0 20px 50px rgba(0,0,0,.4); }
-    .calendar-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:15px; margin-bottom:22px; }
-    .calendar-card-icon { width:44px; height:44px; border-radius:14px; background:rgba(229,184,105,.1); border:1px solid rgba(229,184,105,.18); color:var(--accent-gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .sync-badge { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; background:rgba(66,133,244,.12); border:1px solid rgba(66,133,244,.3); color:#4285f4; border-radius:20px; font-size:.8rem; font-weight:600; margin-bottom:8px; }
-    .calendar-card h3 { font-family:var(--font-title); font-size:1.25rem; color:#fff; margin-bottom:7px; }
-    .calendar-card > div > p { color:var(--text-muted); font-size:.84rem; line-height:1.65; }
-    .schedule-info-box { background:rgba(255,255,255,.025); border:1px solid rgba(229,184,105,.1); border-radius:17px; padding:16px; margin-bottom:12px; }
-    .schedule-info-label { display:flex; align-items:center; gap:7px; color:var(--accent-gold); font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.7px; margin-bottom:7px; }
-    .schedule-info-main { color:#fff; font-size:.9rem; font-weight:700; margin-bottom:4px; }
-    .schedule-info-sub { color:var(--text-muted); font-size:.76rem; line-height:1.55; }
-    .calendar-whatsapp { margin-top:22px; padding-top:18px; border-top:1px solid var(--border-glass); text-align:center; }
-    .calendar-whatsapp span { color:var(--text-muted); font-size:.75rem; }
-    .calendar-whatsapp a { display:inline-block; margin-top:5px; color:var(--accent-gold); font-size:.82rem; font-weight:700; text-decoration:none; }
-    .calendar-whatsapp a:hover { text-decoration:underline; }
+    .scheduler-section {
+      padding: 110px 5%;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(229,184,105,.06), transparent 34%),
+        radial-gradient(circle at 85% 80%, rgba(226,141,136,.05), transparent 34%),
+        linear-gradient(180deg, #09090c 0%, #12121a 100%);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .maapp-booking-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      overflow: hidden;
+      background: rgba(20,20,26,.78);
+      border: 1px solid var(--border-glass);
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.45);
+      backdrop-filter: blur(20px);
+    }
+    .maapp-booking-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--border-glass);
+      background: linear-gradient(135deg, rgba(229,184,105,.07), rgba(255,255,255,.02));
+    }
+    .maapp-booking-title { display:flex; align-items:center; gap:12px; min-width:0; }
+    .maapp-booking-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      background: rgba(229,184,105,.1);
+      border: 1px solid rgba(229,184,105,.2);
+    }
+    .maapp-booking-title strong { display:block; color:#fff; font-family:var(--font-title); font-size:1.05rem; }
+    .maapp-booking-title span { display:block; color:var(--text-muted); font-size:.78rem; margin-top:2px; }
+    .maapp-external-link { flex-shrink:0; padding:9px 15px; font-size:.8rem; box-shadow:none; }
+    .maapp-frame-wrap { position:relative; width:100%; background:#fff; }
+    .maapp-frame {
+      display:block;
+      width:100%;
+      height: 840px;
+      border:0;
+      background:#fff;
+    }
+    .maapp-booking-fallback {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 20px;
+      color:var(--text-muted);
+      font-size:.76rem;
+      text-align:center;
+      border-top:1px solid var(--border-glass);
+      background:rgba(8,8,10,.78);
+    }
+    .maapp-booking-fallback a { color:var(--accent-gold); font-weight:700; text-decoration:none; }
+    .maapp-booking-fallback a:hover { text-decoration:underline; }
 
     .transformations-section { padding:80px 5%; background:rgba(15,15,20,.6); border-bottom:1px solid var(--border-glass); }
     .split-slider-container { position:relative; width:100%; max-width:420px; height:560px; margin:0 auto; border-radius:24px; overflow:hidden; border:1px solid var(--border-glass); box-shadow:0 25px 60px rgba(0,0,0,.5); user-select:none; touch-action:pan-y; }
@@ -323,6 +328,9 @@
     }
 
     @media (max-width:700px) {
+      .maapp-booking-topbar { align-items:flex-start; flex-direction:column; padding:18px; }
+      .maapp-external-link { width:100%; justify-content:center; }
+      .maapp-frame { height:760px; }
       header { padding:10px 4%; }
       .logo-script { font-size:1.55rem; }
       .logo-badge { width:46px; height:46px; }
@@ -342,6 +350,8 @@
     }
 
     @media (max-width:430px) {
+      .maapp-frame { height:700px; }
+      .maapp-booking-shell { border-radius:20px; }
       .time-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .booking-header h3 { font-size:1.45rem; }
       .calendar-card-top { align-items:center; }
@@ -491,121 +501,42 @@
   </section>
 
   <!-- =========================
-       ORGANIZED BOOKING SECTION
+       MAAPP BOOKING SECTION
   ========================== -->
   <section class="scheduler-section" id="agendamento">
     <div class="section-title">
       <h2>Agende seu horário</h2>
-      <p>Escolha um horário realmente disponível na agenda do Stúdio.</p>
+      <p>Escolha o serviço, a data e o horário diretamente pela agenda oficial do Stúdio.</p>
     </div>
 
-    <div class="scheduler-container">
-      <div class="booking-panel">
-        <div class="booking-header">
-          <div class="booking-eyebrow"><i data-lucide="calendar-check-2" style="width:14px;"></i> Agendamento online</div>
-          <h3>Reserve seu momento</h3>
-          <p>Preencha seus dados, escolha o serviço, selecione um dia e depois escolha um dos horários livres.</p>
+    <div class="maapp-booking-shell">
+      <div class="maapp-booking-topbar">
+        <div class="maapp-booking-title">
+          <div class="maapp-booking-icon"><i data-lucide="calendar-check-2"></i></div>
+          <div>
+            <strong>Agenda Isis Avelar Stúdio</strong>
+            <span>Agendamento oficial integrado via MinhaAgenda Online</span>
+          </div>
         </div>
-
-        <form id="bookingForm" onsubmit="handleBooking(event)">
-          <div class="booking-step">
-            <div class="booking-step-head">
-              <span class="booking-step-number">1</span>
-              <div><h4>Seus dados</h4><p>Precisamos dessas informações para identificar sua reserva.</p></div>
-            </div>
-            <div class="booking-fields">
-              <div class="form-group">
-                <label for="clientName"><i data-lucide="user" style="width:14px;display:inline;"></i> Nome completo</label>
-                <input type="text" id="clientName" class="form-control" placeholder="Ex: Juliana Silva" autocomplete="name" required />
-              </div>
-              <div class="form-group">
-                <label for="clientPhone"><i data-lucide="phone" style="width:14px;display:inline;"></i> WhatsApp</label>
-                <input type="tel" id="clientPhone" class="form-control" placeholder="(00) 90000-0000" autocomplete="tel" required />
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-step">
-            <div class="booking-step-head">
-              <span class="booking-step-number">2</span>
-              <div><h4>Serviço e dia</h4><p>Escolha o atendimento e veja somente os dias com disponibilidade.</p></div>
-            </div>
-            <div class="booking-fields">
-              <div class="form-group full">
-                <label for="serviceSelect"><i data-lucide="scissors" style="width:14px;display:inline;"></i> Serviço desejado</label>
-                <select id="serviceSelect" class="form-control" required>
-                  <option value="Morena Iluminada &amp; Mechas">Morena Iluminada &amp; Mechas</option>
-                  <option value="Transformação Capilar / Coloração">Transformação Capilar / Coloração</option>
-                  <option value="Unhas em Gel / Alongamento com Molde / Postiça">Unhas em Gel / Alongamento com Molde / Postiça</option>
-                  <option value="Combo Express Vibe">Combo Express Vibe</option>
-                  <option value="Vibe Day Full Experience">Vibe Day Full Experience</option>
-                  <option value="Consultoria Isis Boutique">Consultoria Isis Boutique</option>
-                </select>
-              </div>
-              <div class="form-group full">
-                <label><i data-lucide="calendar-days" style="width:14px;display:inline;"></i> Dias disponíveis</label>
-                <div id="availableDays" class="available-days-grid" aria-live="polite"><div class="schedule-message">Carregando agenda disponível…</div></div>
-                <input type="hidden" id="bookingDate" required>
-              </div>
-            </div>
-          </div>
-
-          <div class="booking-step">
-            <div class="booking-step-head">
-              <span class="booking-step-number">3</span>
-              <div><h4>Escolha o horário</h4><p>Selecione um dos horários livres para o dia escolhido.</p></div>
-            </div>
-            <div class="time-grid" id="timeGrid" aria-live="polite"><div class="schedule-message">Selecione um dia disponível.</div></div>
-          </div>
-
-          <div class="booking-selection-summary">
-            <div class="selection-box"><small>Serviço</small><strong id="summaryService">Não selecionado</strong></div>
-            <div class="selection-box"><small>Data</small><strong id="summaryDate">Escolha um dia</strong></div>
-            <div class="selection-box active"><small>Horário</small><strong id="summaryTime">Escolha um horário</strong></div>
-          </div>
-
-          <div class="booking-submit-wrap">
-            <button type="submit" id="bookingSubmit" class="btn-cta" style="width:100%;justify-content:center;" disabled><i data-lucide="calendar-check-2"></i> Reservar este horário</button>
-            <div class="booking-hint">Seu horário só é confirmado depois que a agenda concluir a reserva.</div>
-          </div>
-          <div id="bookingStatus" class="booking-status" role="status" aria-live="polite"></div>
-        </form>
+        <a class="btn-cta maapp-external-link" href="https://online.maapp.com.br/Isisavelarstudio" target="_blank" rel="noopener noreferrer">
+          Abrir agenda ↗
+        </a>
       </div>
 
-      <aside class="calendar-card">
-        <div>
-          <div class="calendar-card-top">
-            <div>
-              <div class="sync-badge"><i data-lucide="refresh-cw" style="width:15px;"></i> Agenda sincronizada</div>
-              <h3>Disponibilidade em tempo real</h3>
-              <p>O site consulta a agenda do Stúdio e apresenta somente horários livres para o serviço escolhido.</p>
-            </div>
-            <div class="calendar-card-icon"><i data-lucide="calendar-clock"></i></div>
-          </div>
+      <div class="maapp-frame-wrap">
+        <iframe
+          class="maapp-frame"
+          src="https://online.maapp.com.br/Isisavelarstudio"
+          title="Agendamento online — Isis Avelar Stúdio"
+          loading="lazy"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
 
-          <div class="schedule-info-box">
-            <div class="schedule-info-label"><i data-lucide="clock" style="width:14px;"></i> Horário de atendimento</div>
-            <div class="schedule-info-main">Terça a sábado · 9h às 18h</div>
-            <div class="schedule-info-sub">Domingo e segunda: fechado.</div>
-          </div>
-
-          <div class="schedule-info-box">
-            <div class="schedule-info-label"><i data-lucide="map-pin" style="width:14px;"></i> Local</div>
-            <div class="schedule-info-main">Isis Avelar Stúdio</div>
-            <div class="schedule-info-sub">Rua Antônio Pagari, 1<br>Enseada Jacaraípe · Serra – ES<br>CEP 29175-337</div>
-          </div>
-
-          <div class="schedule-info-box">
-            <div class="schedule-info-label"><i data-lucide="shield-check" style="width:14px;"></i> Reserva segura</div>
-            <div class="schedule-info-sub">Depois de confirmada, a vaga é bloqueada na agenda para evitar duas marcações no mesmo horário.</div>
-          </div>
-        </div>
-
-        <div class="calendar-whatsapp">
-          <span>Prefere falar diretamente com a Isis?</span>
-          <a href="https://wa.me/5527992894284" target="_blank" rel="noopener noreferrer">Abrir WhatsApp ↗</a>
-        </div>
-      </aside>
+      <div class="maapp-booking-fallback">
+        <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+        <span>Se a agenda não aparecer acima, o provedor pode bloquear exibição incorporada. <a href="https://online.maapp.com.br/Isisavelarstudio" target="_blank" rel="noopener noreferrer">Abrir o agendamento em uma nova aba.</a></span>
+      </div>
     </div>
   </section>
 
@@ -739,237 +670,7 @@
   <script>
     if (window.lucide) lucide.createIcons();
 
-    const SCHEDULER_API_URL = 'https://script.google.com/macros/s/AKfycbzS0Aw3ElmkphIk_npc256nBf3rkSKWfb12kpLcb11AXXxiBTjjI6OBXB-qv07SxNMy/exec';
-    const bookingDateInput = document.getElementById('bookingDate');
-    const serviceSelect = document.getElementById('serviceSelect');
-    const availableDaysEl = document.getElementById('availableDays');
-    const timeGridEl = document.getElementById('timeGrid');
-    const bookingSubmit = document.getElementById('bookingSubmit');
-    const bookingStatus = document.getElementById('bookingStatus');
-
-    let availabilityDays = [];
-    let selectedDate = '';
-    let selectedTime = '';
-    let availabilityRefreshTimer = null;
-
-    function schedulerConfigured() {
-      return /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/.test(SCHEDULER_API_URL);
-    }
-
-    function setBookingStatus(message, type = '') {
-      bookingStatus.textContent = message || '';
-      bookingStatus.className = 'booking-status' + (message ? ' show' : '') + (type ? ' ' + type : '');
-    }
-
-    function setScheduleMessage(container, message, isError = false) {
-      container.innerHTML = '';
-      const box = document.createElement('div');
-      box.className = 'schedule-message' + (isError ? ' error' : '');
-      box.textContent = message;
-      container.appendChild(box);
-    }
-
-    function jsonpRequest(params) {
-      return new Promise((resolve, reject) => {
-        if (!schedulerConfigured()) {
-          reject(new Error('Agenda ainda não conectada ao Google Calendar.'));
-          return;
-        }
-
-        const callbackName = '__isisSchedule_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-        const script = document.createElement('script');
-        const timeout = setTimeout(() => cleanup(new Error('A agenda demorou demais para responder.')), 12000);
-
-        function cleanup(error, data) {
-          clearTimeout(timeout);
-          try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
-          if (script.parentNode) script.parentNode.removeChild(script);
-          error ? reject(error) : resolve(data);
-        }
-
-        window[callbackName] = data => cleanup(null, data);
-        script.onerror = () => cleanup(new Error('Não foi possível conectar à agenda.'));
-
-        const query = new URLSearchParams({ ...params, callback: callbackName, ts: String(Date.now()) });
-        script.src = SCHEDULER_API_URL + (SCHEDULER_API_URL.includes('?') ? '&' : '?') + query.toString();
-        document.head.appendChild(script);
-      });
-    }
-
-    function formatAvailableDay(dateText) {
-      const [year, month, day] = dateText.split('-').map(Number);
-      const date = new Date(Date.UTC(year, month - 1, day, 12));
-      return {
-        week: new Intl.DateTimeFormat('pt-BR', { weekday: 'short', timeZone: 'UTC' }).format(date).replace('.', ''),
-        date: new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'UTC' }).format(date)
-      };
-    }
-
-    function updateBookingSummary() {
-      const serviceEl = document.getElementById('summaryService');
-      const dateEl = document.getElementById('summaryDate');
-      const timeEl = document.getElementById('summaryTime');
-
-      if (serviceEl) serviceEl.textContent = serviceSelect.value || 'Não selecionado';
-      if (dateEl) dateEl.textContent = selectedDate ? formatAvailableDay(selectedDate).date : 'Escolha um dia';
-      if (timeEl) timeEl.textContent = selectedTime || 'Escolha um horário';
-    }
-
-    async function loadAvailability(options = {}) {
-      const preserveSelection = options.preserveSelection !== false;
-      const previousDate = preserveSelection ? selectedDate : '';
-      const previousTime = preserveSelection ? selectedTime : '';
-
-      bookingSubmit.disabled = true;
-      setBookingStatus('');
-      setScheduleMessage(availableDaysEl, 'Atualizando dias disponíveis…');
-      setScheduleMessage(timeGridEl, 'Aguarde a atualização da agenda.');
-
-      if (!schedulerConfigured()) {
-        setScheduleMessage(availableDaysEl, 'Falta conectar esta página ao Google Apps Script. Veja o arquivo SETUP.md incluído com a atualização.', true);
-        setScheduleMessage(timeGridEl, 'A agenda ficará disponível assim que o endereço do backend for configurado.', true);
-        return;
-      }
-
-      try {
-        const data = await jsonpRequest({ action: 'availability', service: serviceSelect.value, days: '45' });
-        if (!data || !data.ok) throw new Error((data && data.message) || 'Não foi possível carregar a agenda.');
-        availabilityDays = Array.isArray(data.days) ? data.days : [];
-        renderAvailableDays(previousDate, previousTime);
-      } catch (err) {
-        setScheduleMessage(availableDaysEl, err.message || 'Não foi possível carregar os dias disponíveis.', true);
-        setScheduleMessage(timeGridEl, 'Tente novamente em alguns instantes.', true);
-      }
-    }
-
-    function renderAvailableDays(preferredDate = '', preferredTime = '') {
-      availableDaysEl.innerHTML = '';
-      selectedDate = '';
-      selectedTime = '';
-      bookingDateInput.value = '';
-      updateBookingSummary();
-      bookingSubmit.disabled = true;
-
-      if (!availabilityDays.length) {
-        setScheduleMessage(availableDaysEl, 'No momento não há horários livres nos próximos dias.');
-        setScheduleMessage(timeGridEl, 'Nenhum horário disponível.');
-        return;
-      }
-
-      availabilityDays.forEach(day => {
-        const label = formatAvailableDay(day.date);
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'available-day';
-        button.dataset.date = day.date;
-        button.setAttribute('aria-label', `${label.week}, ${label.date}, ${day.slots.length} horários disponíveis`);
-        button.setAttribute('aria-pressed', 'false');
-        button.innerHTML = `<span class="day-week">${label.week}</span><span class="day-date">${label.date}</span><span class="day-count">${day.slots.length} horário${day.slots.length === 1 ? '' : 's'}</span>`;
-        button.addEventListener('click', () => selectAvailableDay(day.date));
-        availableDaysEl.appendChild(button);
-      });
-
-      const firstDate = availabilityDays.some(day => day.date === preferredDate) ? preferredDate : availabilityDays[0].date;
-      selectAvailableDay(firstDate, preferredTime);
-    }
-
-    function selectAvailableDay(dateText, preferredTime = '') {
-      const day = availabilityDays.find(item => item.date === dateText);
-      if (!day) return;
-
-      selectedDate = dateText;
-      selectedTime = '';
-      bookingDateInput.value = dateText;
-
-      document.querySelectorAll('.available-day').forEach(button => {
-        const active = button.dataset.date === dateText;
-        button.classList.toggle('selected', active);
-        button.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-
-      timeGridEl.innerHTML = '';
-      day.slots.forEach(time => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'time-slot';
-        button.dataset.time = time;
-        button.textContent = time;
-        button.setAttribute('aria-pressed', 'false');
-        button.addEventListener('click', () => selectTimeSlot(button));
-        timeGridEl.appendChild(button);
-      });
-
-      updateBookingSummary();
-
-      const preferredButton = preferredTime ? timeGridEl.querySelector(`[data-time="${CSS.escape(preferredTime)}"]`) : null;
-      if (preferredButton) selectTimeSlot(preferredButton);
-      bookingSubmit.disabled = !selectedTime;
-    }
-
-    function selectTimeSlot(el) {
-      document.querySelectorAll('#timeGrid .time-slot').forEach(slot => {
-        slot.classList.remove('selected');
-        slot.setAttribute('aria-pressed', 'false');
-      });
-      el.classList.add('selected');
-      el.setAttribute('aria-pressed', 'true');
-      selectedTime = el.dataset.time || el.textContent.trim();
-      bookingSubmit.disabled = !(selectedDate && selectedTime);
-      updateBookingSummary();
-      setBookingStatus('');
-    }
-
-    async function handleBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById('clientName').value.trim();
-      const phone = document.getElementById('clientPhone').value.trim();
-      const service = serviceSelect.value;
-
-      if (!name || !phone || !selectedDate || !selectedTime) {
-        setBookingStatus('Preencha seus dados e escolha um dos horários disponíveis.', 'error');
-        return;
-      }
-
-      bookingSubmit.disabled = true;
-      const originalText = bookingSubmit.innerHTML;
-      bookingSubmit.innerHTML = '<span class="loading-ring" style="width:18px;height:18px;"></span> Reservando…';
-      setBookingStatus('Confirmando o horário diretamente na agenda…');
-
-      try {
-        const data = await jsonpRequest({ action: 'book', name, phone, service, date: selectedDate, time: selectedTime });
-
-        if (!data || !data.ok) {
-          if (data && data.code === 'slot_taken') {
-            setBookingStatus(data.message, 'error');
-            await loadAvailability({ preserveSelection: false });
-            return;
-          }
-          throw new Error((data && data.message) || 'Não foi possível concluir a reserva.');
-        }
-
-        const bookedDate = selectedDate;
-        const bookedTime = selectedTime;
-        const label = formatAvailableDay(bookedDate);
-        setBookingStatus(`Reserva recebida para ${label.date} às ${bookedTime}. O horário já foi bloqueado na agenda do stúdio.`, 'success');
-        await loadAvailability({ preserveSelection: false });
-        setBookingStatus(`Reserva recebida para ${label.date} às ${bookedTime}. O horário já foi bloqueado na agenda do stúdio.`, 'success');
-      } catch (err) {
-        setBookingStatus(err.message || 'Não foi possível concluir a reserva. Tente novamente.', 'error');
-      } finally {
-        bookingSubmit.innerHTML = originalText;
-        bookingSubmit.disabled = !(selectedDate && selectedTime);
-        updateBookingSummary();
-        if (window.lucide) lucide.createIcons();
-      }
-    }
-
-    serviceSelect.addEventListener('change', () => {
-      updateBookingSummary();
-      loadAvailability({ preserveSelection: false });
-    });
-    loadAvailability({ preserveSelection: false });
-    availabilityRefreshTimer = setInterval(() => loadAvailability({ preserveSelection: true }), 60000);
-    updateBookingSummary();
+    // O agendamento agora é gerenciado diretamente pelo MAAPP no iframe acima.
 
     const bgAudio = document.getElementById('bgAudio');
     const musicWidget = document.getElementById('musicToggle');
