@@ -165,13 +165,60 @@
     .maapp-booking-title strong { display:block; color:#fff; font-family:var(--font-title); font-size:1.05rem; }
     .maapp-booking-title span { display:block; color:var(--text-muted); font-size:.78rem; margin-top:2px; }
     .maapp-external-link { flex-shrink:0; padding:9px 15px; font-size:.8rem; box-shadow:none; }
-    .maapp-frame-wrap { position:relative; width:100%; background:#fff; }
+    .maapp-scroll-tip {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 16px;
+      color:#1f1f24;
+      background:linear-gradient(90deg,#f8de91,#e5b869);
+      font-size:.78rem;
+      font-weight:800;
+      text-align:center;
+    }
+    .maapp-scroll-tip i { width:15px; height:15px; flex:0 0 auto; }
+    .maapp-frame-wrap {
+      position: relative;
+      width: 100%;
+      height: 1500px;
+      min-height: 1500px;
+      overflow: visible;
+      background: #fff;
+      transition: height .35s ease;
+    }
     .maapp-frame {
-      display:block;
-      width:100%;
-      height: 840px;
-      border:0;
-      background:#fff;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+    .maapp-expand-wrap {
+      display:flex;
+      justify-content:center;
+      padding:14px 18px 4px;
+      background:rgba(8,8,10,.78);
+      border-top:1px solid var(--border-glass);
+    }
+    .maapp-expand-btn {
+      appearance:none;
+      border:1px solid rgba(229,184,105,.35);
+      background:rgba(229,184,105,.10);
+      color:var(--accent-gold-light);
+      border-radius:999px;
+      padding:10px 18px;
+      font:700 .8rem var(--font-body);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:.25s ease;
+    }
+    .maapp-expand-btn:hover {
+      background:rgba(229,184,105,.18);
+      border-color:var(--accent-gold);
+      transform:translateY(-1px);
     }
     .maapp-booking-fallback {
       display:flex;
@@ -330,7 +377,8 @@
     @media (max-width:700px) {
       .maapp-booking-topbar { align-items:flex-start; flex-direction:column; padding:18px; }
       .maapp-external-link { width:100%; justify-content:center; }
-      .maapp-frame { height:760px; }
+      .maapp-frame-wrap { height: 1750px; min-height: 1750px; }
+      .maapp-frame { height:100%; }
       header { padding:10px 4%; }
       .logo-script { font-size:1.55rem; }
       .logo-badge { width:46px; height:46px; }
@@ -350,7 +398,8 @@
     }
 
     @media (max-width:430px) {
-      .maapp-frame { height:700px; }
+      .maapp-frame-wrap { height: 1900px; min-height: 1900px; }
+      .maapp-frame { height:100%; }
       .maapp-booking-shell { border-radius:20px; }
       .time-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .booking-header h3 { font-size:1.45rem; }
@@ -523,6 +572,11 @@
         </a>
       </div>
 
+      <div class="maapp-scroll-tip" role="note">
+        <i data-lucide="arrow-down"></i>
+        <span>Continue rolando a página normalmente para ver toda a agenda</span>
+      </div>
+
       <div class="maapp-frame-wrap">
         <iframe
           class="maapp-frame"
@@ -530,7 +584,16 @@
           title="Agendamento online — Isis Avelar Stúdio"
           loading="lazy"
           allow="clipboard-write"
+          scrolling="yes"
+          tabindex="0"
         ></iframe>
+      </div>
+
+      <div class="maapp-expand-wrap">
+        <button type="button" class="maapp-expand-btn" id="maappExpandBtn" onclick="expandMaappFrame()">
+          <i data-lucide="chevrons-down" style="width:16px;height:16px;"></i>
+          Mostrar mais da agenda
+        </button>
       </div>
 
       <div class="maapp-booking-fallback">
@@ -794,5 +857,30 @@
     })();
   </script>
   <script src="photo-camera.js"></script>
+
+  <script>
+    function expandMaappFrame() {
+      const wrap = document.querySelector('.maapp-frame-wrap');
+      const btn = document.getElementById('maappExpandBtn');
+      if (!wrap) return;
+
+      const currentHeight = wrap.getBoundingClientRect().height;
+      const nextHeight = Math.min(currentHeight + 800, 3900);
+      wrap.style.height = nextHeight + 'px';
+      wrap.style.minHeight = nextHeight + 'px';
+
+      if (btn) {
+        if (nextHeight >= 3900) {
+          btn.innerHTML = '<i data-lucide="check" style="width:16px;height:16px;"></i> Agenda totalmente expandida';
+          btn.disabled = true;
+          btn.style.opacity = '.65';
+          btn.style.cursor = 'default';
+        } else {
+          btn.innerHTML = '<i data-lucide="chevrons-down" style="width:16px;height:16px;"></i> Mostrar ainda mais';
+        }
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+  </script>
 </body>
 </html>
