@@ -91,26 +91,35 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
   .hairdo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width: 700px) {
+  .maapp-booking-title > div:last-child { min-width: 0; }
+  .maapp-booking-title .maapp-mobile-help { display: block; color: var(--text-muted); font-size: .78rem; line-height: 1.6; margin-top: 6px; }
+  .maapp-link-desktop { display: none; }
+  .maapp-link-mobile { display: inline; }
+  .maapp-booking-topbar { gap: 16px; }
+  .maapp-external-link { min-height: 48px; padding: 12px 16px; font-size: .84rem; }
+  .maapp-scroll-tip, .maapp-frame-wrap, .maapp-expand-wrap, .maapp-booking-fallback { display: none; }
   header { padding: 12px 16px; gap: 10px; }
   .logo-badge { width: 38px; height: 38px; }
   .logo-container { gap: 8px; }
   .logo-script { font-size: 1.6rem; }
   .logo-sub { font-size: .5rem; letter-spacing: 4px; }
-  header > .btn-cta { padding: 11px 12px; font-size: .7rem; }
+  header > .btn-cta { min-height: 44px; padding: 10px 12px; font-size: .7rem; }
   header > .btn-cta svg { display: none; }
-  .menu-toggle { width: 36px; height: 36px; flex-shrink: 0; }
-  .hero { grid-template-columns: 1fr; padding: 125px 22px 55px; gap: 38px; }
+  .menu-toggle { width: 40px; height: 40px; flex-shrink: 0; }
+  .hero { grid-template-columns: 1fr; padding: 112px 18px 44px; gap: 28px; }
   .hero h1 { font-size: clamp(2.65rem,9vw,3.7rem); }
   .hero p { font-size: .92rem; margin-bottom: 24px; }
   .hero .btn-cta { padding: 13px 15px; font-size: .75rem; }
-  .hero-portfolio { height: 400px; max-width: 450px; width: calc(100% - 24px); margin: 0 auto; }
-  .hero-detail-photo { height: 150px; bottom: 80px; }
+  .hero-portfolio { height: 350px; max-width: 450px; width: calc(100% - 20px); margin: 0 auto; }
+  .hero-detail-photo { height: 135px; bottom: 72px; }
   section:not(.hero) { padding: 56px 16px; }
   .section-title { margin-bottom: 28px; }
   .section-title p { font-size: .86rem; }
   .hair-simulator-container { grid-template-columns: minmax(0,1fr); padding: 12px; gap: 30px; border-radius: 20px; }
   .hair-preview-col { position: static; }
   .hair-canvas-wrapper { aspect-ratio: 4 / 4.8; max-height: 500px; }
+  .sim-mode-tab { min-height: 48px; }
+  .hair-btn-tool, .hair-cat-btn { min-height: 44px; }
   .hair-swatches-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px; }
   .hairdo-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .hair-controls-col { padding: 4px; }
@@ -120,6 +129,9 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
   .grid-3 { grid-template-columns: minmax(0,1fr); }
   .transformation-photo img { height: 260px; }
   .whatsapp-float { right: 12px; bottom: 12px; }
+}
+@media (min-width: 701px) {
+  .maapp-booking-title .maapp-mobile-help, .maapp-link-mobile { display: none; }
 }
 @media (max-width: 360px) { header > .btn-cta { display: none; } .sim-mode-tab { font-size: .7rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
