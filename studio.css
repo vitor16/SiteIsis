@@ -241,3 +241,85 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
 .camera-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
 .camera-buttons button { min-height: 44px; }
 .photo-camera small { color: #c1b8aa; }
+
+@media (max-width: 700px) {
+  html { overflow-x: clip; }
+  .section-title { padding-inline: 6px; }
+  .hair-simulator-container,
+  .nail-photo-studio { width: 100%; min-width: 0; }
+  .hair-preview-col,
+  .hair-controls-col,
+  .nail-preview-col,
+  .nail-photo-controls { width: 100%; min-width: 0; }
+
+  .hair-simulator-container { gap: 22px; }
+  .hair-canvas-wrapper { width: 100%; aspect-ratio: 4 / 5; max-height: none; }
+  .hair-status-bar { align-items: flex-start; }
+  .hair-info-tag { align-items: flex-start; }
+  .hair-info-tag > div { min-width: 0; overflow-wrap: anywhere; }
+  .hair-view-controls { top: 8px; right: 8px; }
+  .hair-view-controls .hair-btn-tool { min-height: 40px; padding-inline: 10px; }
+  .model-selector-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .model-card-btn { min-height: 72px; }
+  .hair-category-nav {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: 8px -4px 14px;
+    padding: 0 4px 8px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-gold-dark) transparent;
+  }
+  .hair-cat-btn { flex: 0 0 auto; min-height: 44px; }
+  .hair-swatches-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .hair-swatch-item {
+    min-height: 72px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    text-align: left;
+  }
+  .hair-color-circle { flex: 0 0 36px; width: 36px; height: 36px; }
+  .hair-swatch-name { font-size: .74rem; }
+  .hairdo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hairdo-btn { min-height: 58px; flex-direction: row; justify-content: flex-start; text-align: left; padding: 10px; }
+  .hairdo-btn i { flex: 0 0 16px; }
+  .hair-sliders-box { padding: 14px; }
+  .hair-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hair-actions .hair-btn-tool { min-height: 44px; justify-content: center; }
+
+  .nail-photo-studio { gap: 20px; }
+  .nail-photo-viewport { width: 100%; min-height: 0; aspect-ratio: 4 / 5; max-height: none; }
+  .nail-model-picker { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .nail-model-picker .model-card-btn { min-height: 84px; padding: 8px 4px; }
+  .nail-photo-controls h3 { font-size: 1.35rem; }
+  .nail-photo-controls .control-group { min-width: 0; }
+  #polishSwatches {
+    width: 100%;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    justify-items: stretch;
+  }
+  #polishSwatches .swatch:last-child:nth-child(5n + 1) { grid-column: 3; }
+  #polishSwatches .swatch { width: 100%; min-width: 0; min-height: 44px; }
+  #polishSwatches .swatch::before { width: 30px; height: 30px; margin: auto; }
+  .nail-photo-controls .control-group > label { align-items: baseline; }
+  .nail-photo-controls .custom-color-picker { min-height: 48px; }
+  .nail-photo-controls .custom-range { min-height: 28px; }
+  .nail-option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nail-option-btn { min-height: 46px; }
+  .nail-booking { min-height: 48px; }
+}
+
+@media (max-width: 380px) {
+  .hair-simulator-container,
+  .nail-photo-studio { padding: 10px; }
+  .hair-category-nav { margin-inline: -2px; }
+  .hair-cat-btn { font-size: .66rem; padding-inline: 8px; }
+  .hair-swatch-item { gap: 7px; padding-inline: 7px; }
+  .hair-color-circle { flex-basis: 32px; width: 32px; height: 32px; }
+  .hair-swatch-name { font-size: .68rem; }
+  .nail-model-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
