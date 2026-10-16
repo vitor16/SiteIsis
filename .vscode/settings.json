@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git status --short && printf '\\\\n--- root files ---\\\\n' && rg --files -g '!node_modules' -g '!dist' \\| head -100$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
