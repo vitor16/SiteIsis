@@ -1,6 +1,5 @@
-# Música ambiente
+# Ambiência do Stúdio
 
-Cópia local da faixa que já estava configurada no projeto, para evitar depender de um stream externo durante a visita:
-https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3
+Faixa ambiente hospedada localmente para evitar depender de um stream externo durante a visita: **“Valley Sunset”**, de Alejandro Magaña (A. M.), da [coleção Ambient do Mixkit](https://mixkit.co/free-stock-music/ambient/). Utilizada sob a [Mixkit Stock Music Free License](https://mixkit.co/license/#musicFree).
 
-Reprodução em loop em volume inicial baixo (12%), como trilha lo-fi ambiente para acompanhar a estética acolhedora do estúdio. Tenta iniciar automaticamente; quando o navegador exige uma interação, inicia no primeiro toque/clique/tecla. A pausa manual é respeitada durante a visita.
+Reprodução em loop em volume inicial baixo (12%), como som ambiente suave para acompanhar a estética acolhedora do estúdio. O navegador pode exigir uma interação antes de iniciar; nesse caso, a reprodução começa no primeiro toque/clique/tecla. A pausa manual é respeitada durante a visita.

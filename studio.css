@@ -326,6 +326,9 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
   .service-price-top { align-items: flex-start; gap: 10px; }
   .service-price-name { font-size: .92rem; }
   .service-price-value { font-size: 1.05rem; }
+  .service-whatsapp-row .service-price-top { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: start; gap: 5px 10px; }
+  .service-whatsapp-row .service-price-top::after { grid-column: 1 / -1; grid-row: 2; justify-self: start; margin: 0; content: 'Toque para pedir pelo WhatsApp'; font-size: .68rem; letter-spacing: 0; }
+  .service-price-name { min-width: 0; line-height: 1.4; }
   .package-price { font-size: 1.9rem; }
   .contact-grid { gap: 12px; }
   .contact-card h3 { margin-bottom: 10px; }
@@ -417,13 +420,12 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
   .nail-photo-controls .control-group { min-width: 0; }
   #polishSwatches {
     width: 100%;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
     justify-items: stretch;
   }
-  #polishSwatches .swatch:last-child:nth-child(5n + 1) { grid-column: 3; }
   #polishSwatches .swatch { width: 100%; min-width: 0; min-height: 44px; }
-  #polishSwatches .swatch::before { width: 30px; height: 30px; margin: auto; }
+  #polishSwatches .swatch::before { width: 28px; height: 28px; margin: auto; }
   .nail-photo-controls .control-group > label { align-items: baseline; }
   .nail-photo-controls .custom-color-picker { min-height: 48px; }
   .nail-photo-controls .custom-range { min-height: 28px; }

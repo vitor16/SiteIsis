@@ -770,9 +770,9 @@
   </section>
 
   <footer>
-    <div class="music-widget" id="musicToggle" role="button" tabindex="0" aria-label="Ativar lo-fi ambiente" aria-pressed="false" onclick="toggleMusic()">
+    <div class="music-widget" id="musicToggle" role="button" tabindex="0" aria-label="Ativar ambiência do estúdio" aria-pressed="false" onclick="toggleMusic()">
       <div class="music-icon-btn"><i data-lucide="music" id="musicIcon" style="width:18px;height:18px;"></i></div>
-      <div class="music-copy"><div class="music-title">Lo-fi Beauty</div><div class="music-status" id="musicStatusText">Iniciando música…</div></div>
+      <div class="music-copy"><div class="music-title">Ambiência do Stúdio</div><div class="music-status" id="musicStatusText">Iniciando som ambiente…</div></div>
       <div class="equalizer-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>
     </div>
     <p><strong style="color:var(--accent-gold);">ISIS AVELAR STÚDIO</strong> — Hair, Nail Tech & Boutique Concept</p>
@@ -797,7 +797,7 @@
     let musicPausedByUser = false;
     bgAudio.volume = .12;
     function removeMusicUnlock() { document.removeEventListener('pointerup', unlockMusic); document.removeEventListener('keydown', unlockMusic); }
-    function syncMusicUI() { const playing = !bgAudio.paused && !bgAudio.error; musicWidget.classList.toggle('playing', playing); musicWidget.setAttribute('aria-pressed', playing); musicWidget.setAttribute('aria-label', playing ? 'Pausar lo-fi ambiente' : 'Ativar lo-fi ambiente'); musicStatusText.textContent = playing ? 'Tocando · toque para pausar' : 'Pausado · toque para ouvir'; }
+    function syncMusicUI() { const playing = !bgAudio.paused && !bgAudio.error; musicWidget.classList.toggle('playing', playing); musicWidget.setAttribute('aria-pressed', playing); musicWidget.setAttribute('aria-label', playing ? 'Pausar ambiência do estúdio' : 'Ativar ambiência do estúdio'); musicStatusText.textContent = playing ? 'Som ambiente · toque para pausar' : 'Pausado · toque para ouvir'; }
     async function startMusic() { try { await bgAudio.play(); removeMusicUnlock(); } catch (error) { if (error.name === 'NotAllowedError') musicStatusText.textContent = 'Toque na página para ouvir'; else if (error.name !== 'AbortError') musicStatusText.textContent = 'Áudio indisponível · tente novamente'; } }
     function unlockMusic(event) { if (musicPausedByUser || event.target.closest?.('#musicToggle')) return; startMusic(); }
     function toggleMusic() { if (!bgAudio.paused) { musicPausedByUser = true; removeMusicUnlock(); bgAudio.pause(); } else { musicPausedByUser = false; startMusic(); } }
