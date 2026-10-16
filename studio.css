@@ -236,6 +236,119 @@ section:not(.hero) { padding: 80px max(4%,calc((100vw - 1360px) / 2)); }
 .music-widget .equalizer-bars { display:none; }
 @media(max-width:700px) { .music-widget { left:10px; bottom:12px; padding:8px 11px; gap:8px; } .music-widget .music-icon-btn { width:30px; height:30px; } .music-title { font-size:.72rem; } .music-status { font-size:.62rem; } }
 
+@media (max-width: 700px) {
+  html { scroll-padding-top: 76px; }
+  header { min-height: 64px; padding: 8px 14px; gap: 8px; background: rgba(16,16,15,.97); }
+  .logo-badge { width: 38px; height: 38px; }
+  .logo-container { gap: 8px; }
+  .logo-script { font-size: 1.5rem; }
+  .logo-sub { font-size: .48rem; letter-spacing: 3.5px; }
+  header > .btn-cta { min-height: 44px; padding: 9px 11px; font-size: .68rem; border-radius: 11px; }
+  .menu-toggle { width: 42px; height: 42px; margin: 0; border-radius: 12px; font-size: 0; }
+  .menu-toggle::before { content: '☰'; font-size: 1.2rem; line-height: 1; }
+  .menu-toggle[aria-expanded="true"]::before { content: '×'; font-size: 1.65rem; }
+  header nav.is-open { top: 100%; left: 0; right: 0; max-height: calc(100dvh - 64px); overflow-y: auto; padding: 8px 18px 16px; gap: 0; background: rgba(20,19,17,.98); border-bottom: 1px solid var(--border-glass); box-shadow: 0 18px 30px rgba(0,0,0,.3); }
+  header nav.is-open a { display: flex; align-items: center; min-height: 48px; padding: 10px 4px; border-bottom: 1px solid rgba(218,191,147,.1); font-size: .88rem; }
+  header nav.is-open a:last-child { border-bottom: 0; }
+
+  .hero { padding: 102px 20px 42px; gap: 24px; text-align: left; }
+  .hero-tag { font-size: .62rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(2.35rem, 10vw, 3.2rem); line-height: 1.12; margin-bottom: 18px; }
+  .hero p { max-width: 38rem; font-size: .9rem; line-height: 1.75; margin: 0 0 22px; }
+  .hero > div:first-child > div:last-child { display: grid !important; grid-template-columns: 1fr; gap: 10px !important; max-width: 400px; }
+  .hero .btn-cta { width: 100%; min-height: 48px; justify-content: center; padding: 12px 14px; font-size: .78rem; }
+  .hero-portfolio { width: calc(100% - 12px); height: clamp(280px, 82vw, 330px); margin: 0 auto; }
+  .hero-main-photo { width: 88%; border-radius: 130px 130px 20px 20px; }
+  .hero-detail-photo { right: -12px; bottom: 74px; width: 36%; height: 112px; border-width: 5px; border-radius: 58px 58px 14px 14px; }
+  .hero-photo-caption { width: 88%; padding: 48px 16px 16px; gap: 5px; }
+  .hero-photo-caption strong { font-size: 1.08rem; }
+  .hero-photo-caption a { font-size: .7rem; }
+
+  section:not(.hero) { padding: 52px 16px; }
+  .section-title { margin-bottom: 25px; }
+  .section-title h2 { font-size: clamp(1.6rem, 7vw, 2rem); line-height: 1.2; }
+  .section-title p { font-size: .86rem; line-height: 1.7; }
+  .hair-studio-section, .nail-studio-section, .scheduler-section, .transformations-section, .services, .packages-section, .price-menu-section, .contact-section { scroll-margin-top: 72px; }
+  .hair-simulator-container, .studio-container, .scheduler-container { padding: 14px; border-radius: 18px; }
+  .hair-simulator-container { gap: 22px; }
+  .hair-preview-col, .hair-controls-col, .nail-photo-controls { min-width: 0; }
+  .hair-canvas-wrapper { aspect-ratio: 4 / 4.6; max-height: 440px; }
+  .sim-mode-switcher { gap: 3px; padding: 4px; }
+  .sim-mode-tab { min-width: 0; min-height: 46px; padding: 9px 6px; gap: 5px; font-size: .72rem; }
+  .hair-view-controls { top: 8px; right: 8px; }
+  .hair-btn-tool, .hair-cat-btn, .hairdo-btn, .nail-option-btn, .vibe-mode-btn { min-height: 44px; }
+  .hair-actions { gap: 8px; }
+  .hair-actions .hair-btn-tool { flex: 1 1 auto; }
+  .hair-category-nav { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; padding: 2px 1px 8px; margin: 0 -4px 8px; }
+  .hair-category-nav::-webkit-scrollbar { display: none; }
+  .hair-cat-btn { flex: 0 0 auto; padding: 8px 12px; white-space: nowrap; scroll-snap-align: start; }
+  .hair-swatches-grid { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 7px; }
+  .hair-swatch-item { min-height: 78px; padding: 10px 4px; }
+  .hair-color-circle { width: 34px; height: 34px; }
+  .hairdo-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+  .hairdo-btn { min-height: 56px; padding: 8px 5px; font-size: .72rem; }
+  .custom-color-picker { gap: 10px; padding: 12px; }
+  .simulation-note { font-size: .72rem; }
+  .model-selector-row { gap: 8px; }
+  .model-card-btn { min-height: 74px; }
+
+  .scheduler-section { padding-top: 52px; padding-bottom: 52px; }
+  .maapp-booking-shell { border-radius: 20px; }
+  .maapp-booking-topbar { padding: 16px; gap: 14px; }
+  .maapp-booking-title { gap: 10px; }
+  .maapp-booking-title strong { font-size: .94rem; }
+  .maapp-booking-title span { font-size: .72rem; line-height: 1.5; }
+  .maapp-booking-icon { width: 40px; height: 40px; flex-basis: 40px; border-radius: 12px; }
+
+  .split-slider-container { width: min(100%, 360px); height: min(112vw, 390px); min-height: 300px; border-radius: 20px; }
+  .badge-label { bottom: 14px; padding: 7px 11px; font-size: .7rem; }
+  .badge-before { left: 12px; }
+  .badge-after { right: 12px; }
+  .portfolio-carousel { border-radius: 18px; }
+  .portfolio-slide > .transformation-images { height: clamp(220px, 68vw, 270px); }
+  .portfolio-slide .transformation-card-caption { min-height: 76px; padding: 14px 16px 10px; }
+  .portfolio-slide .transformation-card-caption strong { font-size: .85rem; line-height: 1.45; }
+  .portfolio-extras { height: 82px; padding-bottom: 10px; }
+  .portfolio-navigation { grid-template-columns: 44px minmax(0,1fr) 44px; }
+  .portfolio-tip { line-height: 1.5; }
+
+  .nail-photo-studio { gap: 20px; padding: 12px; border-radius: 18px; }
+  .nail-photo-viewport { width: 100%; min-height: 0; max-height: 440px; aspect-ratio: 4 / 4.7; }
+  .nail-model-picker { gap: 8px; }
+  .nail-model-picker .model-card-btn { min-height: 68px; padding: 8px 4px; }
+  .nail-model-picker .model-card-thumb { width: 38px; height: 38px; }
+  #polishSwatches { grid-template-columns: repeat(6, minmax(0,1fr)); gap: 4px; }
+  #polishSwatches .swatch { width: 100%; }
+  .nail-description { line-height: 1.7; margin-bottom: 18px; }
+  .control-group { margin-bottom: 20px; }
+
+  .price-menu-card, .package-card, .contact-card, .card { padding: 20px; border-radius: 18px; }
+  .service-price-top { align-items: flex-start; gap: 10px; }
+  .service-price-name { font-size: .92rem; }
+  .service-price-value { font-size: 1.05rem; }
+  .package-price { font-size: 1.9rem; }
+  .contact-grid { gap: 12px; }
+  .contact-card h3 { margin-bottom: 10px; }
+  .contact-link { min-height: 44px; display: flex; align-items: center; width: fit-content; }
+
+  .music-widget { bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .whatsapp-float { bottom: calc(12px + env(safe-area-inset-bottom)); right: 12px; width: 46px; height: 46px; }
+}
+
+@media (max-width: 380px) {
+  header { padding-right: 10px; padding-left: 10px; }
+  header > .btn-cta { padding: 8px 9px; font-size: .64rem; }
+  .hero { padding-right: 16px; padding-left: 16px; }
+  .hero-tag { letter-spacing: 1.6px; }
+  .hair-simulator-container, .studio-container, .scheduler-container { padding: 10px; }
+  .sim-mode-tab { font-size: .66rem; }
+  .hair-swatches-grid { gap: 5px; }
+  .portfolio-toolbar { padding-right: 12px; padding-left: 12px; }
+  .portfolio-navigation { padding-right: 10px; padding-left: 10px; }
+  .nail-photo-studio { padding: 9px; }
+  .price-menu-card, .package-card, .contact-card, .card { padding: 17px; }
+}
+
 /* Shared camera capture for both simulators. */
 .camera-prompt-button { margin-top: 10px; }
 .photo-camera { width: min(600px, calc(100vw - 28px)); max-height: 90dvh; overflow: auto; box-sizing: border-box; margin: auto; padding: 22px; border: 1px solid #b99760; border-radius: 20px; background: #191a1c; color: #f7f0e5; }
